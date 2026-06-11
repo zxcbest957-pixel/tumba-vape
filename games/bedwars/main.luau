@@ -7959,8 +7959,9 @@ run(function()
 	local Party
 	local Profile
 	local Users
-	local blacklistedclans = {'gg', 'gg2'}
-	local blacklisteduserids = {1502104539, 3826146717, 4531785383, 1049767300, 4926350670, 653085195, 184655415, 2752307430, 5087196317, 5744061325, 1536265275}
+	local blacklistedclans = {}
+	local blacklisteduserids = {}
+	local blacklistedusernames = {'JDUDIHDHS', 'join_oika4'}
 	local joined = {}
 	
 	local function getRole(plr, id)
@@ -8076,7 +8077,7 @@ run(function()
 		joined[plr.UserId] = plr.Name
 		if plr == lplr then return end
 	
-		if table.find(blacklisteduserids, plr.UserId) or table.find(Users.ListEnabled, tostring(plr.UserId)) then
+		if table.find(blacklisteduserids, plr.UserId) or table.find(blacklistedusernames, plr.Name) or table.find(Users.ListEnabled, tostring(plr.UserId)) then
 			staffFunction(plr, 'blacklisted_user')
 		elseif getRole(plr, 5774246) >= 100 or hasPermission(plr) then
 			staffFunction(plr, hasPermission(plr) and 'staff_permission' or 'staff_role')

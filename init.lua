@@ -290,7 +290,7 @@ end
 
 
 -- Force wipe cache once to migrate to the new robust BlockSelector version
-local forceWipeFile = 'tumbavape/profiles/forcewipe_v4.txt'
+local forceWipeFile = 'tumbavape/profiles/forcewipe_v5.txt'
 if not isfile(forceWipeFile) then
 	downloader.Text = 'Tumba Vape: clearing old cache...'
 	safeDeleteFolder('tumbavape/games')
