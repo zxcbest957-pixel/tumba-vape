@@ -16,7 +16,7 @@ local function downloadFile(path, func)
 	if not isfile(path) then
 		local suc, res = pcall(function()
 			return game:HttpGet(
-				'https://raw.githubusercontent.com/MaxlaserTech/TumbaVape/'
+				'https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'
 					.. readfile('tumbavape/profiles/commit.txt')
 					.. '/'
 					.. select(1, path:gsub('tumbavape/', '')),
