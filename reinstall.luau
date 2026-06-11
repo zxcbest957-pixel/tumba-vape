@@ -1,4 +1,4 @@
-﻿local cloneref = cloneref or function(ref: any)
+local cloneref = cloneref or function(ref: any)
     return ref
 end
 

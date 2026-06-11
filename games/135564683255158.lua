@@ -1,4 +1,4 @@
-﻿
+
 local vape = shared.vape
 local loadstring = function(...)
 	local res, err = loadstring(...)

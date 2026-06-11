@@ -1,4 +1,4 @@
-﻿--!nocheck
+--!nocheck
 local license = ... or {}
 license.Key = script_key or license.Key
 

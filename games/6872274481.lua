@@ -1,4 +1,4 @@
-﻿local canDebug = true
+local canDebug = true
 local run = function(func)
 	func()
 end

@@ -1,4 +1,4 @@
-﻿local license = ... or {}
+local license = ... or {}
 local mainapi = {
 	Categories = {},
 	GUIColor = {
