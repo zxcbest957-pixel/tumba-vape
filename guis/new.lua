@@ -3648,9 +3648,9 @@ function mainapi:CreateGUI()
 		function optionapi:SetBind(tab)
 			mainapi.Keybind = #tab <= 0 and mainapi.Keybind or table.clone(tab)
 			self.Bind = mainapi.Keybind
-			if mainapi.Tumba VapeButton then
-				mainapi.Tumba VapeButton:Destroy()
-				mainapi.Tumba VapeButton = nil
+			if mainapi.TumbaVapeButton then
+				mainapi.TumbaVapeButton:Destroy()
+				mainapi.TumbaVapeButton = nil
 			end
 
 			bind.Visible = true
@@ -7711,7 +7711,7 @@ function mainapi:Load(skipgui, profile, profiledata)
 	self.Loaded = savecheck
 	self.Categories.Main.Options.Bind:SetBind(self.Keybind)
 
-	if shared.Tumba VapeDeveloper or (inputService.TouchEnabled or not inputService.KeyboardEnabled) and #self.Keybind == 1 and self.Keybind[1] == 'RightShift' then
+	if shared.TumbaVapeDeveloper or (inputService.TouchEnabled or not inputService.KeyboardEnabled) and #self.Keybind == 1 and self.Keybind[1] == 'RightShift' then
 		local app = lplr.PlayerGui:FindFirstChild('TopBarAppGui')
 		local hide = isfile('tumbavape/profiles/hide.txt') and readfile('tumbavape/profiles/hide.txt') or nil
 		if hide ~= nil then
@@ -7737,7 +7737,7 @@ function mainapi:Load(skipgui, profile, profiledata)
 		image.Parent = button
 		local buttoncorner = Instance.new('UICorner')
 		buttoncorner.Parent = button
-		self.Tumba VapeButton = button
+		self.TumbaVapeButton = button
 		button.MouseButton1Click:Connect(function()
 			if self.ThreadFix then
 				setthreadidentity(8)
@@ -7888,7 +7888,7 @@ function mainapi:Uninject()
 	loopClean(mainapi)
 	shared.tumbahub = nil
 	shared.tumbahubreload = nil
-	shared.Tumba VapeIndependent = nil
+	shared.TumbaVapeIndependent = nil
 end
 
 gui = Instance.new('ScreenGui')
@@ -8173,7 +8173,7 @@ Profiles:CreateButton({
 			delfile('tumbavape/profiles/'..mainapi.Profile..mainapi.Place..'.txt')
 		end
 		shared.tumbahubreload = true
-		if shared.Tumba VapeDeveloper then
+		if shared.TumbaVapeDeveloper then
 			loadstring(readfile('tumbavape/init.lua'), 'init')(shared.tumbadata)
 		else
 			loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))(shared.tumbadata)
@@ -8225,7 +8225,7 @@ general:CreateButton({
 			delfile('tumbavape/profiles/'..mainapi.Profile..mainapi.Place..'.txt')
 		end
 		shared.tumbahubreload = true
-		if shared.Tumba VapeDeveloper then
+		if shared.TumbaVapeDeveloper then
 			loadstring(readfile('tumbavape/init.lua'), 'init')(shared.tumbadata)
 		else
 			loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))(shared.tumbadata)
@@ -8244,7 +8244,7 @@ general:CreateButton({
 	Name = 'Reinject',
 	Function = function()
 		shared.tumbahubreload = true
-		if shared.Tumba VapeDeveloper then
+		if shared.TumbaVapeDeveloper then
 			loadstring(readfile('tumbavape/init.lua'), 'init')(shared.tumbadata)
 		else
 			loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))(shared.tumbadata)
@@ -8352,7 +8352,7 @@ guipane:CreateDropdown({
 		if mouse then
 			writefile('tumbavape/profiles/gui.txt', val)
 			shared.tumbahubreload = true
-			if shared.Tumba VapeDeveloper then
+			if shared.TumbaVapeDeveloper then
 				loadstring(readfile('tumbavape/init.lua'), 'init')()
 			else
 				loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))()
@@ -8446,7 +8446,7 @@ local languagedrop = langpane:CreateDropdown({
 			shared.tumbahubreload = true
 			task.spawn(function()
 				task.wait(0.25)
-				if shared.Tumba VapeDeveloper then
+				if shared.TumbaVapeDeveloper then
 					loadstring(readfile('tumbavape/init.lua'), 'init')(shared.tumbadata)
 				else
 					loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))(shared.tumbadata)
@@ -8462,7 +8462,7 @@ langpane:CreateButton({
 		shared.tumbahubreload = true
 		task.spawn(function()
 			task.wait(0.25)
-			if shared.Tumba VapeDeveloper then
+			if shared.TumbaVapeDeveloper then
 				loadstring(readfile('tumbavape/init.lua'), 'init')(shared.tumbadata)
 			else
 				loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))(shared.tumbadata)

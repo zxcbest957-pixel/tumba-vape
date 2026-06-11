@@ -341,11 +341,11 @@ local function finishLoading()
 
 	local teleportedServers
 	tumbahub:Clean(playersService.LocalPlayer.OnTeleport:Connect(function()
-		if (not teleportedServers) and (not shared.Tumba VapeIndependent) and tumbahub.AutoTeleport.Enabled then
+		if (not teleportedServers) and (not shared.TumbaVapeIndependent) and tumbahub.AutoTeleport.Enabled then
 			teleportedServers = true
 			local data = shared.tumbadata or {Key = nil}
 			local teleportScript = [[
-				if shared.Tumba VapeDeveloper then
+				if shared.TumbaVapeDeveloper then
 					shared.tumbadata = {Key = '???'}
 					print('yo', shared.tumbadata.Key)
 					loadstring(readfile('tumbavape/init.lua'), 'init')()
@@ -354,11 +354,11 @@ local function finishLoading()
 				end
 			]]
 			teleportScript = teleportScript:gsub('???', tostring(data.Key or 'none'))
-			if shared.Tumba VapeDeveloper then
-				teleportScript = 'shared.Tumba VapeDeveloper = true\n'..teleportScript
+			if shared.TumbaVapeDeveloper then
+				teleportScript = 'shared.TumbaVapeDeveloper = true\n'..teleportScript
 			end
-			if shared.Tumba VapeCustomProfile then
-				teleportScript = 'shared.Tumba VapeCustomProfile = "'..shared.Tumba VapeCustomProfile..'"\n'..teleportScript
+			if shared.TumbaVapeCustomProfile then
+				teleportScript = 'shared.TumbaVapeCustomProfile = "'..shared.TumbaVapeCustomProfile..'"\n'..teleportScript
 			end
 			tumbahub:Save()
 			queue_on_teleport(teleportScript)
@@ -415,7 +415,7 @@ local function finishLoading()
 			tumbahub:CreateNotification('Tumba Vape', 'Authenticated as '.. (getgenv().tumbaname or 'Guest').. ' with ('.. (getgenv().tumbarole or 'Free').. ')', 4, 'info')
 			task.wait(4)
 		end
-		tumbahub:CreateNotification('Finished Loading', not inputService.KeyboardEnabled and tumbahub.Tumba VapeButton and 'Press the button in the top right to open GUI' or 'Press '..table.concat(tumbahub.Keybind, ' + '):upper()..' to open GUI', 5)
+		tumbahub:CreateNotification('Finished Loading', not inputService.KeyboardEnabled and tumbahub.TumbaVapeButton and 'Press the button in the top right to open GUI' or 'Press '..table.concat(tumbahub.Keybind, ' + '):upper()..' to open GUI', 5)
 	end
 end
 
@@ -452,7 +452,7 @@ _G.tumbahub = tumbahub
 getgenv().vape = tumbahub
 
 getgenv().canDebug = not table.find({'Xeno', 'Solara'}, ({identifyexecutor()})[1]) and debug.getconstant and debug.getproto and true or false
-if not shared.Tumba VapeIndependent then
+if not shared.TumbaVapeIndependent then
 	updateProgress(65, 'Loading Universal Module definitions...')
 	do
 		local _pre = getgenv()._tumbaPrecompiled
@@ -464,7 +464,7 @@ if not shared.Tumba VapeIndependent then
 	end
 
 	local found = false
-	local callback = shared.Tumba VapeDeveloper and readfile or downloadFile
+	local callback = shared.TumbaVapeDeveloper and readfile or downloadFile
 	
 	updateProgress(90, 'Injecting BedWars specific game scripts...')
 	for i, v in httpService:JSONDecode(callback('tumbavape/profiles/supported.json')) do
@@ -500,7 +500,7 @@ if not shared.Tumba VapeIndependent then
 	if not found then
 		local suc, res = pcall(function()
 			local commit = isfile('tumbavape/profiles/commit.txt') and readfile('tumbavape/profiles/commit.txt') or 'main'
-			return not shared.Tumba VapeDeveloper and game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..commit..'/games/'..game.PlaceId..'.lua', true) or '404: Not Found'
+			return not shared.TumbaVapeDeveloper and game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..commit..'/games/'..game.PlaceId..'.lua', true) or '404: Not Found'
 		end)
 		if suc and res ~= '404: Not Found' then
 			loadstring(downloadFile('tumbavape/games/'..game.PlaceId..'.lua'), tostring(game.PlaceId))(...)

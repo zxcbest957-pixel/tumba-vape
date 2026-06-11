@@ -1850,9 +1850,9 @@ function mainapi:CreateBar()
 		function optionapi:SetBind(tab, mouse)
 			mainapi.Keybind = #tab <= 0 and mainapi.Keybind or table.clone(tab)
 			self.Bind = mainapi.Keybind
-			if mainapi.Tumba VapeButton then
-				mainapi.Tumba VapeButton:Destroy()
-				mainapi.Tumba VapeButton = nil
+			if mainapi.TumbaVapeButton then
+				mainapi.TumbaVapeButton:Destroy()
+				mainapi.TumbaVapeButton = nil
 			end
 
 			if mouse then
@@ -3223,7 +3223,7 @@ function mainapi:Load(skipgui, profile)
 		image.BackgroundTransparency = 1
 		image.Image = getcustomasset('tumbavape/assets/old/tumbahub.png')
 		image.Parent = button
-		self.Tumba VapeButton = button
+		self.TumbaVapeButton = button
 		button.MouseButton1Click:Connect(function()
 			if self.ThreadFix then
 				setthreadidentity(8)
@@ -3364,7 +3364,7 @@ function mainapi:Uninject()
 	loopClean(mainapi)
 	shared.tumbahub = nil
 	shared.tumbahubreload = nil
-	shared.Tumba VapeIndependent = nil
+	shared.TumbaVapeIndependent = nil
 end
 
 gui = Instance.new('ScreenGui')
@@ -3726,7 +3726,7 @@ topbar:CreateDropdown({
 		if mouse then
 			writefile('tumbavape/profiles/gui.txt', val)
 			shared.tumbahubreload = true
-			if shared.Tumba VapeDeveloper then
+			if shared.TumbaVapeDeveloper then
 				loadstring(readfile('tumbavape/init.lua'), 'init')()
 			else
 				loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))()
@@ -3764,7 +3764,7 @@ topbar:CreateButton({
 			delfile('tumbavape/profiles/'..mainapi.Profile..mainapi.Place..'.txt')
 		end
 		shared.tumbahubreload = true
-		if shared.Tumba VapeDeveloper then
+		if shared.TumbaVapeDeveloper then
 			loadstring(readfile('tumbavape/init.lua'), 'init')()
 		else
 			loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))()
@@ -3828,7 +3828,7 @@ topbar:CreateButton({
 	Name = 'REINEJCT',
 	Function = function()
 		shared.tumbahubreload = true
-		if shared.Tumba VapeDeveloper then
+		if shared.TumbaVapeDeveloper then
 			loadstring(readfile('tumbavape/init.lua'), 'init')()
 		else
 			loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))()

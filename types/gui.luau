@@ -1,23 +1,23 @@
-export type Tumba VapeSlider = {
+export type TumbaVapeSlider = {
     Value: any,
     Object: Frame
 }
-export type Tumba VapeDropdown = Tumba VapeSlider
+export type TumbaVapeDropdown = TumbaVapeSlider
 
-export type Tumba VapeToggle = {
+export type TumbaVapeToggle = {
     Enabled: boolean,
-    Toggle: (self: Tumba VapeToggle, ...any) -> (),
+    Toggle: (self: TumbaVapeToggle, ...any) -> (),
     Object: Frame,
-    Clean: (self: Tumba VapeToggle, any) -> RBXScriptConnection
+    Clean: (self: TumbaVapeToggle, any) -> RBXScriptConnection
 }
 
-export type Tumba VapeModule = Tumba VapeToggle & {
-    CreateSlider: (...any) -> Tumba VapeSlider, 
-    CreateToggle: (...any) -> Tumba VapeToggle,
-    CreateDropdown: (...any) -> Tumba VapeDropdown,
+export type TumbaVapeModule = TumbaVapeToggle & {
+    CreateSlider: (...any) -> TumbaVapeSlider, 
+    CreateToggle: (...any) -> TumbaVapeToggle,
+    CreateDropdown: (...any) -> TumbaVapeDropdown,
     CreateButton: (...any) -> ()
 }
 
-export type Tumba VapeCategory = {
-    CreateModule: (self: Tumba VapeCategory, any) -> Tumba VapeModule
+export type TumbaVapeCategory = {
+    CreateModule: (self: TumbaVapeCategory, any) -> TumbaVapeModule
 }

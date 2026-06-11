@@ -287,7 +287,7 @@ local lastCheck      = isfile(lastCheckFile) and tonumber(readfile(lastCheckFile
 local allFilesExist  = isfile('tumbavape/main.lua')
 local needsCheck     = (os.time() - lastCheck) >= UPDATE_INTERVAL or not allFilesExist
 
-if not shared.Tumba VapeDeveloper and needsCheck then
+if not shared.TumbaVapeDeveloper and needsCheck then
 	downloader.Text = 'Tumba Vape: checking updates...'
 
 	-- GitHub API: returns tiny JSON with commit SHA (~200 bytes, vs 500KB HTML page)
@@ -321,7 +321,7 @@ if not shared.Tumba VapeDeveloper and needsCheck then
 	writefile(lastCheckFile, tostring(os.time()))
 	downloader.Text = ''
 
-elseif not shared.Tumba VapeDeveloper then
+elseif not shared.TumbaVapeDeveloper then
 	-- Cache is fresh — skip GitHub entirely, load from disk instantly
 	-- (make sure commit file exists)
 	if not isfile('tumbavape/profiles/commit.txt') then

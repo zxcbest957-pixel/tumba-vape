@@ -2508,7 +2508,7 @@ function mainapi:Uninject()
 	loopClean(mainapi)
 	shared.tumbahub = nil
 	shared.tumbahubreload = nil
-	shared.Tumba VapeIndependent = nil
+	shared.TumbaVapeIndependent = nil
 end
 
 gui = Instance.new('ScreenGui')
@@ -2874,7 +2874,7 @@ mainapi.Categories.Main:CreateDropdown({
 		if mouse then
 			writefile('tumbavape/profiles/gui.txt', val)
 			shared.tumbahubreload = true
-			if shared.Tumba VapeDeveloper then
+			if shared.TumbaVapeDeveloper then
 				loadstring(readfile('tumbavape/init.lua'), 'init')()
 			else
 				loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))()
@@ -2902,7 +2902,7 @@ mainapi.Categories.Main:CreateButton({
 	Name = 'Reinject',
 	Function = function()
 		shared.tumbahubreload = true
-		if shared.Tumba VapeDeveloper then
+		if shared.TumbaVapeDeveloper then
 			loadstring(readfile('tumbavape/init.lua'), 'init')()
 		else
 			loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))()

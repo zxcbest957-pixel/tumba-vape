@@ -76,8 +76,8 @@ local store = {
 	enchants = {}
 }
 getgenv().store = store
-local Reach: Tumba VapeModule
-local HitBoxes: Tumba VapeModule
+local Reach: TumbaVapeModule
+local HitBoxes: TumbaVapeModule
 local TrapDisabler
 local AntiFallPart
 local bedwars, remotes, sides, oldinvrender = setmetatable({}, {}), nil, {}, nil
@@ -10691,7 +10691,7 @@ run(function()
 	local IronOre
 	local Effect
 	local Closest
-	local CustomHealth: Tumba VapeModule
+	local CustomHealth: TumbaVapeModule
 	local Animation
 	local SelfBreak
 	local InstantBreak
@@ -14409,7 +14409,7 @@ run(function()
 	local SongBeats
 	local List
 	local FOV
-	local FOVValue: Tumba VapeSlider
+	local FOVValue: TumbaVapeSlider
 	local Volume
 	local alreadypicked = {}
 	local beattick = tick()

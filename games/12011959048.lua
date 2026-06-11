@@ -32,7 +32,7 @@ tumbahub.Place = 11630038968
 if isfile('tumbavape/games/'..tumbahub.Place..'.lua') then
 	loadstring(readfile('tumbavape/games/'..tumbahub.Place..'.lua'), 'bridge duel')()
 else
-	if not shared.Tumba VapeDeveloper then
+	if not shared.TumbaVapeDeveloper then
 		local suc, res = pcall(function() 
 			return game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/games/'..tumbahub.Place..'.lua', true) 
 		end)
