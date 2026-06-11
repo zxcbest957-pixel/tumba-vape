@@ -1,16 +1,958 @@
-local license = ... or {}
 local mainapi = {
+	Language = shared.TumbaLanguage or "English",
+	Translations = {
+		["Українська"] = {
+			["Blatant"] = "Бейдж-Моди",
+			["Render"] = "Візуал",
+			["Utility"] = "Утиліти",
+			["World"] = "Світ",
+			["Combat"] = "Бій",
+			["Settings"] = "Налаштування",
+			["Profiles"] = "Профілі",
+			["GUI bind indicator"] = "Індикатор меню",
+			["Color Mode"] = "Кольоровий режим",
+			["Text GUI color"] = "Колір тексту",
+			["Language"] = "Мова",
+			["Killaura"] = "Кіллаура",
+			["Velocity"] = "Анти-Відкидування",
+			["AntiFall"] = "Анти-Падіння",
+			["AutoToxic"] = "Авто-Токсик",
+			["Speed"] = "Швидкість",
+			["Fly"] = "Політ",
+			["HitBoxes"] = "Хітбокси",
+			["Infinite Fly"] = "Безкінечний політ",
+			["Requires Restart!"] = "Потрібен перезапуск!",
+			["Target settings"] = "Налаштування цілі",
+			["Overlays"] = "Оверлеї",
+			["Public Profiles"] = "Публічні профілі",
+			["Private Profiles"] = "Приватні профілі",
+			["Search"] = "Пошук",
+			["TextGUI"] = "Список модулів",
+			["Watermark"] = "Водяний знак",
+			["Target Info"] = "Інфо про ціль",
+			["Match GUI color"] = "Під колір меню",
+			["Custom color"] = "Свій колір",
+			["Font"] = "Шрифт",
+			["Rainbow"] = "Веселка",
+			["Rainbow Speed"] = "Швидкість веселки",
+			["Aim Assist"] = "Аім асист",
+			["Auto Clicker"] = "Авто клікер",
+			["Reach"] = "Досяжність",
+			["Silent Aim"] = "Сайлент аім",
+			["Trigger Bot"] = "Тригер бот",
+			["Part"] = "Частина",
+			["FOV"] = "Кут огляду",
+			["Range"] = "Дистанція",
+			["Chance"] = "Шанс",
+			["Require right click"] = "Потрібен правий клік",
+			["Show target info"] = "Показувати інфо цілі",
+			["CPS"] = "Кліків в сек.",
+			["Range Circle"] = "Коло радіусу",
+			["Circle Color"] = "Колір кола",
+			["Circle Filled"] = "Заповнене коло",
+			["Origin"] = "Джерело",
+			["Offset"] = "Зміщення",
+			["Wallbang"] = "Простріл стін",
+			["Next Shot Delay"] = "Затримка пострілу",
+			["Head"] = "Голова",
+			["RootPart"] = "Торс (RootPart)",
+			["Tool"] = "Інструмент",
+			["Click"] = "Клік",
+			["RightClick"] = "Правий клік",
+			["TouchInterest"] = "Касання (TouchInterest)",
+			["Resize"] = "Зміна розміру",
+			["Mouse"] = "Миша",
+			["Position"] = "Позиція",
+			["Raycast"] = "Рейкаст",
+			["Exclude"] = "Виключити",
+			["Include"] = "Включити",
+			["Target:"] = "Ціль:",
+			["Ignore none"] = "Нічого не ігнорувати",
+			["none"] = "нічого",
+			["invisible"] = "невидимих",
+			["behind walls"] = "за стінами",
+			["Ignore"] = "Ігнорувати",
+			["Rebind GUI"] = "Перепризначити меню",
+			["PRESS A KEY TO BIND"] = "НАТИСНІТЬ КЛАВІШУ ДЛЯ ПРИВ'ЯЗКИ",
+			["BIND REMOVED"] = "ПРИВ'ЯЗКУ ВИДАЛЕНО",
+			["BOUND TO"] = "ПРИВ'ЯЗАНО ДО",
+			["Open settings"] = "Відкрити налаштування",
+			["Join discord"] = "Увійти в Discord",
+			["Change the bind of the GUI"] = "Змінити клавішу виклику меню",
+			["Click to bind"] = "Натиснуть для прив'язки",
+			["Add entry..."] = "Додати запис...",
+			["Add"] = "Додати",
+			["Ignore invisible"] = "Ігнорувати невидимих",
+			["Ignore behind walls"] = "Ігнорувати за стінами",
+			["Saturation"] = "Насиченість",
+			["Vibrance"] = "Яскравість",
+			["Opacity"] = "Прозорість",
+			["Custom"] = "Свій",
+			["None"] = "Немає",
+			["Check block break"] = "Перевіряти ламання блоків",
+			["Use killaura target"] = "Ціль з кіллаури",
+			["Use Killaura target"] = "Ціль з кіллаури",
+			["Sprint"] = "Спринт",
+			["Horizontal"] = "Горизонтальне",
+			["Vertical"] = "Вертикальне",
+			["Only when targeting"] = "Тільки при націлюванні",
+			["Move Mode"] = "Режим руху",
+			["Material"] = "Матеріал",
+			["Color"] = "Колір",
+			["InvMove"] = "Рух в інвентарі",
+			["Attack range"] = "Радіус атаки",
+			["Max angle"] = "Максимальний кут",
+			["Max targets"] = "Макс. цілей",
+			["Require mouse down"] = "Потрібно затиснути мишу",
+			["No Swing"] = "Без замаху",
+			["Show target"] = "Показувати ціль",
+			["Attack Color"] = "Колір атаки",
+			["Target particles"] = "Частинки на цілі",
+			["Color Begin"] = "Початковий колір",
+			["Color End"] = "Кінцевий колір",
+			["Size"] = "Розмір",
+			["Custom Animation"] = "Своя анімація",
+			["Click aim"] = "Аім при кліку",
+			["Strafe increase"] = "Збільшення при стрейфі",
+			["Aim speed"] = "Швидкість аіму",
+			["Distance"] = "Дистанція",
+			["Shake"] = "Трясіння",
+			["Target mode"] = "Режим вибору цілі",
+			["Target area"] = "Область цілі",
+			["Bow Assist"] = "Асист лука",
+			["Use mouse aim"] = "Аім мишкою",
+			["Use blacklist"] = "Чорний список",
+			["Blacklisted"] = "У чорному списку",
+			["Place Blocks"] = "Ставити блоки",
+			["Block CPS"] = "КПС блоків",
+			["Sword Reach"] = "Досяжність меча",
+			["Sword Range"] = "Дистанція меча",
+			["Placement Reach"] = "Дальність встановлення",
+			["Mode"] = "Режим",
+			["Transparency"] = "Прозорість",
+			["Speed Mode"] = "Режим швидкості",
+			["Float Mode"] = "Режим левітації",
+			["Humanoid State"] = "Стан гравця",
+			["Keys"] = "Клавіші",
+			["Vertical Speed"] = "Вертикальна швидкість",
+			["TP Frequency"] = "Частота ТП",
+			["Pulse Length"] = "Тривалість імпульсу",
+			["Pulse Delay"] = "Затримка імпульсу",
+			["Bounce Length"] = "Дальність відскоку",
+			["Bounce Delay"] = "Затримка відскоку",
+			["Ground"] = "Земля",
+			["Air"] = "Повітря",
+			["Wall Check"] = "Перевірка стін",
+			["PlatformStand"] = "Платформа стійка",
+			["Custom Properties"] = "Власні властивості",
+			["Auto Disable"] = "Автовимкнення",
+			["Expand amount"] = "Розмір збільшення",
+			["Sword lunge only"] = "Тільки випад мечем",
+			["Face target"] = "Повертатися до цілі",
+			["Attacks per Second"] = "Атак за секунду",
+			["Swing range"] = "Дальність помаху",
+			["Texture"] = "Текстура",
+			["Target Color"] = "Колір цілі",
+			["Priority Only"] = "Тільки пріоритетні",
+			["Distance Check"] = "Перевірка дистанції",
+			["Player Distance"] = "Дистанція гравця",
+			["Highlight"] = "Підсвічування",
+			["Climb State"] = "Стан карабкання",
+			["Wall Size"] = "Розмір стіни",
+			["Spin X"] = "Обертання X",
+			["Spin Y"] = "Обертання Y",
+			["Spin Z"] = "Обертання Z",
+			["Custom Jump"] = "Свій стрибок",
+			["Jump Power"] = "Сила стрибка",
+			["Movement"] = "Рух",
+			["Search Range"] = "Радіус пошуку",
+			["Strafe Range"] = "Радіус стрейфу",
+			["Y Factor"] = "Множник Y",
+			["Player Color"] = "Колір гравця",
+			["Kits"] = "Кіти",
+			["Inventory"] = "Інвентар",
+			["Auto Balloon"] = "Авто-Кулі",
+			["Auto Kit"] = "Авто-Кіт",
+			["Auto Hannah"] = "Авто-Ханна",
+			["Auto Pearl"] = "Авто-Перлина",
+			["Auto Play"] = "Авто-Гра",
+			["Anti Suffocate"] = "Анти-Задихання",
+			["Auto Release"] = "Авто-Відпуск",
+			["Auto Shoot"] = "Авто-Постріл",
+			["Auto Void Drop"] = "Авто-Скидання в безодню",
+			["Missile TP"] = "ТП Ракети",
+			["Pickup Range"] = "Радіус підбору",
+			["Raven TP"] = "ТП Ворона",
+			["Scaffold"] = "Будівельник (Scaffold)",
+			["Shop Tier Bypass"] = "Обхід рівнів магазину",
+			["Trap Disabler"] = "Вимкнення пасток",
+			["Auto Suffocate"] = "Авто-Задихання",
+			["Auto Tool"] = "Авто-Інструмент",
+			["Block In"] = "Забудуватися",
+			["Chest Steal"] = "Крадіжка зі скрині",
+			["Fast Place"] = "Швидке встановлення",
+			["Auto Steal"] = "Авто-Крадіжка",
+			["Auto Fish"] = "Авто-Риболовля",
+			["Armor Switch"] = "Зміна броні",
+			["Auto Bank"] = "Авто-Банк",
+			["Auto Buy"] = "Авто-Купівля",
+			["Auto Consume"] = "Авто-Вживання",
+			["Auto Hotbar"] = "Авто-Хотбар",
+			["Fast Consume"] = "Швидке вживання",
+			["Fast Drop"] = "Швидке скидання",
+			["Trap ESP"] = "ЕСП пасток",
+			["Bed Plates"] = "Пластини ліжка",
+			["Breaker"] = "Ломач ліжок",
+			["Kaida Killaura"] = "Каїда Кіллаура",
+			["Auto Ember"] = "Авто-Ембер",
+			["Auto Uma"] = "Авто-Ума",
+			["Auto Adetunde"] = "Авто-Адетунде",
+			["Auto Pyro"] = "Авто-Піро",
+			["Auto Lani"] = "Авто-Лані",
+			["Auto Noelle"] = "Авто-Ноель",
+			["Auto Marina"] = "Авто-Марина",
+			["Auto Builder"] = "Авто-Будівельник",
+			["Auto Nyx"] = "Авто-Нюкс",
+			["Auto Sheep"] = "Авто-Вівці",
+			["Auto Melody"] = "Авто-Мелодія",
+			["Auto Ramil"] = "Авто-Раміль",
+			["Auto Caitlyn"] = "Авто-Кейтлін",
+			["Auto Zeno"] = "Авто-Зено",
+			["Auto Metal"] = "Авто-Метал",
+			["Auto Kaliyah"] = "Авто-Калія",
+			["Auto Elder"] = "Авто-Елдер",
+			["Auto Taliyah"] = "Авто-Талія",
+			["Auto Star"] = "Авто-Зірка",
+			["Auto Whisper"] = "Авто-Віспер",
+			["Auto Bee"] = "Авто-Бджола",
+			["Fisherman Spy"] = "Шпигун-Рибалка",
+			["Auto Davey"] = "Авто-Дейві",
+			["Davey Aim"] = "Аїм Дейві",
+			["Sigrid Exploit"] = "Експлойт Сігрід",
+			["Bed Alarm"] = "Тривога ліжка",
+			["Bed Break Effect"] = "Ефект зламу ліжка",
+			["Crosshair"] = "Приціл (Crosshair)",
+			["Damage Indicator"] = "Індикатор шкоди",
+			["FPS Boost"] = "Буст ФПС",
+			["Hit Color"] = "Колір удару",
+			["Kit Display"] = "Відображення кітів",
+			["Kill Effect"] = "Ефект вбивства",
+			["Reach Display"] = "Відображення досяжності",
+			["Song Beats"] = "Біти пісні",
+			["Sound Changer"] = "Зміна звуків",
+			["Texture Packs"] = "Текстурпаки",
+			["UI Cleanup"] = "Очищення інтерфейсу",
+			["Viewmodel"] = "Вид рук (Viewmodel)",
+			["Win Effect"] = "Ефект перемоги",
+			["Staff Detector"] = "Детектор адмінів",
+			["Freecam"] = "Вільна камера",
+			["Gravity"] = "Гравітація",
+			["Parkour"] = "Паркур",
+			["Xray"] = "Іксрей (Xray)",
+			["Murder Mystery"] = "Мардер Містері",
+			["Atmosphere"] = "Атмосфера",
+			["Breadcrumbs"] = "Сліди (Breadcrumbs)",
+			["Cape"] = "Плащ",
+			["China Hat"] = "Китайська шляпа",
+			["Clock"] = "Годинник",
+			["Disguise"] = "Маскування",
+			["FPS"] = "ФПС",
+			["Keystrokes"] = "Клавіатура на екрані",
+			["Memory"] = "Пам'ять",
+			["Ping"] = "Пінг",
+			["Coords"] = "Координати",
+			["Speedmeter"] = "Спідометр",
+			["Time Changer"] = "Зміна часу",
+			["Infinite Jump"] = "Безкінечний стрибок",
+			["Zoom Unlocker"] = "Розблокувати зум",
+			["Prompt Duration"] = "Тривалість промпту",
+			["Prompt Extender"] = "Подовжувач промпту",
+			["FFlag"] = "FFlag менеджер",
+			["Auto Gamble"] = "Авто-Казино",
+			["Fast Break"] = "Швидкий злам",
+			["Damage Boost"] = "Буст шкоди",
+			["Bed ESP"] = "ЕСП ліжок",
+			["Bullet Tracers"] = "Трейсери куль",
+			["Hive ESP"] = "ЕСП вуликів",
+			["Kit ESP"] = "ЕСП кітів",
+			["Generator ESP"] = "ЕСП генераторів",
+			["Item ESP"] = "ЕСП предметів",
+			["Storage ESP"] = "ЕСП скринь",
+			["Smoothly aims to closest valid target with sword"] = "Плавно націлює на найближчу валідну ціль з мечем",
+			["Lets you climb up walls. (Hold shift to use Phase over spider)"] = "Дозволяє карабкатися по стінах. (Утримуйте Shift, щоб використовувати Phase замість Spider)",
+			["Lets you Phase/Clip through walls. (Hold shift to use Phase over spider)"] = "Дозволяє проходити крізь стіни. (Утримуйте Shift, щоб використовувати Phase замість Spider)",
+			["Expands entities hitboxes"] = "Збільшує хітбокси супротивників",
+			["Turns you invisible."] = "Робить вас невидимим.",
+			["Lets you jump farther"] = "Дозволяє стрибати далі",
+			["Lets you jump higher"] = "Дозволяє стрибати вище",
+			["Makes your character spin around in circles (does not work in first person)"] = "Змушує вашого персонажа обертатися по колу (не працює від першої особи)",
+			["Lets you swim midair"] = "Дозволяє плавати в повітрі",
+			["Change the game speed."] = "Змінює швидкість гри.",
+			["Makes you go zoom."] = "Змушує вас рухатися дуже швидко.",
+			["Increases your movement with various methods."] = "Прискорює ваші рухи різними методами.",
+			["Draws arrows on screen when entities\nare out of your field of view."] = "Малює стрілки на екрані, коли супротивники знаходяться поза полем зору.",
+			["Allows you to see the other opponent team's kits"] = "Дозволяє бачити кіти супротивників",
+			["Displays your health in the center of your screen."] = "Відображає ваше здоров'я по центру екрана.",
+			["Renders nametags on entities through walls."] = "Відображає нікнейми гравців крізь стіни.",
+			["Customize bedwars UI"] = "Кастомізація інтерфейсу Bedwars",
+			["Helps you make bridges/scaffold walk."] = "Допомагає вам будувати мости на ходу (Scaffold).",
+			["Lets you buy things like armor early."] = "Дозволяє купувати речі в магазині раніше.",
+			["Detects people with a staff rank ingame"] = "Виявляє адміністраторів та модераторів у грі",
+			["Disables Snap Traps"] = "Вимикає капкани",
+			["Places blocks on nearby confined entities"] = "Автоматично забудовує затиснутих гравців",
+			["Automatically selects the correct tool"] = "Автоматично вибирає правильний інструмент",
+			["Grabs items from near chests."] = "Швидко забирає речі з найближчих скринь.",
+			["Automatically fishes with fishing rod"] = "Автоматично ловить рибу вудкою",
+			["Automatically puts resources in ender chest"] = "Автоматично кладе ресурси в Ендер-скриню",
+			["Automatically buys items when you go near the shop"] = "Автоматично купує предмети біля магазину",
+			["Use/Consume items quicker."] = "Дозволяє швидше використовувати або їсти предмети.",
+			["Break blocks around you automatically"] = "Автоматично ламає блоки навколо вас",
+			["Adjusts camera vision"] = "Налаштовує кут огляду камери",
+			["Improves the framerate by turning off certain effects"] = "Покращує ФПС, вимикаючи деякі ефекти",
+			["Built in mp3 player"] = "Вбудований MP3-плеєр",
+			["Change ingame sounds to custom ones."] = "Зміна ігрових звуків на власні.",
+			["Velocity"] = "Фізика (Velocity)",
+			["Impulse"] = "Імпульс",
+			["CFrame"] = "Телепорт (CFrame)",
+			["Floor"] = "Платформа",
+			["Bounce"] = "Відскік",
+			["Jump"] = "Стрибок",
+			["TP"] = "Телепорт",
+			["WalkSpeed"] = "Швидкість ходьби",
+			["Lerp"] = "Плавний рух",
+			["Motor"] = "Мотор",
+			["Highlight"] = "Підсвічування",
+			["Occluded"] = "За стінами",
+			["AlwaysOnTop"] = "Поверх всього",
+			["Simple"] = "Простий",
+			["Adaptive"] = "Адаптивний",
+			["Damage"] = "Шкода",
+			["Closest"] = "Найближчий",
+			["Displays your health in the center of your screen."] = "Відображає ваше здоров'я в центрі екрана.",
+			["Renders hives locations and info"] = "Показує розташування вуликів та інформацію про них",
+			["ESP for certain kit related objects"] = "ЕСП для об'єктів, пов'язаних із певними кітами",
+			["Renders generator locations and info"] = "Показує розташування генераторів та інформацію про них",
+			["Renders tags dropped items"] = "Показує теги для скинутих предметів",
+			["Shows the distance of the item"] = "Показує відстань до предмета",
+			["Group items into easier to read tags"] = "Групує предмети в теги, які легше читати",
+			["Only renders whitelisted items"] = "Показує лише предмети з білого списку",
+			["Displays player's rank"] = "Відображає ранг гравця",
+			["Displays player's enchant"] = "Відображає чари гравця",
+			["Displays items in chests"] = "Відображає предмети в скринях",
+			["Inflates when you fall into the void"] = "Надувається, коли ви падаєте в безодню",
+			["Automatically uses kit abilities."] = "Автоматично використовує здібності кітів.",
+			["Automatically executes low health players with Hannah."] = "Автоматично добиває гравців з низьким здоров'ям за допомогою Ханни.",
+			["Automatically handles Gingerbread Man launch pads."] = "Автоматично використовує трампліни Імбирного чоловічка.",
+			["Automatically throws a pearl onto nearby ground after\nfalling a certain distance."] = "Автоматично кидає перлину на землю після падіння на певну відстань.",
+			["Visualizes the switching clientside"] = "Візуалізує перемикання на стороні клієнта",
+			["Only switches back after your pearl landed"] = "Перемикається назад лише після того, як перлина приземлилася",
+			["Doesn't throw a pearl if ur already pearling"] = "Не кидає перлину, якщо ви вже летите на ній",
+			["Only throws pearl when holding a pearl"] = "Кидає перлину лише тоді, коли ви тримаєте її в руках",
+			["Automatically queues after the match ends."] = "Автоматично стає в чергу після закінчення матчу.",
+			["Chooses a random mode"] = "Вибирає випадковий режим",
+			["Prevents you from suffocating in blocks"] = "Запобігає задушенню в блоках",
+			["Automatically releases ur projectile source when\nat certain charging percentage"] = "Автоматично випускає снаряд при певному відсотку заряджання",
+			["Automatically swaps to another projectile source while swinging ur sword"] = "Автоматично перемикається на іншу зброю під час удару мечем",
+			["Says a message after a certain action"] = "Надсилає повідомлення після певної дії",
+			["Drops resources when you fall into the void"] = "Скидає ресурси, коли ви падаєте в безодню",
+			["Refuses to drop items if being picked up by an owl"] = "Відмовляється скидати предмети, якщо їх підбирає сова",
+			["Spawns and teleports a missile to a player\nnear your mouse."] = "Створює та телепортує ракету до гравця біля вашої миші.",
+			["Picks up items from a farther distance"] = "Підбирає предмети з більшої відстані",
+			["Spawns and teleports a raven to a player\nnear your mouse."] = "Створює та телепортує ворона до гравця біля вашої миші.",
+			["Lets you stay ingame without getting kicked"] = "Дозволяє залишатися в грі без вильоту",
+			["Automatically places strong blocks around yourself."] = "Автоматично встановлює міцні блоки навколо вас.",
+			["How long it takes to break the surrounding block (smart mode)"] = "Час ламання навколишніх блоків (розумний режим)",
+			["Only block-in with the block you are holding"] = "Забудовуватися лише тим блоком, який ви тримаєте",
+			["Save and load placements of buildings"] = "Зберігає та завантажує схеми будівель",
+			["Changes place delay"] = "Змінює затримку встановлення",
+			["Automatically steals loot from other team's chest, And personal chesting it"] = "Автоматично краде лут зі скрині іншої команди та кладе у вашу",
+			["Automatically jumps if u found a fish with the blacklisted item"] = "Автоматично стрибає, якщо знайдено чорний список риби",
+			["Notifies ur next lootdrops"] = "Повідомляє про наступний лут",
+			["Automatically completes the minigame"] = "Автоматично завершує міні-гру",
+			["Automatically casts ur fishing rod"] = "Автоматично закидає вудку",
+			["Puts on / takes off armor when toggled for baiting."] = "Одягає / знімає броню для приманювання ворогів.",
+			["Buys iron armor before iron axe"] = "Купує залізну броню перед залізною сокирою",
+			["Automatically heals for you when health or shield is under threshold."] = "Автоматично лікує вас, коли рівень здоров'я або щита нижче норми.",
+			["Automatically arranges hotbar to your liking."] = "Автоматично налаштовує хотбар під ваші вподобання.",
+			["Drops items fast when you hold H"] = "Швидко скидає предмети при утриманні клавіші H",
+			["Render traps placed by other teams"] = "Показує пастки, встановлені іншими командами",
+			["Displays blocks over the bed"] = "Показує блоки поверх ліжка",
+			["Breaks the nearest cover block to your mouse before the target block, falling back to your position"] = "Ламає найближчий блок прикриття перед цільовим блоком",
+			["Only breaks when tools are held"] = "Ламає лише тоді, коли інструменти в руках",
+			["Auto attacks with Summoner claw"] = "Автоматично атакує кігтем призовника",
+			["Only attacks while holding left click"] = "Атакує лише при утриманні лівої кнопки миші",
+			["Continue claw attacks while charging ability (disable for legit gameplay)"] = "Продовжує атакувати кігтями під час заряджання здібності (вимкніть для легітної гри)",
+			["Automatically uses uma kit"] = "Автоматично використовує кіт Ума",
+			["Automatically summons spirit for you"] = "Автоматично закликає духа для вас",
+			["Automatically upgrades ur frosty hammer"] = "Автоматично покращує морозний молот",
+			["Automatically upgrades flamethrower"] = "Автоматично покращує вогнемет",
+			["Automatically uses the \"scepter of light\" ability"] = "Автоматично використовує здібність «Скіпетр світла»",
+			["Player to use the ability on"] = "Гравець, на якому використовувати здібність",
+			["Target to use the ability on"] = "Ціль, на якій використовувати здібність",
+			["Uses the ability on other people instead of your teammates"] = "Використовує здібність на ворогах замість союзників",
+			["Delay between triggers"] = "Затримка між спрацьовуваннями",
+			["Automatically directs the slimes to the selected player's"] = "Автоматично направляє слаймів на вибраного гравця",
+			["Player to direct frost slimes to"] = "Гравець для направлення морозних слаймів",
+			["Player to direct heal slimes to"] = "Гравець для направлення лікувальних слаймів",
+			["Player to direct sticky slimes to"] = "Гравець для направлення липких слаймів",
+			["Player to direct void slimes to"] = "Гравець для направлення слаймів безодні",
+			["Automatically uses \"electrify\" ability when enemies are near jellies"] = "Автоматично б'є струмом, коли вороги біля медуз",
+			["Checks if the block is near your bed"] = "Перевіряє, чи знаходиться блок біля вашого ліжка",
+			["Automatically uses the \"midnight\" ability when meleeing a target"] = "Автоматично використовує здібність «Опівніч» під час ближнього бою",
+			["Automatically tames sheep at a long range"] = "Автоматично приручає овець на великій відстані",
+			["Automatically uses the guitar to heal ur teammates/urself"] = "Автоматично використовує гітару для лікування союзників/себе",
+			["Automatically uses the ramil kit"] = "Автоматично використовує кіт Раміля",
+			["Automatically assigns a player's contract when a specific action happens"] = "Автоматично підписує контракт при певній дії",
+			["How low they have to be before contracting"] = "Рівень здоров'я для підписання контракту",
+			["Automatically uses zeno kit"] = "Автоматично використовує кіт Зено",
+			["Automatically uses the shockwave ability when a target is near"] = "Автоматично викликає ударную хвилю біля цілі",
+			["Automatically uses the metal kit"] = "Автоматично використовує металевий кіт",
+			["Actually does the metal prompt thing for you"] = "Автоматично виконує дії з металевим промптом",
+			["Plays the metal collect animation"] = "Відтворює анімацію збору металу",
+			["Automatically uses the \"punch\" ability from kaliyah"] = "Автоматично використовує суперудар Калії",
+			["Prevents you from being slowed down after using the \"Punch\" ability"] = "Запобігає уповільненню після використання суперудару",
+			["Automatically collects tree orbs"] = "Автоматично збирає сфери дерев",
+			["Useful for when ur screensharing"] = "Корисно під час трансляції екрана",
+			["Plays the collect animation"] = "Відтворює анімацію збору",
+			["Automatically buy chickens when it sells for emerald"] = "Автоматично купує курей, коли вони продаються за смарагди",
+			["Sells ur chicken when the currency is iron"] = "Продає курей, коли валюта — залізо",
+			["Sells ur chicken when the currency is emerald"] = "Продає курей, коли валюта — смарагди",
+			["Sells ur chicken when the currency is diamond"] = "Продає курей, коли валюта — алмази",
+			["Only sells if the currency is selling for the selected amount"] = "Продає лише при досягненні вибраної суми",
+			["Automatically collects stars"] = "Автоматично збирає зірки",
+			["Automatically uses whisper abilities"] = "Автоматично використовує здібності Віспера",
+			["Automatically deposit bees, and collects nearby bees"] = "Автоматично приносить бджіл та збирає найближчих",
+			["Automatically puts the bees into a beehive"] = "Автоматично поміщає бджіл у вулик",
+			["Automatically breaks cannon/jump on launch"] = "Автоматично ламає гармату/стрибає при запуску",
+			["Automatically aims cannon"] = "Автоматично націлює гармату",
+			["Lets you ride in the elk forever"] = "Дозволяє їздити на лосі нескінченно",
+			["Gives you max momentum forever"] = "Забезпечує максимальний імпульс назавжди",
+			["Notifies when theres an enemy near bed"] = "Повідомляє, коли ворог біля ліжка",
+			["Shows where the intruders are\n(just like bedwar's bed alarm)"] = "Показує розташування зловмисників",
+			["Custom bed break effects"] = "Власні ефекти зламу ліжка",
+			["Removes zephyr status indicator"] = "Видаляє індикатор статусу Зефіра",
+			["Customize the damage indicator"] = "Налаштування індикатора шкоди",
+			["Customize the hit highlight options"] = "Налаштування підсвічування ударів",
+			["Changes the raycast function to the correct one"] = "Змінює функцію променя на правильну",
+			["Custom final kill effects"] = "Власні ефекти фінального вбивства",
+			["Remove the CPS cap"] = "Зняти обмеження кліків за секунду (CPS)",
+			["Cleans up the UI for kits & main"] = "Очищає інтерфейс кітів та меню",
+			["Changes the viewmodel animations"] = "Змінює анімацію виду рук",
+			["Allows you to select any clientside win effect"] = "Дозволяє вибрати будь-який ефект перемоги",
+			["InfiniteStamina"] = "Нескінченна витривалість",
+			["Attack range"] = "Радіус атаки",
+			["Max angle"] = "Максимальний кут",
+			["Max targets"] = "Максимум цілей",
+			["Require mouse down"] = "Потрібне затискання миші",
+			["Show target"] = "Показувати ціль",
+			["Attack Color"] = "Колір атаки",
+			["Target particles"] = "Частки на цілі",
+			["Color Begin"] = "Початковий колір",
+			["Color End"] = "Кінцевий колір",
+			["Size"] = "Розмір",
+			["Wall Check"] = "Перевірка стін",
+			["AutoEat"] = "Авто-Їжа",
+			["Eat Healing Items"] = "Їсти хілки",
+			["AutoPickup"] = "Авто-Підбір",
+			["Break while attacking"] = "Ламати під час атаки",
+			["CPS"] = "Кліків за секунду (CPS)",
+			["Horizontal"] = "Горизонтально",
+			["Vertical"] = "Вертикально",
+			["Chance"] = "Шанс",
+			["Only when targeting"] = "Лише при націлюванні",
+			["Criticals"] = "Критичні удари",
+			["No Swing"] = "Без взмаху",
+			["No Block"] = "Без блокування",
+			["AutoBlock"] = "Авто-Блок",
+			["FFlag Editor"] = "FFlag Редактор",
+			["Hit Fix"] = "Виправлення ударів",
+			["Texture Pack"] = "Текстур Пак",
+			["No Click Delay"] = "Без затримки кліків",
+			["Player Inventory"] = "Інвентар гравців"
+		},
+		["Русский"] = {
+			["Blatant"] = "Жесткие",
+			["Render"] = "Визуал",
+			["Utility"] = "Утилиты",
+			["World"] = "Мир",
+			["Combat"] = "Бой",
+			["Settings"] = "Настройки",
+			["Profiles"] = "Профили",
+			["GUI bind indicator"] = "Индикатор меню",
+			["Color Mode"] = "Цветовой режим",
+			["Text GUI color"] = "Цвет текста",
+			["Language"] = "Язык",
+			["Killaura"] = "Киллаура",
+			["Velocity"] = "Анти-Отдача",
+			["AntiFall"] = "Анти-Падение",
+			["AutoToxic"] = "Авто-Токсик",
+			["Speed"] = "Скорость",
+			["Fly"] = "Полет",
+			["HitBoxes"] = "Хитбоксы",
+			["Infinite Fly"] = "Бесконечный полет",
+			["Requires Restart!"] = "Требует перезапуска!",
+			["Target settings"] = "Настройки цели",
+			["Overlays"] = "Оверлеи",
+			["Public Profiles"] = "Публичные профили",
+			["Private Profiles"] = "Приватные профили",
+			["Search"] = "Поиск",
+			["TextGUI"] = "Список модулей",
+			["Watermark"] = "Водяной знак",
+			["Target Info"] = "Инфо о цели",
+			["Match GUI color"] = "Под цвет меню",
+			["Custom color"] = "Свой цвет",
+			["Font"] = "Шрифт",
+			["Rainbow"] = "Радуга",
+			["Rainbow Speed"] = "Скорость радуги",
+			["Aim Assist"] = "Аим ассист",
+			["Auto Clicker"] = "Авто кликер",
+			["Reach"] = "Дальность",
+			["Silent Aim"] = "Сайлент аим",
+			["Trigger Bot"] = "Триггер бот",
+			["Part"] = "Часть",
+			["FOV"] = "Угол обзора",
+			["Range"] = "Дистанция",
+			["Chance"] = "Шанс",
+			["Require right click"] = "Нужен правый клик",
+			["Show target info"] = "Показывать инфо цели",
+			["CPS"] = "Кликов в сек.",
+			["Range Circle"] = "Круг радиуса",
+			["Circle Color"] = "Цвет круга",
+			["Circle Filled"] = "Заполненный круг",
+			["Origin"] = "Источник",
+			["Offset"] = "Смещение",
+			["Wallbang"] = "Прострел стен",
+			["Next Shot Delay"] = "Задержка выстрела",
+			["Head"] = "Голова",
+			["RootPart"] = "Торс (RootPart)",
+			["Tool"] = "Инструмент",
+			["Click"] = "Клик",
+			["RightClick"] = "Правый клик",
+			["TouchInterest"] = "Касание (TouchInterest)",
+			["Resize"] = "Изменение размера",
+			["Mouse"] = "Мышь",
+			["Position"] = "Позиция",
+			["Raycast"] = "Рейкаст",
+			["Exclude"] = "Исключить",
+			["Include"] = "Включить",
+			["Target:"] = "Цель:",
+			["Ignore none"] = "Ничего не игнорировать",
+			["none"] = "ничего",
+			["invisible"] = "невидимых",
+			["behind walls"] = "за стенами",
+			["Ignore"] = "Игнорировать",
+			["Rebind GUI"] = "Переназначить меню",
+			["PRESS A KEY TO BIND"] = "НАЖМИТЕ КЛАВИШУ ДЛЯ ПРИВЯЗКИ",
+			["BIND REMOVED"] = "ПРИВЯЗКА УДАЛЕНА",
+			["BOUND TO"] = "ПРИВЯЗАНО К",
+			["Open settings"] = "Открыть настройки",
+			["Join discord"] = "Войти в Discord",
+			["Change the bind of the GUI"] = "Изменить клавишу вызова меню",
+			["Click to bind"] = "Нажмите для привязки",
+			["Add entry..."] = "Добавить запись...",
+			["Add"] = "Добавить",
+			["Ignore invisible"] = "Игнорировать невидимых",
+			["Ignore behind walls"] = "Игнорировать за стенами",
+			["Saturation"] = "Насыщенность",
+			["Vibrance"] = "Яркость",
+			["Opacity"] = "Прозрачность",
+			["Custom"] = "Свой",
+			["None"] = "Нет",
+			["Check block break"] = "Проверять ломание блоков",
+			["Use killaura target"] = "Цель из киллауры",
+			["Use Killaura target"] = "Цель из киллауры",
+			["Sprint"] = "Спринт",
+			["Horizontal"] = "Горизонтальное",
+			["Vertical"] = "Вертикальное",
+			["Only when targeting"] = "Только при наведении",
+			["Move Mode"] = "Режим движения",
+			["Material"] = "Материал",
+			["Color"] = "Цвет",
+			["InvMove"] = "Движение в инвентаре",
+			["Attack range"] = "Радиус атаки",
+			["Max angle"] = "Максимальный угол",
+			["Max targets"] = "Макс. целей",
+			["Require mouse down"] = "Зажмите мышь",
+			["No Swing"] = "Без замаха",
+			["Show target"] = "Показывать цель",
+			["Attack Color"] = "Цвет атаки",
+			["Target particles"] = "Частицы на цели",
+			["Color Begin"] = "Начальный цвет",
+			["Color End"] = "Конечный цвет",
+			["Size"] = "Размер",
+			["Custom Animation"] = "Своя анимация",
+			["Click aim"] = "Аим при клике",
+			["Strafe increase"] = "Увеличение при стрейфе",
+			["Aim speed"] = "Скорость аима",
+			["Distance"] = "Дистанция",
+			["Shake"] = "Тряска",
+			["Target mode"] = "Режим выбора цели",
+			["Target area"] = "Область цели",
+			["Bow Assist"] = "Ассист лука",
+			["Use mouse aim"] = "Аим мышкой",
+			["Use blacklist"] = "Черный список",
+			["Blacklisted"] = "В черном списке",
+			["Place Blocks"] = "Ставить блоки",
+			["Block CPS"] = "КПС блоков",
+			["Sword Reach"] = "Дальность меча",
+			["Sword Range"] = "Дистанция меча",
+			["Placement Reach"] = "Дальность установки",
+			["Mode"] = "Режим",
+			["Transparency"] = "Прозрачность",
+			["Speed Mode"] = "Режим скорости",
+			["Float Mode"] = "Режим левитации",
+			["Humanoid State"] = "Состояние игрока",
+			["Keys"] = "Клавиши",
+			["Vertical Speed"] = "Вертикальная скорость",
+			["TP Frequency"] = "Частота ТП",
+			["Pulse Length"] = "Длительность импульса",
+			["Pulse Delay"] = "Задержка импульса",
+			["Bounce Length"] = "Дальность отскока",
+			["Bounce Delay"] = "Задержка отскока",
+			["Ground"] = "Земля",
+			["Air"] = "Воздух",
+			["Wall Check"] = "Проверка стен",
+			["PlatformStand"] = "Стойка на платформе",
+			["Custom Properties"] = "Свои свойства",
+			["Auto Disable"] = "Автовыключение",
+			["Expand amount"] = "Размер увеличения",
+			["Sword lunge only"] = "Только выпад мечом",
+			["Face target"] = "Поворачиваться к цели",
+			["Attacks per Second"] = "Атак в секунду",
+			["Swing range"] = "Дальность взмаха",
+			["Texture"] = "Текстура",
+			["Target Color"] = "Цвет цели",
+			["Priority Only"] = "Только приоритетные",
+			["Distance Check"] = "Проверка дистанции",
+			["Player Distance"] = "Дистанция игрока",
+			["Highlight"] = "Подсветка",
+			["Climb State"] = "Статус карабканья",
+			["Wall Size"] = "Размер стены",
+			["Spin X"] = "Вращение X",
+			["Spin Y"] = "Вращение Y",
+			["Spin Z"] = "Вращение Z",
+			["Custom Jump"] = "Свой прыжок",
+			["Jump Power"] = "Сила прыжка",
+			["Movement"] = "Движение",
+			["Search Range"] = "Радиус поиска",
+			["Strafe Range"] = "Радиус стрейфа",
+			["Y Factor"] = "Множитель Y",
+			["Player Color"] = "Цвет игрока",
+			["Kits"] = "Киты",
+			["Inventory"] = "Инвентарь",
+			["Auto Balloon"] = "Авто-Шары",
+			["Auto Kit"] = "Авто-Кит",
+			["Auto Hannah"] = "Авто-Ханна",
+			["Auto Pearl"] = "Авто-Жемчуг",
+			["Auto Play"] = "Авто-Игра",
+			["Anti Suffocate"] = "Анти-Удушение",
+			["Auto Release"] = "Авто-Отпуск",
+			["Auto Shoot"] = "Авто-Выстрел",
+			["Auto Void Drop"] = "Авто-Сброс в бездну",
+			["Missile TP"] = "ТП Ракеты",
+			["Pickup Range"] = "Радиус подбора",
+			["Raven TP"] = "ТП Ворона",
+			["Scaffold"] = "Строитель (Scaffold)",
+			["Shop Tier Bypass"] = "Обход уровней магазина",
+			["Trap Disabler"] = "Выключение ловушек",
+			["Auto Suffocate"] = "Авто-Удушение",
+			["Auto Tool"] = "Авто-Инструмент",
+			["Block In"] = "Застроиться",
+			["Chest Steal"] = "Кража из сундука",
+			["Fast Place"] = "Быстрая установка",
+			["Auto Steal"] = "Авто-Кража",
+			["Auto Fish"] = "Авто-Рыбалка",
+			["Armor Switch"] = "Смена брони",
+			["Auto Bank"] = "Авто-Банк",
+			["Auto Buy"] = "Авто-Покупка",
+			["Auto Consume"] = "Авто-Потребление",
+			["Auto Hotbar"] = "Авто-Хотбар",
+			["Fast Consume"] = "Быстрое потребление",
+			["Fast Drop"] = "Быстрый сброс",
+			["Trap ESP"] = "ЕСП ловушек",
+			["Bed Plates"] = "Пластины кровати",
+			["Breaker"] = "Ломатель кроватей",
+			["Kaida Killaura"] = "Каида Киллаура",
+			["Auto Ember"] = "Авто-Эмбер",
+			["Auto Uma"] = "Авто-Ума",
+			["Auto Adetunde"] = "Авто-Адетунде",
+			["Auto Pyro"] = "Авто-Пиро",
+			["Auto Lani"] = "Авто-Лани",
+			["Auto Noelle"] = "Авто-Ноэль",
+			["Auto Marina"] = "Авто-Марина",
+			["Auto Builder"] = "Авто-Строитель",
+			["Auto Nyx"] = "Авто-Нюкс",
+			["Auto Sheep"] = "Авто-Овцы",
+			["Auto Melody"] = "Авто-Мелодия",
+			["Auto Ramil"] = "Авто-Рамиль",
+			["Auto Caitlyn"] = "Авто-Кейтлин",
+			["Auto Zeno"] = "Авто-Зено",
+			["Auto Metal"] = "Авто-Метал",
+			["Auto Kaliyah"] = "Авто-Калия",
+			["Auto Elder"] = "Авто-Элдер",
+			["Auto Taliyah"] = "Авто-Талия",
+			["Auto Star"] = "Авто-Звезда",
+			["Auto Whisper"] = "Авто-Виспер",
+			["Auto Bee"] = "Авто-Пчела",
+			["Fisherman Spy"] = "Шпион-Рыбак",
+			["Auto Davey"] = "Авто-Дейви",
+			["Davey Aim"] = "Аим Дейви",
+			["Sigrid Exploit"] = "Эксплойт Сигрид",
+			["Bed Alarm"] = "Тревога кровати",
+			["Bed Break Effect"] = "Эффект слома кровати",
+			["Crosshair"] = "Прицел (Crosshair)",
+			["Damage Indicator"] = "Индикатор урона",
+			["FPS Boost"] = "Буст ФПС",
+			["Hit Color"] = "Цвет удара",
+			["Kit Display"] = "Отображение китов",
+			["Kill Effect"] = "Эффект убийства",
+			["Reach Display"] = "Отображение дальности",
+			["Song Beats"] = "Биты песни",
+			["Sound Changer"] = "Смена звуков",
+			["Texture Packs"] = "Текстурпаки",
+			["UI Cleanup"] = "Очистка интерфейса",
+			["Viewmodel"] = "Вид рук (Viewmodel)",
+			["Win Effect"] = "Эффект победы",
+			["Staff Detector"] = "Детектор админов",
+			["Freecam"] = "Свободная камера",
+			["Gravity"] = "Гравитация",
+			["Parkour"] = "Паркур",
+			["Xray"] = "Иксрей (Xray)",
+			["Murder Mystery"] = "Мардер Мистери",
+			["Atmosphere"] = "Атмосфера",
+			["Breadcrumbs"] = "Следы (Breadcrumbs)",
+			["Cape"] = "Плащ",
+			["China Hat"] = "Китайская шляпа",
+			["Clock"] = "Часы",
+			["Disguise"] = "Маскировка",
+			["FPS"] = "ФПС",
+			["Keystrokes"] = "Клавиатура на экране",
+			["Memory"] = "Память",
+			["Ping"] = "Пинг",
+			["Coords"] = "Координаты",
+			["Speedmeter"] = "Спидометр",
+			["Time Changer"] = "Смена времени",
+			["Infinite Jump"] = "Бесконечный прыжок",
+			["Zoom Unlocker"] = "Разблокировать зум",
+			["Prompt Duration"] = "Длительность промпта",
+			["Prompt Extender"] = "Удлинитель промпта",
+			["FFlag"] = "FFlag менеджер",
+			["Auto Gamble"] = "Авто-Казино",
+			["Fast Break"] = "Быстрый слом",
+			["Damage Boost"] = "Буст урона",
+			["Bed ESP"] = "ЕСП кроватей",
+			["Bullet Tracers"] = "Трейсеры пуль",
+			["Hive ESP"] = "ЕСП ульев",
+			["Kit ESP"] = "ЕСП китов",
+			["Generator ESP"] = "ЕСП генераторов",
+			["Item ESP"] = "ЕСП предметов",
+			["Storage ESP"] = "ЕСП сундуков",
+			["Smoothly aims to closest valid target with sword"] = "Плавно наводит на ближайшую валидную цель с мечом",
+			["Lets you climb up walls. (Hold shift to use Phase over spider)"] = "Позволяет карабкаться по стенам. (Зажмите Shift для использования Phase вместо Spider)",
+			["Lets you Phase/Clip through walls. (Hold shift to use Phase over spider)"] = "Позволяет проходить сквозь стены. (Зажмите Shift для использования Phase вместо Spider)",
+			["Expands entities hitboxes"] = "Увеличивает хитбоксы противников",
+			["Turns you invisible."] = "Делает вас невидимым.",
+			["Lets you jump farther"] = "Позволяет прыгать дальше",
+			["Lets you jump higher"] = "Позволяет прыгать выше",
+			["Makes your character spin around in circles (does not work in first person)"] = "Заставляет вашего персонажа крутиться по кругу (не работает от первого лица)",
+			["Lets you swim midair"] = "Позволяет плавать в воздухе",
+			["Change the game speed."] = "Изменяет скорость игры.",
+			["Makes you go zoom."] = "Позволяет вам передвигаться очень быстро.",
+			["Increases your movement with various methods."] = "Ускоряет ваши движения различными методами.",
+			["Draws arrows on screen when entities\nare out of your field of view."] = "Рисует стрелки на экране, когда противники находятся вне поля зрения.",
+			["Allows you to see the other opponent team's kits"] = "Позволяет видеть киты противников",
+			["Displays your health in the center of your screen."] = "Отображает ваше здоровье по центру экрана.",
+			["Renders nametags on entities through walls."] = "Отображает никнеймы игроков сквозь стены.",
+			["Customize bedwars UI"] = "Кастомизация интерфейса Bedwars",
+			["Helps you make bridges/scaffold walk."] = "Помогает вам строить мосты на ходу (Scaffold).",
+			["Lets you buy things like armor early."] = "Позволяет покупать вещи в магазине раньше.",
+			["Detects people with a staff rank ingame"] = "Обнаруживает администраторов и модераторов в игре",
+			["Disables Snap Traps"] = "Выключает капканы",
+			["Places blocks on nearby confined entities"] = "Автоматически застраивает зажатых игроков",
+			["Automatically selects the correct tool"] = "Автоматически выбирает правильный инструмент",
+			["Grabs items from near chests."] = "Быстро забирает вещи из ближайших сундуков.",
+			["Automatically fishes with fishing rod"] = "Автоматически ловит рыбу удочкой",
+			["Automatically puts resources in ender chest"] = "Автоматически кладет ресурсы в Эндер-сундук",
+			["Automatically buys items when you go near the shop"] = "Автоматически покупает предметы возле магазина",
+			["Use/Consume items quicker."] = "Позволяет быстрее использовать или есть предметы.",
+			["Break blocks around you automatically"] = "Автоматически ломает блоки вокруг вас",
+			["Adjusts camera vision"] = "Настраивает угол обзора камеры",
+			["Improves the framerate by turning off certain effects"] = "Улучшает ФПС, отключая некоторые эффекты",
+			["Built in mp3 player"] = "Встроенный MP3-плеер",
+			["Change ingame sounds to custom ones."] = "Смена игровых звуков на свои.",
+			["Velocity"] = "Физика (Velocity)",
+			["Impulse"] = "Импульс",
+			["CFrame"] = "Телепорт (CFrame)",
+			["Floor"] = "Платформа",
+			["Bounce"] = "Отскок",
+			["Jump"] = "Прыжок",
+			["TP"] = "Телепорт",
+			["WalkSpeed"] = "Скорость ходьбы",
+			["Lerp"] = "Плавное движение",
+			["Motor"] = "Мотор",
+			["Highlight"] = "Подсветка",
+			["Occluded"] = "За стенами",
+			["AlwaysOnTop"] = "Поверх всего",
+			["Simple"] = "Простой",
+			["Adaptive"] = "Адаптивный",
+			["Damage"] = "Урон",
+			["Closest"] = "Ближайший",
+			["Displays your health in the center of your screen."] = "Отображает ваше здоровье в центре экрана.",
+			["Renders hives locations and info"] = "Показывает расположение ульев и информацию о них",
+			["ESP for certain kit related objects"] = "ЕСП для объектов, связанных с определенными китами",
+			["Renders generator locations and info"] = "Показывает расположение генераторов и информацию о них",
+			["Renders tags dropped items"] = "Показывает теги для выброшенных предметов",
+			["Shows the distance of the item"] = "Показывает расстояние до предмета",
+			["Group items into easier to read tags"] = "Группирует предметы в теги, которые легче читать",
+			["Only renders whitelisted items"] = "Показывает только предметы из белого списка",
+			["Displays player's rank"] = "Отображает ранг игрока",
+			["Displays player's enchant"] = "Отображает чары игрока",
+			["Displays items in chests"] = "Отображает предметы в сундуках",
+			["Inflates when you fall into the void"] = "Надувается, когда вы падаете в бездну",
+			["Automatically uses kit abilities."] = "Автоматически использует способности китов.",
+			["Automatically executes low health players with Hannah."] = "Автоматически добивает игроков с низким здоровьем с помощью Ханны.",
+			["Automatically handles Gingerbread Man launch pads."] = "Автоматически использует трамплины Имбирного человечка.",
+			["Automatically throws a pearl onto nearby ground after\nfalling a certain distance."] = "Автоматически бросает жемчуг на землю после падения на определенную дистанцию.",
+			["Visualizes the switching clientside"] = "Визуализирует переключение на стороне клиента",
+			["Only switches back after your pearl landed"] = "Переключается обратно только после приземления жемчуга",
+			["Doesn't throw a pearl if ur already pearling"] = "Не бросает жемчуг, если вы уже летите на нем",
+			["Only throws pearl when holding a pearl"] = "Бросает жемчуг только тогда, когда вы держите его в руках",
+			["Automatically queues after the match ends."] = "Автоматически встает в очередь после окончания матча.",
+			["Chooses a random mode"] = "Выбирает случайный режим",
+			["Prevents you from suffocating in blocks"] = "Предотвращает удушение в блоках",
+			["Automatically releases ur projectile source when\nat certain charging percentage"] = "Автоматически выпускает снаряд при определенном проценте зарядки",
+			["Automatically swaps to another projectile source while swinging ur sword"] = "Автоматически переключается на другое оружие во время удара мечом",
+			["Says a message after a certain action"] = "Отправляет сообщение после определенного действия",
+			["Drops resources when you fall into the void"] = "Сбрасывает ресурсы, когда вы падаете в бездну",
+			["Refuses to drop items if being picked up by an owl"] = "Отказывается сбрасывать предметы, если их подбирает сова",
+			["Spawns and teleports a missile to a player\nnear your mouse."] = "Создает и телепортирует ракету к игроку около вашей мыши.",
+			["Picks up items from a farther distance"] = "Подбирает предметы с большего расстояния",
+			["Spawns and teleports a raven to a player\nnear your mouse."] = "Создает и телепортирует ворона к игроку около вашей мыши.",
+			["Lets you stay ingame without getting kicked"] = "Позволяет оставаться в игре без вылета",
+			["Automatically places strong blocks around yourself."] = "Автоматически устанавливает прочные блоки вокруг вас.",
+			["How long it takes to break the surrounding block (smart mode)"] = "Время ломания окружающих блоков (умный режим)",
+			["Only block-in with the block you are holding"] = "Застраиваться только тем блоком, который вы держите",
+			["Save and load placements of buildings"] = "Сохраняет и загружает схемы построек",
+			["Changes place delay"] = "Изменяет задержку установки",
+			["Automatically steals loot from other team's chest, And personal chesting it"] = "Автоматически крадет лут из сундука другой команды и кладет в ваш",
+			["Automatically jumps if u found a fish with the blacklisted item"] = "Автоматически прыгает, если найден черный список рыбы",
+			["Notifies ur next lootdrops"] = "Уведомляет о следующем луте",
+			["Automatically completes the minigame"] = "Автоматически завершает мини-игры",
+			["Automatically casts ur fishing rod"] = "Автоматически закидывает удочку",
+			["Puts on / takes off armor when toggled for baiting."] = "Одевает / снимает броню для приманки врагов.",
+			["Buys iron armor before iron axe"] = "Покупает железную броню перед железным топором",
+			["Automatically heals for you when health or shield is under threshold."] = "Автоматически лечит вас, когда уровень здоровья или щита ниже нормы.",
+			["Automatically arranges hotbar to your liking."] = "Автоматически настраивает хотбар под ваши предпочтения.",
+			["Drops items fast when you hold H"] = "Быстро сбрасывает предметы при удержании клавиши H",
+			["Render traps placed by other teams"] = "Показывает ловушки, установленные другими командами",
+			["Displays blocks over the bed"] = "Показывает блоки поверх кровати",
+			["Breaks the nearest cover block to your mouse before the target block, falling back to your position"] = "Ломает ближайший блок прикрытия перед целевым блоком",
+			["Only breaks when tools are held"] = "Ломает только тогда, когда инструменты в руках",
+			["Auto attacks with Summoner claw"] = "Автоматически атакует когтем призывателя",
+			["Only attacks while holding left click"] = "Атакует только при удержании левой кнопки мыши",
+			["Continue claw attacks while charging ability (disable for legit gameplay)"] = "Продолжает атаковать когтями во время зарядки способности (отключите для легитной игры)",
+			["Automatically uses uma kit"] = "Автоматически использует кит Ума",
+			["Automatically summons spirit for you"] = "Автоматически призывает духа для вас",
+			["Automatically upgrades ur frosty hammer"] = "Автоматически улучшает морозный молот",
+			["Automatically upgrades flamethrower"] = "Автоматически улучшает огнемет",
+			["Automatically uses the \"scepter of light\" ability"] = "Автоматически использует способность «Скипетр света»",
+			["Player to use the ability on"] = "Игрок, на котором использовать способность",
+			["Target to use the ability on"] = "Цель, на которой использовать способность",
+			["Uses the ability on other people instead of your teammates"] = "Использует способность на врагах вместо союзников",
+			["Delay between triggers"] = "Задержка между срабатываниями",
+			["Automatically directs the slimes to the selected player's"] = "Автоматически направляет слаймов на выбранного игрока",
+			["Player to direct frost slimes to"] = "Игрок для направления морозных слаймов",
+			["Player to direct heal slimes to"] = "Игрок для направления лечащих слаймов",
+			["Player to direct sticky slimes to"] = "Игрок для направления липких слаймов",
+			["Player to direct void slimes to"] = "Игрок для направления слаймов бездны",
+			["Automatically uses \"electrify\" ability when enemies are near jellies"] = "Автоматически бьет током, когда враги около медуз",
+			["Checks if the block is near your bed"] = "Проверяет, находится ли блок около вашей кровати",
+			["Automatically uses the \"midnight\" ability when meleeing a target"] = "Автоматически использует способность «Полночь» во время ближнего боя",
+			["Automatically tames sheep at a long range"] = "Автоматически приручает овец на большом расстоянии",
+			["Automatically uses the guitar to heal ur teammates/urself"] = "Автоматически использует гитару для лечения союзников/себя",
+			["Automatically uses the ramil kit"] = "Автоматически использует кит Рамиля",
+			["Automatically assigns a player's contract when a specific action happens"] = "Автоматически подписывает контракт при определенном действии",
+			["How low they have to be before contracting"] = "Уровень здоровья для подписания контракта",
+			["Automatically uses zeno kit"] = "Автоматически использует кит Зено",
+			["Automatically uses the shockwave ability when a target is near"] = "Автоматически вызывает ударную волну около цели",
+			["Automatically uses the metal kit"] = "Автоматически использует металлический кит",
+			["Actually does the metal prompt thing for you"] = "Автоматически выполняет действия с металлическим промптом",
+			["Plays the metal collect animation"] = "Воспроизводит анимацию сбора металла",
+			["Automatically uses the \"punch\" ability from kaliyah"] = "Автоматически использует суперудар Калии",
+			["Prevents you from being slowed down after using the \"Punch\" ability"] = "Предотвращает замедление после использования суперудара",
+			["Automatically collects tree orbs"] = "Автоматически собирает сферы деревьев",
+			["Useful for when ur screensharing"] = "Полезно во время трансляции экрана",
+			["Plays the collect animation"] = "Воспроизводит анимацию сбора",
+			["Automatically buy chickens when it sells for emerald"] = "Автоматически покупает кур, когда они продаются за изумруды",
+			["Sells ur chicken when the currency is iron"] = "Продает кур, когда валюта — железо",
+			["Sells ur chicken when the currency is emerald"] = "Продает кур, когда валюта — изумруды",
+			["Sells ur chicken when the currency is diamond"] = "Продает кур, когда валюта — алмазы",
+			["Only sells if the currency is selling for the selected amount"] = "Продает только при достижении выбранной суммы",
+			["Automatically collects stars"] = "Автоматически собирает звезды",
+			["Automatically uses whisper abilities"] = "Автоматически использует способности Виспера",
+			["Automatically deposit bees, and collects nearby bees"] = "Автоматически приносит пчел и собирает ближних",
+			["Automatically puts the bees into a beehive"] = "Автоматически помещает пчел в улей",
+			["Automatically breaks cannon/jump on launch"] = "Автоматически ломает пушку/прыгает при запуска",
+			["Automatically aims cannon"] = "Автоматически наводит пушку",
+			["Lets you ride in the elk forever"] = "Позволяет ездить на лосе бесконечно",
+			["Gives you max momentum forever"] = "Обеспечивает максимальный импульс навсегда",
+			["Notifies when theres an enemy near bed"] = "Сообщает, когда враг около кровати",
+			["Shows where the intruders are\n(just like bedwar's bed alarm)"] = "Показывает расположение взломщиков",
+			["Custom bed break effects"] = "Свои эффекты слома кровати",
+			["Removes zephyr status indicator"] = "Удаляет индикатор статуса Зефира",
+			["Customize the damage indicator"] = "Настройка индикатора урона",
+			["Customize the hit highlight options"] = "Настройка подсветки ударов",
+			["Changes the raycast function to the correct one"] = "Изменяет функцию луча на правильную",
+			["Custom final kill effects"] = "Свои эффекты финального убийства",
+			["Remove the CPS cap"] = "Снять ограничение кликов в секунду (CPS)",
+			["Cleans up the UI for kits & main"] = "Очищает интерфейс китов и меню",
+			["Changes the viewmodel animations"] = "Изменяет анимацию вида рук",
+			["Allows you to select any clientside win effect"] = "Позволяет выбрать любой эффект победы",
+			["InfiniteStamina"] = "Бесконечная выносливость",
+			["Attack range"] = "Радиус атаки",
+			["Max angle"] = "Максимальный угол",
+			["Max targets"] = "Максимум целей",
+			["Require mouse down"] = "Требуется зажатие мыши",
+			["Show target"] = "Показывать цель",
+			["Attack Color"] = "Цвет атаки",
+			["Target particles"] = "Частицы на цели",
+			["Color Begin"] = "Начальный цвет",
+			["Color End"] = "Конечный цвет",
+			["Size"] = "Размер",
+			["Wall Check"] = "Проверка стен",
+			["AutoEat"] = "Авто-Еда",
+			["Eat Healing Items"] = "Есть хилки",
+			["AutoPickup"] = "Авто-Подбор",
+			["Break while attacking"] = "Ломать во время атаки",
+			["CPS"] = "Кликов в секунду (CPS)",
+			["Horizontal"] = "Горизонтально",
+			["Vertical"] = "Вертикально",
+			["Chance"] = "Шанс",
+			["Only when targeting"] = "Только при наведении",
+			["Criticals"] = "Критические удары",
+			["No Swing"] = "Без взмаха",
+			["No Block"] = "Без блокирования",
+			["AutoBlock"] = "Авто-Блок",
+			["FFlag Editor"] = "FFlag Редактор",
+			["Hit Fix"] = "Исправление ударов",
+			["Texture Pack"] = "Текстур Пак",
+			["No Click Delay"] = "Без задержки кликов",
+			["Player Inventory"] = "Инвентарь игроков"
+		}
+	},
 	Categories = {},
+	Indicators = {},
 	GUIColor = {
-		Hue = 0.46,
-		Sat = 0.96,
-		Value = 0.52
+		Hue = 0.76,
+		Sat = 0.75,
+		Value = 1
 	},
 	HeldKeybinds = {},
 	Keybind = {'RightShift'},
 	Loaded = false,
 	Libraries = {},
 	Modules = {},
+	Legit = {},
 	Place = game.PlaceId,
 	Profile = 'default',
 	Profiles = {},
@@ -18,9 +960,9 @@ local mainapi = {
 	RainbowUpdateSpeed = {Value = 60},
 	RainbowTable = {},
 	Scale = {Value = 1},
-	ThreadFix = setthreadidentity and true or false,
+	ThreadFix = nil,
 	ToggleNotifications = {},
-	Version = '4.18',
+	Version = '7.01',
 	Windows = {}
 }
 
@@ -33,6 +975,8 @@ local textService = cloneref(game:GetService('TextService'))
 local guiService = cloneref(game:GetService('GuiService'))
 local runService = cloneref(game:GetService('RunService'))
 local httpService = cloneref(game:GetService('HttpService'))
+
+local lplr = cloneref(game:GetService('Players')).LocalPlayer
 
 local fontsize = Instance.new('GetTextBoundsParams')
 fontsize.Width = math.huge
@@ -52,17 +996,19 @@ local tween = {
 	tweenstwo = {}
 }
 local uipallet = {
-	Main = Color3.fromRGB(26, 25, 26),
-	Text = Color3.fromRGB(200, 200, 200),
-	Font = Font.fromEnum(Enum.Font.Arial),
-	FontSemiBold = Font.fromEnum(Enum.Font.Arial, Enum.FontWeight.SemiBold),
-	Tween = TweenInfo.new(0.16, Enum.EasingStyle.Linear)
+	Main = Color3.fromRGB(13, 11, 19),--13, 11, 19 (Premium Deep Space Violet-Dark)
+	Text = Color3.fromRGB(240, 240, 248),--240, 240, 248 (Crisp silver-white)
+	Font = Font.fromEnum(Enum.Font.Gotham),
+	FontMedium = Font.fromEnum(Enum.Font.Gotham, Enum.FontWeight.Medium),
+	FontSemiBold = Font.fromEnum(Enum.Font.Gotham, Enum.FontWeight.SemiBold),
+	Tween = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 }
 
 local getcustomassets = {
 	['tumbavape/assets/new/add.png'] = 'rbxassetid://14368300605',
 	['tumbavape/assets/new/alert.png'] = 'rbxassetid://14368301329',
 	['tumbavape/assets/new/allowedicon.png'] = 'rbxassetid://14368302000',
+	['tumbavape/assets/new/mascot.png'] = 'rbxassetid://110703296275845',
 	['tumbavape/assets/new/allowedtab.png'] = 'rbxassetid://14368302875',
 	['tumbavape/assets/new/arrowmodule.png'] = 'rbxassetid://14473354880',
 	['tumbavape/assets/new/back.png'] = 'rbxassetid://14368303894',
@@ -84,12 +1030,12 @@ local getcustomassets = {
 	['tumbavape/assets/new/expandicon.png'] = 'rbxassetid://14368353032',
 	['tumbavape/assets/new/expandright.png'] = 'rbxassetid://14368316544',
 	['tumbavape/assets/new/expandup.png'] = 'rbxassetid://14368317595',
-	['tumbavape/assets/new/friendstab.png'] = 'rbxassetid://14397462778',
+	['tumbavape/assets/new/friendstab.png'] = 'rbxassetid://106739759659697',
 	['tumbavape/assets/new/guisettings.png'] = 'rbxassetid://14368318994',
 	['tumbavape/assets/new/guislider.png'] = 'rbxassetid://14368320020',
 	['tumbavape/assets/new/guisliderrain.png'] = 'rbxassetid://14368321228',
 	['tumbavape/assets/new/guiv4.png'] = 'rbxassetid://14368322199',
-	['tumbavape/assets/new/guivape.png'] = 'rbxassetid://14657521312',
+	['tumbavape/assets/new/guitumbahub.png'] = 'rbxassetid://14657521312',
 	['tumbavape/assets/new/info.png'] = 'rbxassetid://14368324807',
 	['tumbavape/assets/new/inventoryicon.png'] = 'rbxassetid://14928011633',
 	['tumbavape/assets/new/legit.png'] = 'rbxassetid://14425650534',
@@ -118,12 +1064,18 @@ local getcustomassets = {
 	['tumbavape/assets/new/targetstab.png'] = 'rbxassetid://14497393895',
 	['tumbavape/assets/new/textguiicon.png'] = 'rbxassetid://14368355456',
 	['tumbavape/assets/new/textv4.png'] = 'rbxassetid://14368357095',
-	['tumbavape/assets/new/textvape.png'] = 'rbxassetid://14368358200',
+	['tumbavape/assets/new/texttumbahub.png'] = 'rbxassetid://14368358200',
 	['tumbavape/assets/new/utilityicon.png'] = 'rbxassetid://14368359107',
-	['tumbavape/assets/new/vape.png'] = 'rbxassetid://14373395239',
+	['tumbavape/assets/new/tumbahub.png'] = 'rbxassetid://14373395239',
 	['tumbavape/assets/new/warning.png'] = 'rbxassetid://14368361552',
 	['tumbavape/assets/new/worldicon.png'] = 'rbxassetid://14368362492'
 }
+
+function mainapi:Translate(text)
+	if type(text) ~= "string" then return text end
+	if not self.Translations[self.Language] then return text end
+	return self.Translations[self.Language][text] or text
+end
 
 local isfile = isfile or function(file)
 	local suc, res = pcall(function()
@@ -157,10 +1109,21 @@ end
 
 local function addCorner(parent, radius)
 	local corner = Instance.new('UICorner')
-	corner.CornerRadius = radius or UDim.new(0, 5)
+	corner.CornerRadius = radius or UDim.new(0, 8)
 	corner.Parent = parent
 
 	return corner
+end
+
+local function safecall(func, ...)
+	local args = {...}
+	xpcall(function()
+		func(unpack(args))
+	end, function(err)
+		if getgenv().tumbavapedev then
+			warn(err)
+		end
+	end)
 end
 
 local function addCloseButton(parent, offset)
@@ -207,7 +1170,13 @@ local function addMaid(object)
 			table.insert(self.Connections, {
 				Disconnect = callback
 			})
-		elseif type(callback) == 'thread' then
+		elseif typeof(callback) == 'table' and rawget(callback, 'func') then
+			table.insert(self.Connections, {
+				Disconnect = function()
+					restorefunction(rawget(callback, 'func'))
+				end
+			})
+		elseif typeof(callback) == 'thread' then
 			table.insert(self.Connections, {
 				Disconnect = function()
 					pcall(task.cancel, callback)
@@ -232,9 +1201,10 @@ local function addTooltip(gui, text)
 	end
 
 	gui.MouseEnter:Connect(function(x, y)
-		local tooltipSize = getfontsize(text, tooltip.TextSize, uipallet.Font)
+		local translated = mainapi:Translate(text)
+		local tooltipSize = getfontsize(translated, tooltip.TextSize, uipallet.Font)
 		tooltip.Size = UDim2.fromOffset(tooltipSize.X + 10, tooltipSize.Y + 10)
-		tooltip.Text = text
+		tooltip.Text = translated
 		tooltipMoved(x, y)
 	end)
 	gui.MouseMoved:Connect(tooltipMoved)
@@ -260,8 +1230,8 @@ end
 
 local function createDownloader(text)
 	if mainapi.Loaded ~= true then
-		local downloader = mainapi.Downloader
-		if not downloader and not license.Closet then
+		--[[local downloader = mainapi.Downloader
+		if not downloader then
 			downloader = Instance.new('TextLabel')
 			downloader.Size = UDim2.new(1, 0, 0, 40)
 			downloader.BackgroundTransparency = 1
@@ -272,13 +1242,12 @@ local function createDownloader(text)
 			downloader.Parent = mainapi.gui
 			mainapi.Downloader = downloader
 		end
-		pcall(function()
-			downloader.Text = 'Downloading '..text
-		end)
+		downloader.Text = 'Downloading '..text]]
 	end
 end
 
 local function createMobileButton(buttonapi, position)
+	if inputService.KeyboardEnabled then return end
 	local heldbutton = false
 	local button = Instance.new('TextButton')
 	button.Size = UDim2.fromOffset(40, 40)
@@ -329,7 +1298,7 @@ local function downloadFile(path, func)
 			error(res)
 		end
 		if path:find('.lua') then
-			res = '--This watermark is used to delete the file if its cached, remove it to make the file persist after vape updates.\n'..res
+			res = '--This watermark is used to delete the file if its cached, remove it to make the file persist after tumbahub updates.\n'..res
 		end
 		writefile(path, res)
 	end
@@ -337,11 +1306,7 @@ local function downloadFile(path, func)
 end
 
 getcustomasset = assetfunction and function(path)
-	local suc, res = pcall(downloadFile, path, assetfunction)
-	if suc then
-		return res
-	end
-	return getcustomassets[path] or ''
+	return downloadFile(path, assetfunction)
 end or function(path)
 	return getcustomassets[path] or ''
 end
@@ -368,8 +1333,6 @@ local function loadJson(path)
 	return suc and type(res) == 'table' and res or nil
 end
 
-downloadFile('tumbavape/profiles/features.json') -- im an idiot
-local newModules = loadJson('tumbavape/profiles/features.json') or {}
 local function makeDraggable(gui, window)
 	gui.InputBegan:Connect(function(inputObj)
 		if window and not window.Visible then return end
@@ -505,7 +1468,7 @@ mainapi.Libraries = {
 	getcustomasset = getcustomasset,
 	getfontsize = getfontsize,
 	tween = tween,
-	uipallet = uipallet,
+	uipallet = uipallet
 }
 
 local components
@@ -517,6 +1480,7 @@ components = {
 		button.BackgroundColor3 = color.Dark(children.BackgroundColor3, optionsettings.Darker and 0.02 or 0)
 		button.BorderSizePixel = 0
 		button.AutoButtonColor = false
+		button.BackgroundTransparency = 1
 		button.Visible = optionsettings.Visible == nil or optionsettings.Visible
 		button.Text = ''
 		button.Parent = children
@@ -531,14 +1495,14 @@ components = {
 		label.Size = UDim2.new(1, -4, 1, -4)
 		label.Position = UDim2.fromOffset(2, 2)
 		label.BackgroundColor3 = uipallet.Main
-		label.Text = optionsettings.Name
+		label.Text = mainapi:Translate(optionsettings.Name)
 		label.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		label.TextSize = 14
 		label.FontFace = uipallet.Font
 		label.Parent = bkg
 		addCorner(label, UDim.new(0, 4))
 		optionsettings.Function = optionsettings.Function or function() end
-		
+
 		button.MouseEnter:Connect(function()
 			tween:Tween(bkg, uipallet.Tween, {
 				BackgroundColor3 = color.Light(uipallet.Main, 0.0875)
@@ -561,13 +1525,14 @@ components = {
 			Rainbow = false,
 			Index = 0
 		}
-		
+
 		local function createSlider(name, gradientColor)
 			local slider = Instance.new('TextButton')
 			slider.Name = optionsettings.Name..'Slider'..name
 			slider.Size = UDim2.new(1, 0, 0, 50)
 			slider.BackgroundColor3 = color.Dark(children.BackgroundColor3, optionsettings.Darker and 0.02 or 0)
 			slider.BorderSizePixel = 0
+			slider.BackgroundTransparency = 1
 			slider.AutoButtonColor = false
 			slider.Visible = false
 			slider.Text = ''
@@ -577,7 +1542,7 @@ components = {
 			title.Size = UDim2.fromOffset(60, 30)
 			title.Position = UDim2.fromOffset(10, 2)
 			title.BackgroundTransparency = 1
-			title.Text = name
+			title.Text = mainapi:Translate(name)
 			title.TextXAlignment = Enum.TextXAlignment.Left
 			title.TextColor3 = color.Dark(uipallet.Text, 0.16)
 			title.TextSize = 11
@@ -615,7 +1580,7 @@ components = {
 			knob.BackgroundColor3 = uipallet.Text
 			knob.Parent = knobholder
 			addCorner(knob, UDim.new(1, 0))
-		
+
 			slider.InputBegan:Connect(function(inputObj)
 				if
 					(inputObj.UserInputType == Enum.UserInputType.MouseButton1 or inputObj.UserInputType == Enum.UserInputType.Touch)
@@ -626,7 +1591,7 @@ components = {
 							optionapi:SetValue(nil, name == 'Saturation' and math.clamp((input.Position.X - bkg.AbsolutePosition.X) / bkg.AbsoluteSize.X, 0, 1) or nil, name == 'Vibrance' and math.clamp((input.Position.X - bkg.AbsolutePosition.X) / bkg.AbsoluteSize.X, 0, 1) or nil, name == 'Opacity' and math.clamp((input.Position.X - bkg.AbsolutePosition.X) / bkg.AbsoluteSize.X, 0, 1) or nil)
 						end
 					end)
-		
+
 					local ended
 					ended = inputObj.Changed:Connect(function()
 						if inputObj.UserInputState == Enum.UserInputState.End then
@@ -646,13 +1611,14 @@ components = {
 					Size = UDim2.fromOffset(14, 14)
 				})
 			end)
-		
+
 			return slider
 		end
-		
+
 		local slider = Instance.new('TextButton')
 		slider.Name = optionsettings.Name..'Slider'
 		slider.Size = UDim2.new(1, 0, 0, 50)
+		slider.BackgroundTransparency = 1
 		slider.BackgroundColor3 = color.Dark(children.BackgroundColor3, optionsettings.Darker and 0.02 or 0)
 		slider.BorderSizePixel = 0
 		slider.AutoButtonColor = false
@@ -665,7 +1631,7 @@ components = {
 		title.Size = UDim2.fromOffset(60, 30)
 		title.Position = UDim2.fromOffset(10, 2)
 		title.BackgroundTransparency = 1
-		title.Text = optionsettings.Name
+		title.Text = mainapi:Translate(optionsettings.Name)
 		title.TextXAlignment = Enum.TextXAlignment.Left
 		title.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		title.TextSize = 11
@@ -779,7 +1745,7 @@ components = {
 			ColorSequenceKeypoint.new(0, color.Dark(uipallet.Main, 0.02)),
 			ColorSequenceKeypoint.new(1, Color3.fromHSV(optionapi.Hue, optionapi.Sat, optionapi.Value))
 		}))
-		
+
 		function optionapi:Save(tab)
 			tab[optionsettings.Name] = {
 				Hue = self.Hue,
@@ -789,7 +1755,7 @@ components = {
 				Rainbow = self.Rainbow
 			}
 		end
-		
+
 		function optionapi:Load(tab)
 			if tab.Rainbow ~= self.Rainbow then
 				self:Toggle()
@@ -798,7 +1764,7 @@ components = {
 				self:SetValue(tab.Hue, tab.Sat, tab.Value, tab.Opacity)
 			end
 		end
-		
+
 		function optionapi:SetValue(h, s, v, o)
 			self.Hue = h or self.Hue
 			self.Sat = s or self.Sat
@@ -818,7 +1784,7 @@ components = {
 				ColorSequenceKeypoint.new(0, color.Dark(uipallet.Main, 0.02)),
 				ColorSequenceKeypoint.new(1, Color3.fromHSV(self.Hue, self.Sat, self.Value))
 			})
-		
+
 			if self.Rainbow then
 				fill.Size = UDim2.fromScale(math.clamp(self.Hue, 0.04, 0.96), 1)
 			else
@@ -826,7 +1792,7 @@ components = {
 					Size = UDim2.fromScale(math.clamp(self.Hue, 0.04, 0.96), 1)
 				})
 			end
-		
+
 			if s then
 				tween:Tween(satSlider.Slider.Fill, uipallet.Tween, {
 					Size = UDim2.fromScale(math.clamp(self.Sat, 0.04, 0.96), 1)
@@ -842,10 +1808,10 @@ components = {
 					Size = UDim2.fromScale(math.clamp(self.Opacity, 0.04, 0.96), 1)
 				})
 			end
-		
-			optionsettings.Function(self.Hue, self.Sat, self.Value, self.Opacity)
+
+			safecall(optionsettings.Function, self.Hue, self.Sat, self.Value, self.Opacity)
 		end
-		
+
 		function optionapi:Toggle()
 			self.Rainbow = not self.Rainbow
 			if self.Rainbow then
@@ -875,7 +1841,7 @@ components = {
 				end)
 			end
 		end
-		
+
 		local doubleClick = tick()
 		preview.MouseButton1Click:Connect(function()
 			preview.Visible = false
@@ -898,7 +1864,7 @@ components = {
 						optionapi:SetValue(math.clamp((input.Position.X - bkg.AbsolutePosition.X) / bkg.AbsoluteSize.X, 0, 1))
 					end
 				end)
-		
+
 				local ended
 				ended = inputObj.Changed:Connect(function()
 					if inputObj.UserInputState == Enum.UserInputState.End then
@@ -958,10 +1924,10 @@ components = {
 				end
 			end
 		end)
-		
+
 		optionapi.Object = slider
 		api.Options[optionsettings.Name] = optionapi
-		
+
 		return optionapi
 	end,
 	Dropdown = function(optionsettings, children, api)
@@ -970,7 +1936,7 @@ components = {
 			Value = optionsettings.List[1] or 'None',
 			Index = 0
 		}
-		
+
 		local dropdown = Instance.new('TextButton')
 		dropdown.Name = optionsettings.Name..'Dropdown'
 		dropdown.Size = UDim2.new(1, 0, 0, 40)
@@ -1000,7 +1966,7 @@ components = {
 		title.Name = 'Title'
 		title.Size = UDim2.new(1, 0, 0, 29)
 		title.BackgroundTransparency = 1
-		title.Text = '         '..optionsettings.Name..' - '..optionapi.Value
+		title.Text = '         '..mainapi:Translate(optionsettings.Name)..' - '..mainapi:Translate(optionapi.Value)
 		title.TextXAlignment = Enum.TextXAlignment.Left
 		title.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		title.TextSize = 13
@@ -1019,36 +1985,36 @@ components = {
 		arrow.Parent = button
 		optionsettings.Function = optionsettings.Function or function() end
 		local dropdownchildren
-		
+
 		function optionapi:Save(tab)
 			tab[optionsettings.Name] = {Value = self.Value}
 		end
-		
+
 		function optionapi:Load(tab)
 			if self.Value ~= tab.Value then
 				self:SetValue(tab.Value)
 			end
 		end
-		
+
 		function optionapi:Change(list)
 			optionsettings.List = list or {}
 			if not table.find(optionsettings.List, self.Value) then
 				self:SetValue(self.Value)
 			end
 		end
-		
+
 		function optionapi:SetValue(val, mouse)
 			self.Value = table.find(optionsettings.List, val) and val or optionsettings.List[1] or 'None'
-			title.Text = '         '..optionsettings.Name..' - '..self.Value
+			title.Text = '         '..mainapi:Translate(optionsettings.Name)..' - '..mainapi:Translate(self.Value)
 			if dropdownchildren then
 				arrow.Rotation = 90
 				dropdownchildren:Destroy()
 				dropdownchildren = nil
 				dropdown.Size = UDim2.new(1, 0, 0, 40)
 			end
-			optionsettings.Function(self.Value, mouse)
+			safecall(optionsettings.Function, self.Value, mouse)
 		end
-		
+
 		button.MouseButton1Click:Connect(function()
 			if not dropdownchildren then
 				arrow.Rotation = 270
@@ -1069,7 +2035,7 @@ components = {
 					dropdownoption.BackgroundColor3 = uipallet.Main
 					dropdownoption.BorderSizePixel = 0
 					dropdownoption.AutoButtonColor = false
-					dropdownoption.Text = '         '..v
+					dropdownoption.Text = '         '..mainapi:Translate(v)
 					dropdownoption.TextXAlignment = Enum.TextXAlignment.Left
 					dropdownoption.TextColor3 = color.Dark(uipallet.Text, 0.16)
 					dropdownoption.TextSize = 13
@@ -1105,10 +2071,10 @@ components = {
 				BackgroundColor3 = color.Light(uipallet.Main, 0.034)
 			})
 		end)
-		
+
 		optionapi.Object = dropdown
 		api.Options[optionsettings.Name] = optionapi
-		
+
 		return optionapi
 	end,
 	Font = function(optionsettings, children, api)
@@ -1121,12 +2087,12 @@ components = {
 				table.insert(fonts, v.Name)
 			end
 		end
-		
+
 		local optionapi = {Value = Font.fromEnum(Enum.Font[fonts[1]])}
 		local fontdropdown
 		local fontbox
 		optionsettings.Function = optionsettings.Function or function() end
-		
+
 		fontdropdown = components.Dropdown({
 			Name = optionsettings.Name,
 			List = fonts,
@@ -1134,12 +2100,12 @@ components = {
 				fontbox.Object.Visible = val == 'Custom' and fontdropdown.Object.Visible
 				if val ~= 'Custom' then
 					optionapi.Value = Font.fromEnum(Enum.Font[val])
-					optionsettings.Function(optionapi.Value)
+					safecall(optionsettings.Function, optionapi.Value)
 				else
 					pcall(function()
 						optionapi.Value = Font.fromId(tonumber(fontbox.Value))
 					end)
-					optionsettings.Function(optionapi.Value)
+					safecall(optionsettings.Function, optionapi.Value)
 				end
 			end,
 			Darker = optionsettings.Darker,
@@ -1154,17 +2120,17 @@ components = {
 					pcall(function()
 						optionapi.Value = Font.fromId(tonumber(fontbox.Value))
 					end)
-					optionsettings.Function(optionapi.Value)
+					safecall(optionsettings.Function, optionapi.Value)
 				end
 			end,
 			Visible = false,
 			Darker = true
 		}, children, api)
-		
+
 		fontdropdown.Object:GetPropertyChangedSignal('Visible'):Connect(function()
 			fontbox.Object.Visible = fontdropdown.Object.Visible and fontdropdown.Value == 'Custom'
 		end)
-		
+
 		return optionapi
 	end,
 	Slider = function(optionsettings, children, api)
@@ -1174,7 +2140,7 @@ components = {
 			Max = optionsettings.Max,
 			Index = getTableSize(api.Options)
 		}
-		
+
 		local slider = Instance.new('TextButton')
 		slider.Name = optionsettings.Name..'Slider'
 		slider.Size = UDim2.new(1, 0, 0, 50)
@@ -1190,7 +2156,7 @@ components = {
 		title.Size = UDim2.fromOffset(60, 30)
 		title.Position = UDim2.fromOffset(10, 2)
 		title.BackgroundTransparency = 1
-		title.Text = optionsettings.Name
+		title.Text = mainapi:Translate(optionsettings.Name)
 		title.TextXAlignment = Enum.TextXAlignment.Left
 		title.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		title.TextSize = 11
@@ -1201,7 +2167,7 @@ components = {
 		valuebutton.Size = UDim2.fromOffset(60, 15)
 		valuebutton.Position = UDim2.new(1, -69, 0, 9)
 		valuebutton.BackgroundTransparency = 1
-		valuebutton.Text = optionapi.Value..(optionsettings.Suffix and ' '..(type(optionsettings.Suffix) == 'function' and optionsettings.Suffix(optionapi.Value) or optionsettings.Suffix) or '')
+		valuebutton.Text = optionapi.Value..(optionsettings.Suffix and ' '..(type(optionsettings.Suffix) == 'function' and optionsettings.Suffix(optionapi.Value) or mainapi:Translate(optionsettings.Suffix)) or '')
 		valuebutton.TextXAlignment = Enum.TextXAlignment.Right
 		valuebutton.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		valuebutton.TextSize = 11
@@ -1251,26 +2217,26 @@ components = {
 		addCorner(knob, UDim.new(1, 0))
 		optionsettings.Function = optionsettings.Function or function() end
 		optionsettings.Decimal = optionsettings.Decimal or 1
-		
+
 		function optionapi:Save(tab)
 			tab[optionsettings.Name] = {
 				Value = self.Value,
 				Max = self.Max
 			}
 		end
-		
+
 		function optionapi:Load(tab)
 			local newval = tab.Value == tab.Max and tab.Max ~= self.Max and self.Max or tab.Value
 			if self.Value ~= newval then
 				self:SetValue(newval, nil, true)
 			end
 		end
-		
+
 		function optionapi:Color(hue, sat, val, rainbowcheck)
 			fill.BackgroundColor3 = rainbowcheck and Color3.fromHSV(mainapi:Color((hue - (self.Index * 0.075)) % 1)) or Color3.fromHSV(hue, sat, val)
 			knob.BackgroundColor3 = fill.BackgroundColor3
 		end
-		
+
 		function optionapi:SetValue(value, pos, final)
 			if tonumber(value) == math.huge or value ~= value then return end
 			local check = self.Value ~= value
@@ -1278,12 +2244,12 @@ components = {
 			tween:Tween(fill, uipallet.Tween, {
 				Size = UDim2.fromScale(math.clamp(pos or math.clamp(value / optionsettings.Max, 0, 1), 0.04, 0.96), 1)
 			})
-			valuebutton.Text = self.Value..(optionsettings.Suffix and ' '..(type(optionsettings.Suffix) == 'function' and optionsettings.Suffix(self.Value) or optionsettings.Suffix) or '')
+			valuebutton.Text = self.Value..(optionsettings.Suffix and ' '..(type(optionsettings.Suffix) == 'function' and optionsettings.Suffix(self.Value) or mainapi:Translate(optionsettings.Suffix)) or '')
 			if check or final then
-				optionsettings.Function(value, final)
+				safecall(optionsettings.Function, value, final)
 			end
 		end
-		
+
 		slider.InputBegan:Connect(function(inputObj)
 			if
 				(inputObj.UserInputType == Enum.UserInputType.MouseButton1 or inputObj.UserInputType == Enum.UserInputType.Touch)
@@ -1293,7 +2259,7 @@ components = {
 				optionapi:SetValue(math.floor((optionsettings.Min + (optionsettings.Max - optionsettings.Min) * newPosition) * optionsettings.Decimal) / optionsettings.Decimal, newPosition)
 				local lastValue = optionapi.Value
 				local lastPosition = newPosition
-		
+
 				local changed = inputService.InputChanged:Connect(function(input)
 					if input.UserInputType == (inputObj.UserInputType == Enum.UserInputType.MouseButton1 and Enum.UserInputType.MouseMovement or Enum.UserInputType.Touch) then
 						local newPosition = math.clamp((input.Position.X - bkg.AbsolutePosition.X) / bkg.AbsoluteSize.X, 0, 1)
@@ -1302,7 +2268,7 @@ components = {
 						lastPosition = newPosition
 					end
 				end)
-		
+
 				local ended
 				ended = inputObj.Changed:Connect(function()
 					if inputObj.UserInputState == Enum.UserInputState.End then
@@ -1315,7 +2281,7 @@ components = {
 						optionapi:SetValue(lastValue, lastPosition, true)
 					end
 				end)
-		
+
 			end
 		end)
 		slider.MouseEnter:Connect(function()
@@ -1341,10 +2307,10 @@ components = {
 				optionapi:SetValue(tonumber(valuebox.Text), nil, true)
 			end
 		end)
-		
+
 		optionapi.Object = slider
 		api.Options[optionsettings.Name] = optionapi
-		
+
 		return optionapi
 	end,
 	Targets = function(optionsettings, children, api)
@@ -1352,7 +2318,7 @@ components = {
 			Type = 'Targets',
 			Index = getTableSize(api.Options)
 		}
-		
+
 		local textlist = Instance.new('TextButton')
 		textlist.Name = 'Targets'
 		textlist.Size = UDim2.new(1, 0, 0, 50)
@@ -1383,7 +2349,7 @@ components = {
 		buttontitle.Size = UDim2.new(1, -5, 0, 15)
 		buttontitle.Position = UDim2.fromOffset(5, 6)
 		buttontitle.BackgroundTransparency = 1
-		buttontitle.Text = 'Target:'
+		buttontitle.Text = mainapi:Translate('Target:')
 		buttontitle.TextXAlignment = Enum.TextXAlignment.Left
 		buttontitle.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		buttontitle.TextSize = 15
@@ -1393,7 +2359,7 @@ components = {
 		local items = buttontitle:Clone()
 		items.Name = 'Items'
 		items.Position = UDim2.fromOffset(5, 21)
-		items.Text = 'Ignore none'
+		items.Text = mainapi:Translate('Ignore none')
 		items.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		items.TextSize = 11
 		items.Parent = button
@@ -1431,7 +2397,7 @@ components = {
 		title.Size = UDim2.new(1, -36, 0, 20)
 		title.Position = UDim2.fromOffset(math.abs(title.Size.X.Offset), 11)
 		title.BackgroundTransparency = 1
-		title.Text = 'Target settings'
+		title.Text = mainapi:Translate('Target settings')
 		title.TextXAlignment = Enum.TextXAlignment.Left
 		title.TextColor3 = uipallet.Text
 		title.TextSize = 13
@@ -1439,7 +2405,7 @@ components = {
 		title.Parent = window
 		local close = addCloseButton(window)
 		optionsettings.Function = optionsettings.Function or function() end
-		
+
 		function optionapi:Save(tab)
 			tab.Targets = {
 				Players = self.Players.Enabled,
@@ -1448,7 +2414,7 @@ components = {
 				Walls = self.Walls.Enabled
 			}
 		end
-		
+
 		function optionapi:Load(tab)
 			if self.Players.Enabled ~= tab.Players then
 				self.Players:Toggle()
@@ -1463,7 +2429,7 @@ components = {
 				self.Walls:Toggle()
 			end
 		end
-		
+
 		function optionapi:Color(hue, sat, val, rainbowcheck)
 			bkg.BackgroundColor3 = rainbowcheck and Color3.fromHSV(mainapi:Color((hue - (self.Index * 0.075)) % 1)) or Color3.fromHSV(hue, sat, val)
 			if self.Players.Enabled then
@@ -1483,7 +2449,7 @@ components = {
 				self.Walls.Object.Knob.BackgroundColor3 = Color3.fromHSV(hue, sat, val)
 			end
 		end
-		
+
 		optionapi.Players = components.TargetsButton({
 			Position = UDim2.fromOffset(11, 45),
 			Icon = getcustomasset('tumbavape/assets/new/targetplayers1.png'),
@@ -1507,30 +2473,44 @@ components = {
 		optionapi.Invisible = components.Toggle({
 			Name = 'Ignore invisible',
 			Function = function()
-				local text = 'none'
+				local ignoreTrans = mainapi:Translate('Ignore')
+				local translatedParts = {}
 				if optionapi.Invisible.Enabled then
-					text = 'invisible'
+					table.insert(translatedParts, mainapi:Translate('invisible'))
 				end
 				if optionapi.Walls.Enabled then
-					text = text == 'none' and 'behind walls' or text..', behind walls'
+					table.insert(translatedParts, mainapi:Translate('behind walls'))
 				end
-				items.Text = 'Ignore '..text
-				optionsettings.Function()
+				local textStr
+				if #translatedParts == 0 then
+					textStr = ignoreTrans .. " " .. mainapi:Translate('none')
+				else
+					textStr = ignoreTrans .. " " .. table.concat(translatedParts, ", ")
+				end
+				items.Text = textStr
+				safecall(optionsettings.Function)
 			end
 		}, window, {Options = {}})
 		optionapi.Invisible.Object.Position = UDim2.fromOffset(0, 81)
 		optionapi.Walls = components.Toggle({
 			Name = 'Ignore behind walls',
 			Function = function()
-				local text = 'none'
+				local ignoreTrans = mainapi:Translate('Ignore')
+				local translatedParts = {}
 				if optionapi.Invisible.Enabled then
-					text = 'invisible'
+					table.insert(translatedParts, mainapi:Translate('invisible'))
 				end
 				if optionapi.Walls.Enabled then
-					text = text == 'none' and 'behind walls' or text..', behind walls'
+					table.insert(translatedParts, mainapi:Translate('behind walls'))
 				end
-				items.Text = 'Ignore '..text
-				optionsettings.Function()
+				local textStr
+				if #translatedParts == 0 then
+					textStr = ignoreTrans .. " " .. mainapi:Translate('none')
+				else
+					textStr = ignoreTrans .. " " .. table.concat(translatedParts, ", ")
+				end
+				items.Text = textStr
+				safecall(optionsettings.Function)
 			end
 		}, window, {Options = {}})
 		optionapi.Walls.Object.Position = UDim2.fromOffset(0, 111)
@@ -1546,7 +2526,7 @@ components = {
 		if optionsettings.Walls then
 			optionapi.Walls:Toggle()
 		end
-		
+
 		close.MouseButton1Click:Connect(function()
 			window.Visible = false
 		end)
@@ -1576,15 +2556,15 @@ components = {
 			local actualPosition = (textlist.AbsolutePosition + Vector2.new(0, 60)) / scale.Scale
 			window.Position = UDim2.fromOffset(actualPosition.X + 220, actualPosition.Y)
 		end)
-		
+
 		optionapi.Object = textlist
 		api.Options.Targets = optionapi
-		
+
 		return optionapi
 	end,
 	TargetsButton = function(optionsettings, children, api)
 		local optionapi = {Enabled = false}
-		
+
 		local targetbutton = Instance.new('TextButton')
 		targetbutton.Size = UDim2.fromOffset(98, 31)
 		targetbutton.Position = optionsettings.Position
@@ -1611,7 +2591,7 @@ components = {
 		icon.Parent = bkg
 		optionsettings.Function = optionsettings.Function or function() end
 		local tooltipicon
-		
+
 		function optionapi:Toggle()
 			self.Enabled = not self.Enabled
 			tween:Tween(bkg, uipallet.Tween, {
@@ -1624,16 +2604,25 @@ components = {
 				tooltipicon:Destroy()
 			end
 			if self.Enabled then
-				tooltipicon = Instance.new('ImageLabel')
+				--[[tooltipicon = Instance.new('ImageLabel')
 				tooltipicon.Size = optionsettings.ToolSize
 				tooltipicon.BackgroundTransparency = 1
 				tooltipicon.Image = optionsettings.ToolIcon
 				tooltipicon.ImageColor3 = uipallet.Text
+				tooltipicon.Parent = optionsettings.IconParent]]
+				tooltipicon = Instance.new('TextLabel')
+				tooltipicon.BackgroundTransparency = 1
+				tooltipicon.Size = UDim2.fromOffset(textService:GetTextSize(mainapi:Translate(optionsettings.Tooltip), 14, Enum.Font.Arial, Vector2.new(1000, 1000)).X, 12)
+				tooltipicon.Font = Enum.Font.Arial
+				tooltipicon.Text = mainapi:Translate(optionsettings.Tooltip)
+				tooltipicon.TextSize = 14
+				tooltipicon.TextXAlignment = Enum.TextXAlignment.Left
+				tooltipicon.TextColor3 = color.Dark(uipallet.Text, 0.16)
 				tooltipicon.Parent = optionsettings.IconParent
 			end
-			optionsettings.Function(self.Enabled)
+			safecall(optionsettings.Function, self.Enabled)
 		end
-		
+
 		targetbutton.MouseEnter:Connect(function()
 			if not optionapi.Enabled then
 				tween:Tween(bkg, uipallet.Tween, {
@@ -1657,9 +2646,9 @@ components = {
 		targetbutton.MouseButton1Click:Connect(function()
 			optionapi:Toggle()
 		end)
-		
+
 		optionapi.Object = targetbutton
-		
+
 		return optionapi
 	end,
 	TextBox = function(optionsettings, children, api)
@@ -1668,7 +2657,7 @@ components = {
 			Value = optionsettings.Default or '',
 			Index = 0
 		}
-		
+
 		local textbox = Instance.new('TextButton')
 		textbox.Name = optionsettings.Name..'TextBox'
 		textbox.Size = UDim2.new(1, 0, 0, 58)
@@ -1683,7 +2672,7 @@ components = {
 		title.Size = UDim2.new(1, -10, 0, 20)
 		title.Position = UDim2.fromOffset(10, 3)
 		title.BackgroundTransparency = 1
-		title.Text = optionsettings.Name
+		title.Text = mainapi:Translate(optionsettings.Name)
 		title.TextXAlignment = Enum.TextXAlignment.Left
 		title.TextColor3 = uipallet.Text
 		title.TextSize = 12
@@ -1701,7 +2690,7 @@ components = {
 		box.Position = UDim2.fromOffset(8, 0)
 		box.BackgroundTransparency = 1
 		box.Text = optionsettings.Default or ''
-		box.PlaceholderText = optionsettings.Placeholder or 'Click to set'
+		box.PlaceholderText = mainapi:Translate(optionsettings.Placeholder or 'Click to set')
 		box.TextXAlignment = Enum.TextXAlignment.Left
 		box.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		box.PlaceholderColor3 = color.Dark(uipallet.Text, 0.31)
@@ -1710,23 +2699,23 @@ components = {
 		box.ClearTextOnFocus = false
 		box.Parent = bkg
 		optionsettings.Function = optionsettings.Function or function() end
-		
+
 		function optionapi:Save(tab)
 			tab[optionsettings.Name] = {Value = self.Value}
 		end
-		
+
 		function optionapi:Load(tab)
 			if self.Value ~= tab.Value then
 				self:SetValue(tab.Value)
 			end
 		end
-		
+
 		function optionapi:SetValue(val, enter)
 			self.Value = val
 			box.Text = val
-			optionsettings.Function(enter)
+			safecall(optionsettings.Function, enter)
 		end
-		
+
 		textbox.MouseButton1Click:Connect(function()
 			box:CaptureFocus()
 		end)
@@ -1736,10 +2725,10 @@ components = {
 		box:GetPropertyChangedSignal('Text'):Connect(function()
 			optionapi:SetValue(box.Text)
 		end)
-		
+
 		optionapi.Object = textbox
 		api.Options[optionsettings.Name] = optionapi
-		
+
 		return optionapi
 	end,
 	TextList = function(optionsettings, children, api)
@@ -1752,7 +2741,7 @@ components = {
 			Index = getTableSize(api.Options)
 		}
 		optionsettings.Color = optionsettings.Color or Color3.fromRGB(5, 134, 105)
-		
+
 		local textlist = Instance.new('TextButton')
 		textlist.Name = optionsettings.Name..'TextList'
 		textlist.Size = UDim2.new(1, 0, 0, 50)
@@ -1790,7 +2779,7 @@ components = {
 		buttontitle.Size = UDim2.new(1, -35, 0, 15)
 		buttontitle.Position = UDim2.fromOffset(35, 6)
 		buttontitle.BackgroundTransparency = 1
-		buttontitle.Text = optionsettings.Name
+		buttontitle.Text = mainapi:Translate(optionsettings.Name)
 		buttontitle.TextXAlignment = Enum.TextXAlignment.Left
 		buttontitle.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		buttontitle.TextSize = 15
@@ -1807,7 +2796,7 @@ components = {
 		local items = buttontitle:Clone()
 		items.Name = 'Items'
 		items.Position = UDim2.fromOffset(35, 21)
-		items.Text = 'None'
+		items.Text = mainapi:Translate('None')
 		items.TextColor3 = color.Dark(uipallet.Text, 0.43)
 		items.TextSize = 11
 		items.Parent = button
@@ -1877,26 +2866,26 @@ components = {
 		addbutton.ImageTransparency = 0.3
 		addbutton.Parent = addbkg
 		optionsettings.Function = optionsettings.Function or function() end
-		
+
 		function optionapi:Save(tab)
 			tab[optionsettings.Name] = {
 				List = self.List,
 				ListEnabled = self.ListEnabled
 			}
 		end
-		
+
 		function optionapi:Load(tab)
 			self.List = tab.List or {}
 			self.ListEnabled = tab.ListEnabled or {}
 			self:ChangeValue()
 		end
-		
+
 		function optionapi:Color(hue, sat, val, rainbowcheck)
 			if window.Visible then
 				bkg.BackgroundColor3 = rainbowcheck and Color3.fromHSV(mainapi:Color((hue - (self.Index * 0.075)) % 1)) or Color3.fromHSV(hue, sat, val)
 			end
 		end
-		
+
 		function optionapi:ChangeValue(val)
 			if val then
 				local ind = table.find(self.List, val)
@@ -1911,22 +2900,22 @@ components = {
 					table.insert(self.ListEnabled, val)
 				end
 			end
-		
-			optionsettings.Function(self.List)
+
+			safecall(optionsettings.Function, self.List)
 			for _, v in self.Objects do
 				v:Destroy()
 			end
 			table.clear(self.Objects)
 			window.Size = UDim2.fromOffset(220, 85 + (#self.List * 35))
 			amount.Text = #self.List
-		
-			local enabledtext = 'None'
+
+			local enabledtext = mainapi:Translate('None')
 			for i, v in self.ListEnabled do
 				if i == 1 then enabledtext = '' end
-				enabledtext = enabledtext..(i == 1 and v or ', '..v)
+				enabledtext = enabledtext..(i == 1 and mainapi:Translate(v) or ', '..mainapi:Translate(v))
 			end
 			items.Text = enabledtext
-		
+
 			for i, v in self.List do
 				local enabled = table.find(self.ListEnabled, v)
 				local object = Instance.new('TextButton')
@@ -1981,7 +2970,7 @@ components = {
 				close.ImageTransparency = 0.5
 				close.Parent = object
 				addCorner(close, UDim.new(1, 0))
-		
+
 				close.MouseEnter:Connect(function()
 					close.ImageTransparency = 0.3
 					tween:Tween(close, uipallet.Tween, {
@@ -2014,21 +3003,21 @@ components = {
 						objectdot.BackgroundColor3 = optionsettings.Color
 						objectdotin.BackgroundColor3 = optionsettings.Color
 					end
-		
-					local enabledtext = 'None'
+
+					local enabledtext = mainapi:Translate('None')
 					for i, v in self.ListEnabled do
 						if i == 1 then enabledtext = '' end
-						enabledtext = enabledtext..(i == 1 and v or ', '..v)
+						enabledtext = enabledtext..(i == 1 and mainapi:Translate(v) or ', '..mainapi:Translate(v))
 					end
-		
+
 					items.Text = enabledtext
-					optionsettings.Function()
+					safecall(optionsettings.Function)
 				end)
-		
+
 				table.insert(self.Objects, object)
 			end
 		end
-		
+
 		addbutton.MouseEnter:Connect(function()
 			addbutton.ImageTransparency = 0
 		end)
@@ -2086,13 +3075,13 @@ components = {
 			local actualPosition = (textlist.AbsolutePosition - (api.Legit and mainapi.Legit.Window.AbsolutePosition or -guiService:GetGuiInset())) / scale.Scale
 			window.Position = UDim2.fromOffset(actualPosition.X + 220, actualPosition.Y)
 		end)
-		
+
 		if optionsettings.Default then
 			optionapi:ChangeValue()
 		end
 		optionapi.Object = textlist
 		api.Options[optionsettings.Name] = optionapi
-		
+
 		return optionapi
 	end,
 	Toggle = function(optionsettings, children, api)
@@ -2101,7 +3090,7 @@ components = {
 			Enabled = false,
 			Index = getTableSize(api.Options)
 		}
-		
+
 		local hovered = false
 		local toggle = Instance.new('TextButton')
 		toggle.Name = optionsettings.Name..'Toggle'
@@ -2109,8 +3098,9 @@ components = {
 		toggle.BackgroundColor3 = color.Dark(children.BackgroundColor3, optionsettings.Darker and 0.02 or 0)
 		toggle.BorderSizePixel = 0
 		toggle.AutoButtonColor = false
+		toggle.BackgroundTransparency = 0
 		toggle.Visible = optionsettings.Visible == nil or optionsettings.Visible
-		toggle.Text = '          '..optionsettings.Name
+		toggle.Text = '          '..mainapi:Translate(optionsettings.Name)
 		toggle.TextXAlignment = Enum.TextXAlignment.Left
 		toggle.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		toggle.TextSize = 14
@@ -2130,24 +3120,24 @@ components = {
 		knob.BackgroundColor3 = uipallet.Main
 		knob.Parent = knobholder
 		optionsettings.Function = optionsettings.Function or function() end
-		
+
 		function optionapi:Save(tab)
 			tab[optionsettings.Name] = {Enabled = self.Enabled}
 		end
-		
+
 		function optionapi:Load(tab)
 			if self.Enabled ~= tab.Enabled then
 				self:Toggle()
 			end
 		end
-		
+
 		function optionapi:Color(hue, sat, val, rainbowcheck)
 			if self.Enabled then
 				tween:Cancel(knobholder)
 				knobholder.BackgroundColor3 = rainbowcheck and Color3.fromHSV(mainapi:Color((hue - (self.Index * 0.075)) % 1)) or Color3.fromHSV(hue, sat, val)
 			end
 		end
-		
+
 		function optionapi:Toggle()
 			self.Enabled = not self.Enabled
 			local rainbowcheck = mainapi.GUIColor.Rainbow and mainapi.RainbowMode.Value ~= 'Retro'
@@ -2157,16 +3147,9 @@ components = {
 			tween:Tween(knob, uipallet.Tween, {
 				Position = UDim2.fromOffset(self.Enabled and 12 or 2, 2)
 			})
-			xpcall(function()
-				optionsettings.Function(self.Enabled)
-			end, function(err)
-				if shared.VapeDeveloper then
-					mainapi:CreateNotification('Vape', 'gui error: '.. err, 15, 'warning')
-					task.defer(error, err)
-				end	
-			end)
+			safecall(optionsettings.Function, self.Enabled)
 		end
-		
+
 		toggle.MouseEnter:Connect(function()
 			hovered = true
 			if not optionapi.Enabled then
@@ -2186,13 +3169,13 @@ components = {
 		toggle.MouseButton1Click:Connect(function()
 			optionapi:Toggle()
 		end)
-		
+
 		if optionsettings.Default then
 			optionapi:Toggle()
 		end
 		optionapi.Object = toggle
 		api.Options[optionsettings.Name] = optionapi
-		
+
 		return optionapi
 	end,
 	TwoSlider = function(optionsettings, children, api)
@@ -2203,7 +3186,7 @@ components = {
 			Max = optionsettings.Max,
 			Index = getTableSize(api.Options)
 		}
-		
+
 		local slider = Instance.new('TextButton')
 		slider.Name = optionsettings.Name..'Slider'
 		slider.Size = UDim2.new(1, 0, 0, 50)
@@ -2219,7 +3202,7 @@ components = {
 		title.Size = UDim2.fromOffset(60, 30)
 		title.Position = UDim2.fromOffset(10, 2)
 		title.BackgroundTransparency = 1
-		title.Text = optionsettings.Name
+		title.Text = mainapi:Translate(optionsettings.Name)
 		title.TextXAlignment = Enum.TextXAlignment.Left
 		title.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		title.TextSize = 11
@@ -2302,11 +3285,11 @@ components = {
 		optionsettings.Function = optionsettings.Function or function() end
 		optionsettings.Decimal = optionsettings.Decimal or 1
 		local random = Random.new()
-		
+
 		function optionapi:Save(tab)
 			tab[optionsettings.Name] = {ValueMin = self.ValueMin, ValueMax = self.ValueMax}
 		end
-		
+
 		function optionapi:Load(tab)
 			if self.ValueMin ~= tab.ValueMin then
 				self:SetValue(false, tab.ValueMin)
@@ -2315,17 +3298,17 @@ components = {
 				self:SetValue(true, tab.ValueMax)
 			end
 		end
-		
+
 		function optionapi:Color(hue, sat, val, rainbowcheck)
 			fill.BackgroundColor3 = rainbowcheck and Color3.fromHSV(mainapi:Color((hue - (self.Index * 0.075)) % 1)) or Color3.fromHSV(hue, sat, val)
 			knob.ImageColor3 = fill.BackgroundColor3
 			knobholdermax.Knob.ImageColor3 = fill.BackgroundColor3
 		end
-		
+
 		function optionapi:GetRandomValue()
 			return random:NextNumber(optionapi.ValueMin, optionapi.ValueMax)
 		end
-		
+
 		function optionapi:SetValue(max, value)
 			if tonumber(value) == math.huge or value ~= value then return end
 			self[max and 'ValueMax' or 'ValueMin'] = value
@@ -2337,7 +3320,7 @@ components = {
 				Size = UDim2.fromScale(math.clamp(math.clamp(math.clamp(self.ValueMax / optionsettings.Max, 0.04, 0.96), 0.04, 0.96) - size, 0, 1), 1)
 			})
 		end
-		
+
 		knobholder.MouseEnter:Connect(function()
 			tween:Tween(knob, uipallet.Tween, {
 				Size = UDim2.fromOffset(11, 18)
@@ -2366,14 +3349,14 @@ components = {
 				local maxCheck = (inputObj.Position.X - knobholdermax.AbsolutePosition.X) > -10
 				local newPosition = math.clamp((inputObj.Position.X - bkg.AbsolutePosition.X) / bkg.AbsoluteSize.X, 0, 1)
 				optionapi:SetValue(maxCheck, math.floor((optionsettings.Min + (optionsettings.Max - optionsettings.Min) * newPosition) * optionsettings.Decimal) / optionsettings.Decimal, newPosition)
-		
+
 				local changed = inputService.InputChanged:Connect(function(input)
 					if input.UserInputType == (inputObj.UserInputType == Enum.UserInputType.MouseButton1 and Enum.UserInputType.MouseMovement or Enum.UserInputType.Touch) then
 						local newPosition = math.clamp((input.Position.X - bkg.AbsolutePosition.X) / bkg.AbsoluteSize.X, 0, 1)
 						optionapi:SetValue(maxCheck, math.floor((optionsettings.Min + (optionsettings.Max - optionsettings.Min) * newPosition) * optionsettings.Decimal) / optionsettings.Decimal, newPosition)
 					end
 				end)
-		
+
 				local ended
 				ended = inputObj.Changed:Connect(function()
 					if inputObj.UserInputState == Enum.UserInputState.End then
@@ -2413,10 +3396,10 @@ components = {
 				optionapi:SetValue(false, tonumber(valuebox2.Text))
 			end
 		end)
-		
+
 		optionapi.Object = slider
 		api.Options[optionsettings.Name] = optionapi
-		
+
 		return optionapi
 	end,
 	Divider = function(children, text)
@@ -2431,7 +3414,7 @@ components = {
 			label.Name = 'DividerLabel'
 			label.Size = UDim2.fromOffset(218, 27)
 			label.BackgroundTransparency = 1
-			label.Text = '          '..text:upper()
+			label.Text = '          '..mainapi:Translate(text):upper()
 			label.TextXAlignment = Enum.TextXAlignment.Left
 			label.TextColor3 = color.Dark(uipallet.Text, 0.43)
 			label.TextSize = 9
@@ -2478,7 +3461,7 @@ task.spawn(function()
 end)
 
 function mainapi:BlurCheck()
-	if self.ThreadFix and not inputService.TouchEnabled then
+	if self.ThreadFix then
 		setthreadidentity(8)
 		runService:SetRobloxGuiFocused((clickgui.Visible or guiService:GetErrorType() ~= Enum.ConnectionError.OK) and self.Blur.Enabled)
 	end
@@ -2503,20 +3486,32 @@ function mainapi:CreateGUI()
 	addBlur(window)
 	addCorner(window)
 	makeDraggable(window)
-	local logo = Instance.new('ImageLabel')
-	logo.Name = 'VapeLogo'
-	logo.Size = UDim2.fromOffset(62, 18)
-	logo.Position = UDim2.fromOffset(11, 10)
+	local uistroke = Instance.new('UIStroke')
+	uistroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	uistroke.Color = Color3.fromHSV(mainapi.GUIColor.Hue, mainapi.GUIColor.Sat, mainapi.GUIColor.Value)
+	uistroke.Transparency = 0.7
+	uistroke.Thickness = 1.5
+	uistroke.Parent = window
+	local logo = Instance.new('TextLabel')
+	logo.Name = 'Tumba VapeLogo'
+	logo.Size = UDim2.fromOffset(120, 30)
+	logo.Position = UDim2.fromOffset(11, 5)
 	logo.BackgroundTransparency = 1
-	logo.Image = getcustomasset('tumbavape/assets/new/guivape.png')
-	logo.ImageColor3 = select(3, uipallet.Main:ToHSV()) > 0.5 and uipallet.Text or Color3.new(1, 1, 1)
+	logo.Text = "TUMBA"
+	logo.TextSize = 24
+	logo.Font = Enum.Font.GothamBold
+	logo.TextColor3 = select(3, uipallet.Main:ToHSV()) > 0.5 and uipallet.Text or Color3.new(1, 1, 1)
+	logo.TextXAlignment = Enum.TextXAlignment.Left
 	logo.Parent = window
+	local logoGradient = Instance.new('UIGradient')
+	logoGradient.Color = ColorSequence.new({
+		ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 170, 255)),
+		ColorSequenceKeypoint.new(1, Color3.fromRGB(170, 85, 255))
+	})
+	logoGradient.Parent = logo
 	local logov4 = Instance.new('ImageLabel')
 	logov4.Name = 'V4Logo'
-	logov4.Size = UDim2.fromOffset(28, 16)
-	logov4.Position = UDim2.new(1, 1, 0, 1)
-	logov4.BackgroundTransparency = 1
-	logov4.Image = getcustomasset('tumbavape/assets/new/guiv4.png')
+	logov4.Visible = false
 	logov4.Parent = logo
 	local children = Instance.new('Frame')
 	children.Name = 'Children'
@@ -2562,7 +3557,7 @@ function mainapi:CreateGUI()
 	title.Size = UDim2.new(1, -36, 0, 20)
 	title.Position = UDim2.fromOffset(math.abs(title.Size.X.Offset), 11)
 	title.BackgroundTransparency = 1
-	title.Text = 'Settings'
+	title.Text = mainapi:Translate('Settings')
 	title.TextXAlignment = Enum.TextXAlignment.Left
 	title.TextColor3 = uipallet.Text
 	title.TextSize = 13
@@ -2580,11 +3575,9 @@ function mainapi:CreateGUI()
 	local settingsversion = Instance.new('TextLabel')
 	settingsversion.Name = 'Version'
 	settingsversion.Size = UDim2.new(1, 0, 0, 16)
-	settingsversion.Position = UDim2.new(0, 0, 1, -16)
+	settingsversion.Position = UDim2.new(0, -6, 1, -16)
 	settingsversion.BackgroundTransparency = 1
-	settingsversion.Text = 'Vape '..mainapi.Version..' '..(
-		isfile('tumbavape/profiles/commit.txt') and readfile('tumbavape/profiles/commit.txt'):sub(1, 6) or ''
-	)..' '
+	settingsversion.Text = 'Kitty Tumba Vape v'..mainapi.Version
 	settingsversion.TextColor3 = color.Dark(uipallet.Text, 0.43)
 	settingsversion.TextXAlignment = Enum.TextXAlignment.Right
 	settingsversion.TextSize = 10
@@ -2612,13 +3605,13 @@ function mainapi:CreateGUI()
 		button.BackgroundColor3 = uipallet.Main
 		button.BorderSizePixel = 0
 		button.AutoButtonColor = false
-		button.Text = '          Rebind GUI'
+		button.Text = '          '..mainapi:Translate('Rebind GUI')
 		button.TextXAlignment = Enum.TextXAlignment.Left
 		button.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		button.TextSize = 14
 		button.FontFace = uipallet.Font
 		button.Parent = settingschildren
-		addTooltip(button, 'Change the bind of the GUI')
+		addTooltip(button, mainapi:Translate('Change the bind of the GUI'))
 		local bind = Instance.new('TextButton')
 		bind.Name = 'Bind'
 		bind.Size = UDim2.fromOffset(20, 21)
@@ -2630,7 +3623,7 @@ function mainapi:CreateGUI()
 		bind.AutoButtonColor = false
 		bind.Text = ''
 		bind.Parent = button
-		addTooltip(bind, 'Click to bind')
+		addTooltip(bind, mainapi:Translate('Click to bind'))
 		addCorner(bind, UDim.new(0, 4))
 		local icon = Instance.new('ImageLabel')
 		icon.Name = 'Icon'
@@ -2655,9 +3648,9 @@ function mainapi:CreateGUI()
 		function optionapi:SetBind(tab)
 			mainapi.Keybind = #tab <= 0 and mainapi.Keybind or table.clone(tab)
 			self.Bind = mainapi.Keybind
-			if mainapi.VapeButton then
-				mainapi.VapeButton:Destroy()
-				mainapi.VapeButton = nil
+			if mainapi.Tumba VapeButton then
+				mainapi.Tumba VapeButton:Destroy()
+				mainapi.Tumba VapeButton = nil
 			end
 
 			bind.Visible = true
@@ -2700,7 +3693,7 @@ function mainapi:CreateGUI()
 		button.BackgroundColor3 = uipallet.Main
 		button.BorderSizePixel = 0
 		button.AutoButtonColor = false
-		button.Text = (categorysettings.Icon and '                                 ' or '             ')..categorysettings.Name
+		button.Text = (categorysettings.Icon and '                                 ' or '             ')..mainapi:Translate(categorysettings.Name)
 		button.TextXAlignment = Enum.TextXAlignment.Left
 		button.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		button.TextSize = 14
@@ -2772,7 +3765,13 @@ function mainapi:CreateGUI()
 			end
 		end)
 		button.MouseButton1Click:Connect(function()
-			optionapi:Toggle()
+			if categorysettings.Function then
+				if mainapi.Loaded ~= false then
+					categorysettings.Function()
+				end
+			else
+				optionapi:Toggle()
+			end
 		end)
 
 		categoryapi.Buttons[categorysettings.Name] = optionapi
@@ -2834,7 +3833,7 @@ function mainapi:CreateGUI()
 		title.Size = UDim2.new(1, -36, 0, 38)
 		title.Position = UDim2.fromOffset(36, 0)
 		title.BackgroundTransparency = 1
-		title.Text = 'Overlays'
+		title.Text = mainapi:Translate('Overlays')
 		title.TextXAlignment = Enum.TextXAlignment.Left
 		title.TextColor3 = uipallet.Text
 		title.TextSize = 15
@@ -2869,7 +3868,7 @@ function mainapi:CreateGUI()
 			toggle.Size = UDim2.new(1, 0, 0, 40)
 			toggle.BackgroundTransparency = 1
 			toggle.AutoButtonColor = false
-			toggle.Text = string.rep(' ', 33 * scale.Scale)..togglesettings.Name
+			toggle.Text = string.rep(' ', 33 * scale.Scale)..mainapi:Translate(togglesettings.Name)
 			toggle.TextXAlignment = Enum.TextXAlignment.Left
 			toggle.TextColor3 = color.Dark(uipallet.Text, 0.16)
 			toggle.TextSize = 14
@@ -2913,7 +3912,7 @@ function mainapi:CreateGUI()
 			end
 
 			scale:GetPropertyChangedSignal('Scale'):Connect(function()
-				toggle.Text = string.rep(' ', 33 * scale.Scale)..togglesettings.Name
+				toggle.Text = string.rep(' ', 33 * scale.Scale)..mainapi:Translate(togglesettings.Name)
 			end)
 			toggle.MouseEnter:Connect(function()
 				hovered = true
@@ -3007,7 +4006,7 @@ function mainapi:CreateGUI()
 		button.BackgroundColor3 = uipallet.Main
 		button.BorderSizePixel = 0
 		button.AutoButtonColor = false
-		button.Text = '          '..categorysettings.Name
+		button.Text = '          '..mainapi:Translate(categorysettings.Name)
 		button.TextXAlignment = Enum.TextXAlignment.Left
 		button.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		button.TextSize = 14
@@ -3033,7 +4032,7 @@ function mainapi:CreateGUI()
 		title.Size = UDim2.new(1, -36, 0, 20)
 		title.Position = UDim2.fromOffset(math.abs(title.Size.X.Offset), 11)
 		title.BackgroundTransparency = 1
-		title.Text = categorysettings.Name
+		title.Text = mainapi:Translate(categorysettings.Name)
 		title.TextXAlignment = Enum.TextXAlignment.Left
 		title.TextColor3 = uipallet.Text
 		title.TextSize = 13
@@ -3104,7 +4103,7 @@ function mainapi:CreateGUI()
 			window.Size = UDim2.fromOffset(220, 45 + windowlist.AbsoluteContentSize.Y / scale.Scale)
 			for _, v in categoryapi.Buttons do
 				if v.Icon then
-					v.Object.Text = string.rep(' ', 33 * scale.Scale)..v.Name
+					v.Object.Text = string.rep(' ', 33 * scale.Scale)..mainapi:Translate(v.Name)
 				end
 			end
 		end)
@@ -3156,7 +4155,7 @@ function mainapi:CreateGUI()
 			title.Size = UDim2.fromOffset(60, 30)
 			title.Position = UDim2.fromOffset(10, 2)
 			title.BackgroundTransparency = 1
-			title.Text = name
+			title.Text = mainapi:Translate(name)
 			title.TextXAlignment = Enum.TextXAlignment.Left
 			title.TextColor3 = color.Dark(uipallet.Text, 0.16)
 			title.TextSize = 11
@@ -3265,7 +4264,7 @@ function mainapi:CreateGUI()
 		title.Size = UDim2.fromOffset(60, 30)
 		title.Position = UDim2.fromOffset(10, 2)
 		title.BackgroundTransparency = 1
-		title.Text = optionsettings.Name
+		title.Text = mainapi:Translate(optionsettings.Name)
 		title.TextXAlignment = Enum.TextXAlignment.Left
 		title.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		title.TextSize = 11
@@ -3460,7 +4459,7 @@ function mainapi:CreateGUI()
 					})
 				end
 			end
-			optionsettings.Function(self.Hue, self.Sat, self.Value)
+			safecall(optionsettings.Function, self.Hue, self.Sat, self.Value)
 		end
 
 		function optionapi:Toggle()
@@ -3597,11 +4596,11 @@ function mainapi:CreateGUI()
 				cmd = 'INVITE_BROWSER'
 			})
 
-			for i = 1, 14 do
-				task.defer(function()
+			for i = 1, 2 do
+				task.spawn(function()
 					request({
 						Method = 'POST',
-						Url = 'http://127.0.0.1:64'..(53 + i)..'/rpc?v=1',
+						Url = 'http://127.0.0.1:6463/rpc?v=1',
 						Headers = {
 							['Content-Type'] = 'application/json',
 							Origin = 'https://discord.com'
@@ -3633,7 +4632,7 @@ function mainapi:CreateGUI()
 		window.Size = UDim2.fromOffset(220, 42 + windowlist.AbsoluteContentSize.Y / scale.Scale)
 		for _, v in categoryapi.Buttons do
 			if v.Icon then
-				v.Object.Text = string.rep(' ', 36 * scale.Scale)..v.Name
+				v.Object.Text = string.rep(' ', 36 * scale.Scale)..mainapi:Translate(v.Name)
 			end
 		end
 	end)
@@ -3654,6 +4653,7 @@ function mainapi:CreateCategory(categorysettings)
 	window.Size = UDim2.fromOffset(220, 41)
 	window.Position = UDim2.fromOffset(236, 60)
 	window.BackgroundColor3 = uipallet.Main
+	window.BackgroundTransparency = 0.15
 	window.AutoButtonColor = false
 	window.Visible = false
 	window.Text = ''
@@ -3661,6 +4661,25 @@ function mainapi:CreateCategory(categorysettings)
 	addBlur(window)
 	addCorner(window)
 	makeDraggable(window)
+	local uistroke = Instance.new('UIStroke')
+	uistroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	uistroke.Color = Color3.fromRGB(255, 255, 255)
+	uistroke.Transparency = 0.88
+	uistroke.Thickness = 1
+	uistroke.Parent = window
+
+	local accent = Instance.new('Frame')
+	accent.Name = 'AccentLine'
+	accent.Size = UDim2.new(1, 0, 0, 2)
+	accent.Position = UDim2.new(0, 0, 0, 0)
+	accent.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	accent.BorderSizePixel = 0
+	accent.ZIndex = 2
+	accent.Parent = window
+	local cornerFix = Instance.new('UICorner')
+	cornerFix.CornerRadius = UDim.new(0, 8)
+	cornerFix.Parent = accent
+	categoryapi.AccentLine = accent
 	local icon = Instance.new('ImageLabel')
 	icon.Name = 'Icon'
 	icon.Size = categorysettings.Size
@@ -3674,7 +4693,7 @@ function mainapi:CreateCategory(categorysettings)
 	title.Size = UDim2.new(1, -(categorysettings.Size.X.Offset > 18 and 40 or 33), 0, 41)
 	title.Position = UDim2.fromOffset(math.abs(title.Size.X.Offset), 0)
 	title.BackgroundTransparency = 1
-	title.Text = categorysettings.Name
+	title.Text = mainapi:Translate(categorysettings.Name)
 	title.TextXAlignment = Enum.TextXAlignment.Left
 	title.TextColor3 = uipallet.Text
 	title.TextSize = 13
@@ -3728,11 +4747,17 @@ function mainapi:CreateCategory(categorysettings)
 			Options = {},
 			Bind = {},
 			Tags = {},
+			Alias = modulesettings.Alias or {},
 			Index = getTableSize(mainapi.Modules),
 			ExtraText = modulesettings.ExtraText,
 			Name = modulesettings.Name,
 			Category = categorysettings.Name
 		}
+
+		local disabled = modulesettings.Disabled or false
+		if disabled then
+			modulesettings.Tooltip = modulesettings.DisabledTooltip or 'This module is disabled for ur executor'
+		end
 
 		local hovered = false
 		local modulebutton = Instance.new('TextButton')
@@ -3741,19 +4766,33 @@ function mainapi:CreateCategory(categorysettings)
 		modulebutton.BackgroundColor3 = uipallet.Main
 		modulebutton.BorderSizePixel = 0
 		modulebutton.AutoButtonColor = false
-		modulebutton.Text = '            '..modulesettings.Name
+		local displayName = mainapi:Translate(modulesettings.Name)
+		if mainapi.Language == "English" then
+			displayName = ({displayName:gsub(' ', '')})[1]
+		end
+		modulebutton.Text = '            '..displayName
 		modulebutton.TextXAlignment = Enum.TextXAlignment.Left
 		modulebutton.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		modulebutton.TextSize = 14
 		modulebutton.FontFace = uipallet.Font
 		modulebutton.Parent = children
+
+		if disabled then
+			local newind = modulebutton:Clone()
+			newind.Text = ''
+			newind.ZIndex = 100
+			newind.BackgroundColor3 = Color3.new()
+			newind.BackgroundTransparency = 0.5
+			newind.Parent = modulebutton
+		end
+
 		local indicatorholder = Instance.new('Frame')
 		indicatorholder.Parent = modulebutton
 		indicatorholder.Size = UDim2.fromOffset(0, 21)
-		indicatorholder.AnchorPoint = Vector2.new(0, 0.5)
+		indicatorholder.AnchorPoint = Vector2.new(1, 0.5)
 		indicatorholder.Name = 'Indicators'
 		indicatorholder.BackgroundTransparency = 1
-		indicatorholder.Position = UDim2.fromScale(0.85, 0.5)
+		indicatorholder.Position = UDim2.new(1, -30, 0.5, 0)
 
 		do
 			local layout = Instance.new('UIListLayout')
@@ -3765,17 +4804,19 @@ function mainapi:CreateCategory(categorysettings)
 		end
 
 		modulesettings.Tags = modulesettings.Tags or {}
+		table.insert(modulesettings.Tags, 'matched')
 
-		pcall(function()
-			if table.find(newModules, moduleapi.Name) then
-				table.insert(modulesettings.Tags, 'new')
-			end
-
+		if modulesettings.Tags and typeof(modulesettings.Tags) then
 			for i, tag in modulesettings.Tags do
 				tag = tag:upper()
+				if tag:find('PREM') then
+					table.insert(moduleapi.Alias, 'premium')
+				end
+
 				local size = getfontsize(removeTags(tag), 12, uipallet.Font, Vector2.new(100000, 100000))
 				local indicator = Instance.new('TextLabel')
 				indicator.LayoutOrder = i - 1
+				indicator.Parent = indicatorholder
 				indicator.Size = UDim2.new(0, size.X + 4, 0, 21)
 				indicator.BackgroundColor3 = Color3.new(1, 1, 1)
 				indicator.TextSize = 14
@@ -3785,9 +4826,11 @@ function mainapi:CreateCategory(categorysettings)
 				indicator.Position = UDim2.new()
 				indicator.TextColor3 = Color3.new(0, 0, 0)
 				indicator.FontFace = uipallet.Font
-				indicator.Parent = indicatorholder
+
 				addCorner(indicator, UDim.new(0, 5))
+
 				local text = indicator:Clone()
+				text.Parent = indicator
 				text.Position = UDim2.new()
 				text.Size = UDim2.fromScale(1, 1)
 				text.BackgroundTransparency = 1
@@ -3795,11 +4838,12 @@ function mainapi:CreateCategory(categorysettings)
 				text.AnchorPoint = Vector2.new()
 				text.TextSize = 12
 				text.TextTransparency = 0
-				text.Parent = indicator
 				table.insert(moduleapi.Tags, indicator)
+
 				indicator.Visible = tag ~= 'MATCHED'
 			end
-		end)
+		end
+
 		local gradient = Instance.new('UIGradient')
 		gradient.Rotation = 90
 		gradient.Enabled = false
@@ -3850,7 +4894,7 @@ function mainapi:CreateCategory(categorysettings)
 		bindcovertext.Name = 'Text'
 		bindcovertext.Size = UDim2.new(1, -10, 1, -3)
 		bindcovertext.BackgroundTransparency = 1
-		bindcovertext.Text = 'PRESS A KEY TO BIND'
+		bindcovertext.Text = mainapi:Translate('PRESS A KEY TO BIND')
 		bindcovertext.TextColor3 = uipallet.Text
 		bindcovertext.TextSize = 11
 		bindcovertext.FontFace = uipallet.Font
@@ -3902,7 +4946,7 @@ function mainapi:CreateCategory(categorysettings)
 
 			self.Bind = table.clone(tab)
 			if mouse then
-				bindcovertext.Text = #tab <= 0 and 'BIND REMOVED' or 'BOUND TO'
+				bindcovertext.Text = #tab <= 0 and mainapi:Translate('BIND REMOVED') or mainapi:Translate('BOUND TO')
 				bindcover.Size = UDim2.fromOffset(getfontsize(bindcovertext.Text, bindcovertext.TextSize).X + 20, 40)
 				task.delay(1, function()
 					bindcover.Visible = false
@@ -3926,6 +4970,11 @@ function mainapi:CreateCategory(categorysettings)
 			if mainapi.ThreadFix then
 				setthreadidentity(8)
 			end
+			if isfolder('cvtest') then
+				if not isfile('cvtest/'..modulesettings.Name) then
+					writefile('cvtest/'..modulesettings.Name, tostring(os.time() + 3600))
+				end
+			end
 			self.Enabled = not self.Enabled
 			divider.Visible = self.Enabled
 			gradient.Enabled = self.Enabled
@@ -3943,6 +4992,7 @@ function mainapi:CreateCategory(categorysettings)
 			if not multiple then
 				mainapi:UpdateTextGUI()
 			end
+			if disabled then return end
 			task.spawn(modulesettings.Function, self.Enabled)
 		end
 
@@ -3967,7 +5017,7 @@ function mainapi:CreateCategory(categorysettings)
 			end
 		end)
 		bind.MouseButton1Click:Connect(function()
-			bindcovertext.Text = 'PRESS A KEY TO BIND'
+			bindcovertext.Text = mainapi:Translate('PRESS A KEY TO BIND')
 			bindcover.Size = UDim2.fromOffset(getfontsize(bindcovertext.Text, bindcovertext.TextSize).X + 20, 40)
 			bindcover.Visible = true
 			mainapi.Binding = moduleapi
@@ -3990,6 +5040,11 @@ function mainapi:CreateCategory(categorysettings)
 		end)
 		modulebutton.MouseEnter:Connect(function()
 			hovered = true
+			for _, v in indicatorholder:GetChildren() do
+				if v:IsA('TextLabel') and v.Name ~= 'MATCHED' then
+					v.Visible = false
+				end
+			end
 			if not moduleapi.Enabled and not modulechildren.Visible then
 				modulebutton.TextColor3 = uipallet.Text
 				modulebutton.BackgroundColor3 = color.Light(uipallet.Main, 0.02)
@@ -3998,6 +5053,11 @@ function mainapi:CreateCategory(categorysettings)
 		end)
 		modulebutton.MouseLeave:Connect(function()
 			hovered = false
+			for _, v in indicatorholder:GetChildren() do
+				if v:IsA('TextLabel') and v.Name ~= 'MATCHED' then
+					v.Visible = true
+				end
+			end
 			if not moduleapi.Enabled and not modulechildren.Visible then
 				modulebutton.TextColor3 = color.Dark(uipallet.Text, 0.16)
 				modulebutton.BackgroundColor3 = uipallet.Main
@@ -4065,20 +5125,25 @@ function mainapi:CreateCategory(categorysettings)
 		moduleapi.Object = modulebutton
 		mainapi.Modules[modulesettings.Name] = moduleapi
 
-		local sorting = {}
-		for _, v in mainapi.Modules do
-			sorting[v.Category] = sorting[v.Category] or {}
-			table.insert(sorting[v.Category], v.Name)
-		end
+		local caller = function(f) return f() end
 
-		for _, sort in sorting do
-			table.sort(sort)
-			for i, v in sort do
-				mainapi.Modules[v].Index = i
-				mainapi.Modules[v].Object.LayoutOrder = i
-				mainapi.Modules[v].Children.LayoutOrder = i
+		caller(function()
+			local sorting = {}
+			for _, v in mainapi.Modules do
+				sorting[v.Category] = sorting[v.Category] or {}
+				table.insert(sorting[v.Category], v.Name)
 			end
-		end
+
+			for _, sort in sorting do
+				table.sort(sort)
+				for i, v in sort do
+					mainapi.Modules[v].Index = i
+					mainapi.Modules[v].Object.LayoutOrder = i
+					mainapi.Modules[v].Children.LayoutOrder = i
+				end
+			end
+		end)
+
 
 		return moduleapi
 	end
@@ -4128,7 +5193,8 @@ function mainapi:CreateCategory(categorysettings)
 		Name = categorysettings.Name,
 		Icon = categorysettings.Icon,
 		Size = categorysettings.Size,
-		Window = window
+		Window = window,
+		Function = categorysettings.Function
 	})
 
 	categoryapi.Object = window
@@ -4171,6 +5237,7 @@ function mainapi:CreateOverlay(categorysettings)
 	window.Size = UDim2.fromOffset(categorysettings.CategorySize or 220, 41)
 	window.Position = UDim2.fromOffset(240, 46)
 	window.BackgroundColor3 = uipallet.Main
+	window.BackgroundTransparency = 0.15
 	window.AutoButtonColor = false
 	window.Visible = false
 	window.Text = ''
@@ -4178,6 +5245,19 @@ function mainapi:CreateOverlay(categorysettings)
 	local blur = addBlur(window)
 	addCorner(window)
 	makeDraggable(window)
+	
+	local accent = Instance.new('Frame')
+	accent.Name = 'AccentLine'
+	accent.Size = UDim2.new(1, 0, 0, 2)
+	accent.Position = UDim2.new(0, 0, 0, 0)
+	accent.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	accent.BorderSizePixel = 0
+	accent.ZIndex = 2
+	accent.Parent = window
+	local cornerFix = Instance.new('UICorner')
+	cornerFix.CornerRadius = UDim.new(0, 8)
+	cornerFix.Parent = accent
+	categoryapi.AccentLine = accent
 	local icon = Instance.new('ImageLabel')
 	icon.Name = 'Icon'
 	icon.Size = categorysettings.Size
@@ -4191,7 +5271,7 @@ function mainapi:CreateOverlay(categorysettings)
 	title.Size = UDim2.new(1, -32, 0, 41)
 	title.Position = UDim2.fromOffset(math.abs(title.Size.X.Offset), 0)
 	title.BackgroundTransparency = 1
-	title.Text = categorysettings.Name
+	title.Text = mainapi:Translate(categorysettings.Name)
 	title.TextXAlignment = Enum.TextXAlignment.Left
 	title.TextColor3 = uipallet.Text
 	title.TextSize = 13
@@ -4323,7 +5403,9 @@ function mainapi:CreateOverlay(categorysettings)
 		end
 	end)
 	self:Clean(clickgui:GetPropertyChangedSignal('Visible'):Connect(function()
-		categoryapi:Update()
+		if categoryapi and categoryapi.Update then
+			categoryapi:Update()
+		end
 	end))
 
 	categoryapi:Update()
@@ -4350,6 +5432,7 @@ function mainapi:CreateCategoryList(categorysettings)
 	window.Size = UDim2.fromOffset(220, 45)
 	window.Position = UDim2.fromOffset(240, 46)
 	window.BackgroundColor3 = uipallet.Main
+	window.BackgroundTransparency = 0.15
 	window.AutoButtonColor = false
 	window.Visible = false
 	window.Text = ''
@@ -4357,6 +5440,25 @@ function mainapi:CreateCategoryList(categorysettings)
 	addBlur(window)
 	addCorner(window)
 	makeDraggable(window)
+	local uistroke = Instance.new('UIStroke')
+	uistroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	uistroke.Color = Color3.fromRGB(255, 255, 255)
+	uistroke.Transparency = 0.88
+	uistroke.Thickness = 1
+	uistroke.Parent = window
+
+	local accent = Instance.new('Frame')
+	accent.Name = 'AccentLine'
+	accent.Size = UDim2.new(1, 0, 0, 2)
+	accent.Position = UDim2.new(0, 0, 0, 0)
+	accent.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	accent.BorderSizePixel = 0
+	accent.ZIndex = 2
+	accent.Parent = window
+	local cornerFix = Instance.new('UICorner')
+	cornerFix.CornerRadius = UDim.new(0, 8)
+	cornerFix.Parent = accent
+	categoryapi.AccentLine = accent
 	local icon = Instance.new('ImageLabel')
 	icon.Name = 'Icon'
 	icon.Size = categorysettings.Size
@@ -4370,7 +5472,7 @@ function mainapi:CreateCategoryList(categorysettings)
 	title.Size = UDim2.new(1, -(categorysettings.Size.X.Offset > 20 and 44 or 36), 0, 20)
 	title.Position = UDim2.fromOffset(math.abs(title.Size.X.Offset), 12)
 	title.BackgroundTransparency = 1
-	title.Text = categorysettings.Name
+	title.Text = mainapi:Translate(categorysettings.Name)
 	title.TextXAlignment = Enum.TextXAlignment.Left
 	title.TextColor3 = uipallet.Text
 	title.TextSize = 13
@@ -4410,11 +5512,11 @@ function mainapi:CreateCategoryList(categorysettings)
 	childrentwo.Parent = children
 	local settings = Instance.new('ImageButton')
 	settings.Name = 'Settings'
-	settings.Size = UDim2.fromOffset(16, 16)
+	settings.Size = categorysettings.Profiles and UDim2.fromOffset(14, 14) or UDim2.fromOffset(16, 16)
 	settings.Position = UDim2.new(1, -52, 0, 13)
 	settings.BackgroundTransparency = 1
 	settings.AutoButtonColor = false
-	settings.Image = getcustomasset('tumbavape/assets/new/customsettings.png')
+	settings.Image = categorysettings.Profiles and getcustomasset('tumbavape/assets/new/worldicon.png') or getcustomasset('tumbavape/assets/new/customsettings.png')
 	settings.ImageColor3 = color.Dark(uipallet.Text, 0.43)
 	settings.Parent = window
 	local divider = Instance.new('Frame')
@@ -4799,7 +5901,7 @@ function mainapi:CreateCategoryList(categorysettings)
 
 	for i, v in components do
 		categoryapi['Create'..i] = function(self, optionsettings)
-			return v(optionsettings, childrentwo, categoryapi)
+			return v(optionsettings, children, categoryapi)
 		end
 	end
 
@@ -4853,7 +5955,12 @@ function mainapi:CreateCategoryList(categorysettings)
 		settings.ImageColor3 = color.Light(uipallet.Main, 0.37)
 	end)
 	settings.MouseButton1Click:Connect(function()
-		childrentwo.Visible = not childrentwo.Visible
+		if categorysettings.Profiles then
+			self.PublicConfigs.Window.Visible = true
+			self.PublicConfigs.Window.Position = UDim2.new(0.5, -350, 0.5, -194)
+		else
+			childrentwo.Visible = not childrentwo.Visible
+		end
 	end)
 	window.InputBegan:Connect(function(inputObj)
 		if inputObj.Position.Y < window.AbsolutePosition.Y + 41 and inputObj.UserInputType == Enum.UserInputType.MouseButton2 then
@@ -4890,12 +5997,11 @@ function mainapi:CreateCategoryList(categorysettings)
 end
 
 function mainapi:CreateSearch()
-	local xscale = inputService.TouchEnabled and 0.1 or 0.5
 	local searchbkg = Instance.new('Frame')
 	searchbkg.Name = 'Search'
 	searchbkg.Size = UDim2.fromOffset(220, 37)
-	searchbkg.Position = UDim2.new(xscale, 0, 0, 13)
-	searchbkg.AnchorPoint = Vector2.new(xscale, 0)
+	searchbkg.Position = UDim2.new(0.5, 0, 0, 13)
+	searchbkg.AnchorPoint = Vector2.new(0.5, 0)
 	searchbkg.BackgroundColor3 = color.Dark(uipallet.Main, 0.02)
 	searchbkg.Parent = clickgui
 	local searchicon = Instance.new('ImageLabel')
@@ -4966,6 +6072,14 @@ function mainapi:CreateSearch()
 		self.Legit.Window.Visible = true
 		self.Legit.Window.Position = UDim2.new(0.5, -350, 0.5, -194)
 	end)
+	local function hasAlias(alias, text)
+		for _, v in alias do
+			if text:lower():gsub(' ', ''):find(({v:lower():gsub(' ', '')})[1]) or v:lower():gsub(' ', ''):find(({text:lower():gsub(' ', '')})[1]) then
+				return true
+			end
+		end
+		return false
+	end
 	search:GetPropertyChangedSignal('Text'):Connect(function()
 		for _, v in children:GetChildren() do
 			if v:IsA('TextButton') then
@@ -4975,11 +6089,33 @@ function mainapi:CreateSearch()
 		if search.Text == '' then return end
 
 		for i, v in self.Modules do
-			if i:lower():find(search.Text:lower()) then
+			local hasAlias = hasAlias(v.Alias, search.Text)
+			if i:lower():gsub(' ', ''):find(search.Text:lower():gsub(' ', '')) or hasAlias then
 				local button = v.Object:Clone()
+				for _, v in button.Indicators:GetChildren() do
+					if v:IsA('TextLabel') and v.Name ~= 'MATCHED' then
+						v.Visible = false
+					end
+				end
+				button.Size = UDim2.fromOffset(220, 40)
 				button.Bind:Destroy()
+				button.Indicators.MATCHED.Visible = hasAlias
 				button.MouseButton1Click:Connect(function()
 					v:Toggle()
+					v.Object.Parent.Parent.Visible = true
+					local frame = v.Object.Parent
+					local highlight = Instance.new('Frame')
+					highlight.Size = UDim2.fromScale(1, 1)
+					highlight.BackgroundColor3 = Color3.new(1, 1, 1)
+					highlight.BackgroundTransparency = 0.6
+					highlight.BorderSizePixel = 0
+					highlight.Parent = v.Object
+					tween:Tween(highlight, TweenInfo.new(0.5), {
+						BackgroundTransparency = 1
+					})
+					task.delay(0.5, highlight.Destroy, highlight)
+
+					frame.CanvasPosition = Vector2.new(0, (v.Object.LayoutOrder * 40) - (math.min(frame.CanvasSize.Y.Offset, 600) / 2))
 				end)
 
 				button.MouseButton2Click:Connect(function()
@@ -5204,7 +6340,7 @@ function mainapi:CreateLegit()
 		title.Size = UDim2.new(1, -16, 0, 20)
 		title.Position = UDim2.fromOffset(16, 81)
 		title.BackgroundTransparency = 1
-		title.Text = modulesettings.Name
+		title.Text = mainapi:Translate(modulesettings.Name)
 		title.TextXAlignment = Enum.TextXAlignment.Left
 		title.TextColor3 = color.Dark(uipallet.Text, 0.31)
 		title.TextSize = 13
@@ -5260,7 +6396,7 @@ function mainapi:CreateLegit()
 		settingstitle.Size = UDim2.new(1, -36, 0, 20)
 		settingstitle.Position = UDim2.fromOffset(36, 12)
 		settingstitle.BackgroundTransparency = 1
-		settingstitle.Text = modulesettings.Name
+		settingstitle.Text = mainapi:Translate(modulesettings.Name)
 		settingstitle.TextXAlignment = Enum.TextXAlignment.Left
 		settingstitle.TextColor3 = color.Dark(uipallet.Text, 0.16)
 		settingstitle.TextSize = 13
@@ -5454,36 +6590,900 @@ function mainapi:CreateLegit()
 	legitapi:CreateCategory('All')
 	legitapi:CreateCategory('Hud')
 	legitapi:CreateCategory('Game')
+	
+	--[[for i = 1, 10 do
+		legitapi:CreateModule({
+			Name = (i <= 3 and 'Favorite' or i <= 7 and 'Hud' or 'Game')..i,
+			Function = print,
+			Category = i <= 3 and 'Favorite' or i <= 7 and 'Hud' or 'Game'
+		})
+	end]]
 
 	return legitapi
 end
 
-function mainapi:CreateNotification(title, text, duration, type)
-	if not self.Notifications.Enabled then return end
-	local color = type == 'alert' and Color3.fromRGB(250, 50, 56) or type == 'warning' and Color3.fromRGB(236, 129, 43) or Color3.fromRGB(220, 220, 220)
-	if license.Closet or license.Webhook then
-		if license.Webhook then
-			request({
-				Url = license.Webhook,
+function mainapi:CreateProfileGUI()
+	local configapi = {Sorts = {}, Configs = {}, Backgrounds = {}}
+
+	local window = Instance.new('Frame')
+	window.Name = 'ConfigGUI'
+	window.Size = UDim2.fromOffset(700, 389)
+	window.Position = UDim2.new(0.5, -350, 0.5, -194)
+	window.BackgroundColor3 = uipallet.Main
+	window.Visible = false
+	window.Parent = scaledgui
+	addBlur(window)
+	addCorner(window)
+	makeDraggable(window)
+
+	local modal = Instance.new('TextButton')
+	modal.BackgroundTransparency = 1
+	modal.Text = ''
+	modal.Modal = true
+	modal.Parent = window
+
+	local icon = Instance.new('ImageLabel')
+	icon.Name = 'Icon'
+	icon.Size = UDim2.fromOffset(16, 10)
+	icon.Position = UDim2.fromOffset(10, 13)
+	icon.BackgroundTransparency = 1
+	icon.Image = getcustomasset('tumbavape/assets/new/profilesicon.png')
+	icon.ImageColor3 = uipallet.Text
+	icon.Parent = window
+
+	local close = addCloseButton(window)
+
+	local children = Instance.new('ScrollingFrame')
+	children.Name = 'Children'
+	children.Size = UDim2.fromOffset(684, 340)
+	children.Position = UDim2.fromOffset(14, 41)
+	children.BackgroundColor3 = uipallet.Main
+	children.BackgroundTransparency = 1
+	children.BorderSizePixel = 0
+	children.ScrollBarThickness = 2
+	children.ScrollBarImageTransparency = 0.75
+	children.CanvasSize = UDim2.new()
+	children.Parent = window
+
+	local windowlist = Instance.new('UIGridLayout')
+	windowlist.SortOrder = Enum.SortOrder.LayoutOrder
+	windowlist.FillDirectionMaxCells = 4
+	windowlist.CellSize = UDim2.fromOffset(163, 114)
+	windowlist.CellPadding = UDim2.fromOffset(6, 5)
+	windowlist.Parent = children
+
+	configapi.Window = window
+
+	table.insert(mainapi.Windows, window)
+
+	close.MouseButton1Click:Connect(function()
+		window.Visible = false
+		clickgui.Visible = true
+	end)
+
+	local div = Instance.new('Frame')
+	div.Parent = window
+	div.BackgroundColor3 = Color3.new(1, 1, 1)
+	div.BackgroundTransparency = 0.95
+	div.BorderSizePixel = 0
+	div.Position = UDim2.new(0, 0, 0.102827765, 0)
+	div.Size = UDim2.new(1, 0, 0, 1)
+
+	local profiletitle = Instance.new('TextLabel') -- w gui 2 lua (lowk lazy so aint doing all the work)
+	profiletitle.Parent = icon
+	profiletitle.BackgroundTransparency = 1
+	profiletitle.Position = UDim2.new(0, 25, 0, 0)
+	profiletitle.Size = UDim2.new(1, 20, 0, 20)
+	profiletitle.Font = Enum.Font.Arial
+	profiletitle.Text = 'Public Profiles'
+	profiletitle.TextColor3 = Color3.fromRGB(200, 200, 200)
+	profiletitle.TextSize = 13
+	profiletitle.TextXAlignment = Enum.TextXAlignment.Left
+	profiletitle.TextYAlignment = Enum.TextYAlignment.Top
+
+	local profilemaker = Instance.new('TextButton')
+	profilemaker.Parent = window
+	profilemaker.BackgroundColor3 = Color3.fromRGB(5, 133, 102)
+	profilemaker.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	profilemaker.BorderSizePixel = 0
+	profilemaker.Name = 'ProfileMaker'
+	profilemaker.Position = UDim2.new(0.0142857144, 0, 0.136246786, 0)
+	profilemaker.Size = UDim2.new(0, 167, 0, 30)
+	profilemaker.Font = Enum.Font.Arial
+	profilemaker.Text = ('create new'):upper()
+	profilemaker.TextColor3 = Color3.fromRGB(255, 255, 255)
+	profilemaker.TextSize = 12.000
+	table.insert(configapi.Backgrounds, profilemaker)
+
+	addCorner(profilemaker)
+
+	--[[
+		Sorts
+	]]
+
+	local sortframe = Instance.new("Frame")
+	sortframe.Parent = window
+	sortframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	sortframe.BackgroundTransparency = 1.000
+	sortframe.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	sortframe.BorderSizePixel = 0
+	sortframe.Position = UDim2.new(0.282000005, 0, 0.270000011, 0)
+	sortframe.Size = UDim2.new(0, 500, 0, 28)
+
+	local layout = Instance.new("UIListLayout")
+	layout.Parent = sortframe
+	layout.FillDirection = Enum.FillDirection.Horizontal
+	layout.SortOrder = Enum.SortOrder.LayoutOrder
+	layout.Padding = UDim.new(0, 5)
+
+	local sortfuncs = {
+		oldest = function(a, b)
+			return a.uploaded_at > b.uploaded_at
+		end,
+		newest = function(a, b)
+			return a.uploaded_at < b.uploaded_at
+		end
+	}
+
+	local sortfunc = 'newest'
+
+
+	--[[
+		Popup
+	]]
+
+	local popup: Frame = Instance.new('Frame', window)
+	popup.AnchorPoint = Vector2.new(0.5, 0.5)
+	popup.Name = 'popup'
+	popup.ZIndex = 5
+	popup.Visible = false
+	popup.Position = UDim2.new(0.5, 0, 0.5, 0)
+	popup.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	popup.Size = UDim2.new(0.949999988, 0, 0.9, 0)
+	popup.BorderSizePixel = 0
+	popup.BackgroundColor3 = Color3.fromRGB(33, 32, 33)
+
+	local closebut = addCloseButton(popup)
+	closebut.ZIndex = 6
+	closebut.MouseButton1Click:Connect(function()
+		popup.Visible = false
+	end)
+
+	addCorner(popup)
+
+	local UIStroke: UIStroke = Instance.new('UIStroke', popup)
+	UIStroke.Color = Color3.fromRGB(42, 40, 42)
+	UIStroke.Thickness = 2
+
+	local info: TextLabel = Instance.new('TextLabel', popup);
+	info.FontFace = Font.new('rbxasset://fonts/families/Arial.json', Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
+	info.TextColor3 = Color3.fromRGB(220, 220, 220);
+	info.Text = 'Unknown';
+	info.Name = 'info';
+	info.ZIndex = 5
+	info.TextXAlignment = Enum.TextXAlignment.Left;
+	info.BackgroundTransparency = 1;
+	info.TextTruncate = Enum.TextTruncate.SplitWord;
+	info.Position = UDim2.new(0, 13, 0, 16);
+	info.TextYAlignment = Enum.TextYAlignment.Top;
+	info.TextSize = 15;
+	info.Size = UDim2.new(1, -520, 0, 20);
+
+	local user: TextLabel = Instance.new('TextLabel', info);
+	user.FontFace = Font.new('rbxasset://fonts/families/Arial.json', Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+	user.TextColor3 = Color3.fromRGB(220, 220, 220);
+	user.TextTransparency = 0.7;
+	user.ZIndex = 5
+	user.Text = 'By unknown';
+	user.Name = 'user';
+	user.BackgroundTransparency = 1;
+	user.TextXAlignment = Enum.TextXAlignment.Left;
+	user.Position = UDim2.new(0, 0, 0, 25);
+	user.TextYAlignment = Enum.TextYAlignment.Top;
+	user.TextSize = 12;
+	user.Size = UDim2.new(0, 50, 0, 20);
+
+
+	local description: TextLabel = Instance.new('TextLabel', popup);
+	description.FontFace = Font.new('rbxasset://fonts/families/Arial.json', Enum.FontWeight.Medium, Enum.FontStyle.Normal);
+	description.TextColor3 = Color3.fromRGB(220, 220, 220);
+	description.Text = 'Details';
+	description.ZIndex = 5
+	description.RichText = true
+	description.Name = 'description';
+	description.TextXAlignment = Enum.TextXAlignment.Left;
+	description.BackgroundTransparency = 1;
+	description.TextTruncate = Enum.TextTruncate.SplitWord;
+	description.Position = UDim2.new(0, 180, 0, 16);
+	description.TextYAlignment = Enum.TextYAlignment.Top;
+	description.TextSize = 14;
+	description.Size = UDim2.new(1, -200, 0.222, 20);
+
+
+	local downloads: Frame = Instance.new('Frame', popup);
+	downloads.Name = 'downloads';
+	downloads.ZIndex = 5
+	downloads.Position = UDim2.new(0.269172937, 0, 0.323, 0);
+	downloads.BorderColor3 = Color3.fromRGB(0, 0, 0);
+	downloads.Size = UDim2.new(0, 150, 0, 70);
+	downloads.BorderSizePixel = 0;
+	downloads.BackgroundColor3 = Color3.fromRGB(42, 40, 42);
+
+	addCorner(downloads)
+
+	local userd: TextLabel = Instance.new('TextLabel', downloads);
+	userd.FontFace = Font.new('rbxasset://fonts/families/Arial.json', Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+	userd.TextColor3 = Color3.fromRGB(220, 220, 220);
+	userd.TextTransparency = 0.5;
+	userd.Text = 'Last updated';
+	userd.ZIndex = 5
+	userd.AnchorPoint = Vector2.new(0.5, 0);
+	userd.BackgroundTransparency = 1;
+	userd.Position = UDim2.new(0.5, 0, 0, 38);
+	userd.Name = 'user';
+	userd.TextSize = 11;
+	userd.Size = UDim2.new(0, 100, 0, 20);
+
+
+	local amount: TextLabel = Instance.new('TextLabel', downloads);
+	amount.FontFace = Font.new('rbxasset://fonts/families/Arial.json', Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+	amount.TextColor3 = Color3.fromRGB(220, 220, 220);
+	amount.Text = 'unknown';
+	amount.AnchorPoint = Vector2.new(0.5, 0);
+	amount.BackgroundTransparency = 1;
+	amount.ZIndex = 5
+	amount.Position = UDim2.new(0.5, 0, 0, 12);
+	amount.Name = 'amount';
+	amount.TextSize = 17;
+	amount.Size = UDim2.new(0, 100, 0, 20);
+
+
+	local divide1: Frame = Instance.new('Frame', popup);
+	divide1.Name = 'divide1';
+	divide1.ZIndex = 5
+	divide1.BackgroundTransparency = 0.95;
+	divide1.Position = UDim2.new(0, 165, 0, 0);
+	divide1.Size = UDim2.new(0, 1, 1, 0);
+	divide1.BorderSizePixel = 0;
+	divide1.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+
+
+	local divide2: Frame = Instance.new('Frame', popup);
+	divide2.Name = 'divide2';
+	divide2.ZIndex = 5
+	divide2.BackgroundTransparency = 0.95;
+	divide2.Position = UDim2.new(0, 180, 0, 290);
+	divide2.Size = UDim2.new(0.729172945, 0, 0, 1);
+	divide2.BorderSizePixel = 0;
+	divide2.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+
+
+	local TextButton: TextButton = Instance.new('TextButton', popup);
+	TextButton.FontFace = Font.new('rbxasset://fonts/families/Arial.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+	TextButton.TextColor3 = Color3.fromRGB(255, 255, 255);
+	TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0);
+	TextButton.Text = 'Download';
+	TextButton.ZIndex = 5
+	TextButton.Position = UDim2.new(0, 228, 0, 305);
+	TextButton.Size = UDim2.new(0, 426, 0, 30);
+	TextButton.BorderSizePixel = 0;
+	TextButton.TextSize = 12;
+	TextButton.BackgroundColor3 = Color3.fromRGB(5, 133, 102);
+	table.insert(configapi.Backgrounds, TextButton)
+
+	addCorner(TextButton)
+
+	local ImageButton: ImageButton = Instance.new('ImageButton', popup);
+	ImageButton.Image = '';
+	ImageButton.ZIndex = 5
+	ImageButton.Size = UDim2.new(0, 30, 0, 30);
+	ImageButton.Position = UDim2.new(0, 180, 0, 305);
+	ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0);
+	ImageButton.BorderSizePixel = 0;
+	ImageButton.BackgroundColor3 = Color3.fromRGB(42, 40, 42);
+
+	addCorner(ImageButton)
+
+	local ImageLabel: ImageButton = Instance.new('ImageButton', ImageButton);
+	ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0);
+	ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5);
+	ImageLabel.ZIndex = 5
+	ImageLabel.Image = '';
+	ImageLabel.BackgroundTransparency = 1;
+	ImageLabel.Position = UDim2.new(0.5, 0, 0.5, 0);
+	ImageLabel.Size = UDim2.new(0.550000012, 0, 0.55, 0);
+	ImageLabel.BorderSizePixel = 0;
+	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+
+	--[[
+		Search
+	]]
+
+	local psearchbar = Instance.new("Frame")
+	psearchbar.Name = "Search"
+	psearchbar.Parent = window
+	psearchbar.BackgroundColor3 = Color3.fromRGB(26, 25, 26)
+	psearchbar.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	psearchbar.BorderSizePixel = 0
+	psearchbar.Position = UDim2.new(0.282000005, 0, 0.153999999, 0)
+	psearchbar.Size = UDim2.new(0, 485, 0, 35)
+
+	local uistroke = Instance.new('UIStroke', psearchbar)
+	uistroke.Color = Color3.fromRGB(42, 41, 42)
+
+	addCorner(psearchbar)
+
+	local searchicon = Instance.new("ImageLabel")
+	searchicon.Parent = psearchbar
+	searchicon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	searchicon.BackgroundTransparency = 1.000
+	searchicon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	searchicon.BorderSizePixel = 0
+	searchicon.Position = UDim2.new(0.0189999994, 0, 0.300000012, 0)
+	searchicon.Size = UDim2.new(0, 13, 0, 13)
+	searchicon.Image = getcustomasset('tumbavape/assets/new/search.png')
+	searchicon.ImageTransparency = 0.700
+
+	local searchbox = Instance.new("TextBox")
+	searchbox.Parent = psearchbar
+	searchbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	searchbox.BackgroundTransparency = 1.000
+	searchbox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	searchbox.BorderSizePixel = 0
+	searchbox.Position = UDim2.new(0.0787525922, 0, 0, 2)
+	searchbox.Size = UDim2.new(0.509247422, 200, 0.899999976, 0)
+	searchbox.Font = Enum.Font.Arial
+	searchbox.PlaceholderColor3 = Color3.fromRGB(94, 94, 94)
+	searchbox.PlaceholderText = "Search Profile / Username"
+	searchbox.Text = ""
+	searchbox.TextColor3 = Color3.fromRGB(171, 171, 171)
+	searchbox.TextSize = 12.000
+	searchbox.TextXAlignment = Enum.TextXAlignment.Left
+
+	searchbox:GetPropertyChangedSignal('Text'):Connect(function()
+		for i, v in configapi do
+			if v and typeof(v) == 'table' and v.instance then
+				v.instance.Visible = false
+
+				if i:lower():gsub(' ', ''):find(searchbox.Text:lower():gsub(' ', '')) or searchbox.Text == '' then
+					v.instance.Visible = true
+				end
+			end
+		end
+	end)
+
+	--[[
+		confirmation
+	]]
+
+	local uploadconfirmationn: Frame = Instance.new('Frame', window);
+	uploadconfirmationn.AnchorPoint = Vector2.new(0.5, 0.5);
+	uploadconfirmationn.Name = 'uploadconfirmationn';
+	uploadconfirmationn.ZIndex = 8
+	uploadconfirmationn.Position = UDim2.new(0.5, 0, 0.5, 0);
+	uploadconfirmationn.BorderColor3 = Color3.fromRGB(0, 0, 0);
+	uploadconfirmationn.Size = UDim2.new(0, 300, 0, 150);
+	uploadconfirmationn.BorderSizePixel = 0;
+	uploadconfirmationn.BackgroundColor3 = Color3.fromRGB(34, 33, 34);
+
+	local ahhcorner: UICorner = Instance.new('UICorner', uploadconfirmationn);
+	ahhcorner.Name = 'ahhcorner';
+	ahhcorner.CornerRadius = UDim.new(0, 5);
+
+	local publishb: TextButton = Instance.new('TextButton', uploadconfirmationn);
+	publishb.TextWrapped = true;
+	publishb.TextColor3 = Color3.fromRGB(255, 255, 255);
+	publishb.ZIndex = 8
+	publishb.BorderColor3 = Color3.fromRGB(0, 0, 0);
+	publishb.Text = 'Publish "default" config';
+	publishb.Size = UDim2.new(0, 100, 0, 35);
+	publishb.Name = 'publishb';
+	publishb.Position = UDim2.new(0, 20, 0, 95);
+	publishb.BorderSizePixel = 0;
+	publishb.FontFace = Font.new('rbxasset://fonts/families/Arial.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+	publishb.TextSize = 12;
+	publishb.BackgroundColor3 = Color3.fromRGB(29, 28, 29);
+
+	local publishbs: UIStroke = Instance.new('UIStroke', publishb);
+	publishbs.Thickness = 2;
+	publishbs.Name = 'publishbs';
+	publishbs.ZIndex = 8
+	publishbs.Color = Color3.fromRGB(42, 41, 42);
+	publishbs.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
+
+	local publishbc: UICorner = Instance.new('UICorner', publishb);
+	publishbc.Name = 'publishbc';
+	publishbc.CornerRadius = UDim.new(0, 5);
+
+	local ahhstrokr: UIStroke = Instance.new('UIStroke', uploadconfirmationn);
+	ahhstrokr.Color = Color3.fromRGB(42, 41, 42);
+	ahhstrokr.Name = 'ahhstrokr';
+	ahhstrokr.Thickness = 2;
+
+	local configcancel: TextButton = Instance.new('TextButton', uploadconfirmationn);
+	configcancel.FontFace = Font.new('rbxasset://fonts/families/Arial.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+	configcancel.TextColor3 = Color3.fromRGB(255, 255, 255);
+	configcancel.BorderColor3 = Color3.fromRGB(0, 0, 0);
+	configcancel.Text = 'Cancel';
+	configcancel.Name = 'configcancel';
+	configcancel.Position = UDim2.new(0, 170, 0, 95);
+	configcancel.ZIndex = 8
+	configcancel.Size = UDim2.new(0, 100, 0, 35);
+	configcancel.BorderSizePixel = 0;
+	configcancel.TextSize = 14;
+	configcancel.BackgroundColor3 = Color3.fromRGB(29, 28, 29);
+
+	local UIStroke: UIStroke = Instance.new('UIStroke', configcancel);
+	UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
+	UIStroke.Thickness = 2;
+	UIStroke.Color = Color3.fromRGB(42, 41, 42);
+
+	local UICorner: UICorner = Instance.new('UICorner', configcancel);
+	UICorner.CornerRadius = UDim.new(0, 5);
+
+	local confignbox: TextBox = Instance.new('TextBox', uploadconfirmationn);
+	confignbox.CursorPosition = -1;
+	confignbox.ZIndex = 8
+	confignbox.Name = 'confignbox';
+	confignbox.TextColor3 = Color3.fromRGB(255, 255, 255);
+	confignbox.BorderColor3 = Color3.fromRGB(0, 0, 0);
+	confignbox.Text = '';
+	confignbox.Size = UDim2.new(0, 200, 0, 30);
+	confignbox.TextWrapped = true;
+	confignbox.AnchorPoint = Vector2.new(0.5, 0);
+	confignbox.BorderSizePixel = 0;
+	confignbox.BackgroundTransparency = 1;
+	confignbox.Position = UDim2.new(0.5, -5, 0, 20);
+	confignbox.FontFace = Font.new('rbxasset://fonts/families/Arial.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+	confignbox.PlaceholderText = 'Config name';
+	confignbox.TextSize = 14;
+	confignbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+
+	local configdbox: TextBox = Instance.new('TextBox', uploadconfirmationn);
+	configdbox.CursorPosition = -1;
+	configdbox.Name = 'configdbox';
+	configdbox.ZIndex = 8
+	configdbox.TextColor3 = Color3.fromRGB(255, 255, 255);
+	configdbox.BorderColor3 = Color3.fromRGB(0, 0, 0);
+	configdbox.Text = '';
+	configdbox.Size = UDim2.new(0, 200, 0, 30);
+	configdbox.TextWrapped = true;
+	configdbox.AnchorPoint = Vector2.new(0.5, 0);
+	configdbox.BorderSizePixel = 0;
+	configdbox.BackgroundTransparency = 1;
+	configdbox.Position = UDim2.new(0.5, -5, 0, 50);
+	configdbox.FontFace = Font.new('rbxasset://fonts/families/Arial.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+	configdbox.PlaceholderText = 'Config description';
+	configdbox.TextSize = 14;
+	configdbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+
+	--[[
+		select config
+	]]
+
+	local configdatas: Frame = Instance.new('Frame', profilemaker);
+	configdatas.Name = 'configdatas';
+	configdatas.Position = UDim2.new(0.095808387, 0, 0.8, 0);
+	configdatas.BorderColor3 = Color3.fromRGB(0, 0, 0);
+	configdatas.Size = UDim2.new(0, 151, 0, 248);
+	configdatas.BorderSizePixel = 0;
+	configdatas.BackgroundColor3 = Color3.fromRGB(5, 133, 102);
+	table.insert(configapi.Backgrounds, configdatas)
+
+	addCorner(configdatas)
+
+	local configstorage: ScrollingFrame = Instance.new('ScrollingFrame', configdatas);
+	configstorage.ScrollBarImageColor3 = Color3.fromRGB(200, 200, 200);
+	configstorage.Active = true;
+	configstorage.BorderColor3 = Color3.fromRGB(0, 0, 0);
+	configstorage.ScrollBarThickness = 2;
+	configstorage.Name = 'configstorage';
+	configstorage.BackgroundTransparency = 1;
+	configstorage.Position = UDim2.new(0, 0, 0.072, 0);
+	configstorage.Size = UDim2.new(0, 151, 0, 230);
+	configstorage.ClipsDescendants = false;
+	configstorage.BorderSizePixel = 0;
+	configstorage.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+
+
+	local cfglayotu: UIListLayout = Instance.new('UIListLayout', configstorage);
+	cfglayotu.SortOrder = Enum.SortOrder.LayoutOrder;
+	cfglayotu.HorizontalAlignment = Enum.HorizontalAlignment.Center;
+	cfglayotu.Padding = UDim.new(0, 10);
+
+	local SelectedConfig = 'default'
+
+	addCorner(configstorage)
+
+	--[[
+		children
+	]]
+
+	local children = Instance.new("ScrollingFrame")
+	children.Parent = window
+	children.BackgroundTransparency = 1.000
+	children.BorderSizePixel = 0
+	children.Position = UDim2.new(0.282000035, 0, 0, 153)
+	children.Size = UDim2.new(0, 500, 0, 236)
+	children.CanvasSize = UDim2.new(0, 0, 0, 471)
+	children.ScrollBarThickness = 2
+
+	local function Refresh(newconfigs)
+		for i,v in configstorage:GetChildren() do
+			if v.ClassName ~= 'UIListLayout' then
+				v:Destroy()
+			end
+		end
+
+		for i,v in children:GetChildren() do
+			if v:IsA('TextButton') then
+				v:Destroy()
+			end
+		end
+
+		local awesome = {}
+
+		for i, v in mainapi.Profiles do
+			local configlabel: TextLabel = Instance.new('TextButton', configstorage);
+			configlabel.FontFace = Font.new('rbxasset://fonts/families/Arial.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+			configlabel.TextColor3 = Color3.fromRGB(255, 255, 255);
+			configlabel.BorderColor3 = Color3.fromRGB(0, 0, 0);
+			configlabel.Text = v.Name;
+			configlabel.BackgroundTransparency = 1;
+			configlabel.Name = v.Name;
+			configlabel.Size = UDim2.new(0.899999976, 0, 0, 20);
+			configlabel.BorderSizePixel = 0;
+			configlabel.TextSize = 13;
+			configlabel.BackgroundColor3 = Color3.fromRGB(22, 21, 22);
+
+			local labellayout: UIStroke = Instance.new('UIStroke', configlabel);
+			labellayout.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
+			labellayout.Name = 'labellayout';
+			labellayout.Enabled = v.Name == SelectedConfig
+			labellayout.Color = Color3.fromRGB(255, 255, 255);
+
+			table.insert(awesome, configlabel)
+
+			configlabel.MouseButton1Click:Connect(function()
+				for i2, v2 in awesome do
+					v2.labellayout.Enabled = v2.Name == v.Name
+					publishb.Text = `Publish "{v.Name}" config`
+					SelectedConfig = v.Name
+				end
+			end)
+		end
+	end
+
+	local gridlayout = Instance.new("UIGridLayout")
+	gridlayout.Parent = children
+	gridlayout.SortOrder = Enum.SortOrder.LayoutOrder
+	gridlayout.CellPadding = UDim2.new(0, 9, 0, 5)
+	gridlayout.CellSize = UDim2.new(0, 157, 0, 140)
+	gridlayout.FillDirectionMaxCells = 4
+
+	local function addConfig(name, author, cfginfo)
+		configapi[name] = table.clone(cfginfo)
+
+		local config = Instance.new('TextButton')
+		config.Parent = children
+		config.BackgroundColor3 = color.Light(uipallet.Main, 0.034)
+		config.LayoutOrder = #children:GetChildren() + 1
+		config.ClipsDescendants = false
+		config.Position = UDim2.new(0.0120000001, 0, 0, 0)
+		config.AutoButtonColor = false
+		config.Text = ''
+
+		configapi[name].instance = config
+
+		local uistroke = Instance.new('UIStroke', config)
+		uistroke.Transparency = 1
+		uistroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+		uistroke.Color = color.Light(uipallet.Main, 0.034)
+		uistroke.Thickness = 2
+
+		addCorner(config)
+
+		local label = Instance.new('TextLabel')
+		label.Parent = config
+		label.BackgroundTransparency = 1
+		label.Position = UDim2.new(0, 16, 0, 20)
+		label.Size = UDim2.new(0.753427446, -16, 0.423529416, 20)
+		label.Font = Enum.Font.Arial
+		label.RichText = true
+		label.Text = `{name}\n\n\n<font tr=\"0.7\">@{author}</font>`
+		label.TextColor3 = Color3.new(1, 1, 1)
+		label.TextSize = 13.000
+		label.TextTransparency = 0.300
+		label.TextWrapped = true
+		label.TextXAlignment = Enum.TextXAlignment.Left
+		label.TextYAlignment = Enum.TextYAlignment.Top
+
+		config.MouseButton1Click:Connect(function()
+			local time = (cfginfo.uploaded_at - os.time()) 
+
+			if time < 1 then
+				time = 'Today'
+			else
+				time = math.floor(time)
+			end
+
+			popup.Visible = true
+			amount.Text = `{time ~= 'Today' and time.. ' days' or time}`
+			description.Text = `Details\n\n<font tr=\"0.5\">{cfginfo.description or 'No context'}</font>`
+			info.Text = name
+			user.Text = `By {author}`
+		end)
+
+		config.MouseEnter:Connect(function()
+			tween:Tween(config, uipallet.Tween, {
+				BackgroundColor3 = color.Light(uipallet.Main, 0.0875)
+			})
+
+			tweenService:Create(uistroke, uipallet.Tween, {
+				Transparency = 0
+			}):Play()
+		end)
+
+		config.MouseLeave:Connect(function()
+			tween:Tween(config, uipallet.Tween, {
+				BackgroundColor3 = color.Light(uipallet.Main, 0.034)
+			})
+
+			tweenService:Create(uistroke, uipallet.Tween, {
+				Transparency = 1
+			}):Play()
+		end)
+	end
+
+	local function addSorting(name, func, options)
+		local size = options.Size
+		local enabled = options.On
+
+		local newsort = Instance.new('TextButton')
+		newsort.Name = name
+		newsort.Parent = sortframe
+		newsort.BackgroundColor3 = Color3.fromRGB(5, 133, 102)
+		newsort.BackgroundTransparency = enabled and 0 or 1
+		newsort.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		newsort.BorderSizePixel = 0
+		newsort.TextTransparency = 1
+		newsort.Size = size
+		table.insert(configapi.Backgrounds, newsort)
+
+		local label = Instance.new('TextLabel')
+		label.Parent = newsort
+		label.Name = 'label'
+		label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		label.BackgroundTransparency = 1.000
+		label.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		label.BorderSizePixel = 0
+		label.Size = UDim2.new(1, 0, 1, 0)
+		label.Font = Enum.Font.ArialBold
+		label.TextTransparency = enabled and 0 or 0.85
+		label.Text = name:upper()
+		label.TextColor3 = Color3.fromRGB(255, 255, 255)
+		label.TextSize = 10.000
+
+		addCorner(newsort, UDim.new(1, 0))
+
+		local api = {
+			SetVisible = function(call)
+				for _, v in configapi.Sorts do
+					v.Window.BackgroundTransparency = 1
+					v.Window.label.TextTransparency = 0.85
+				end
+
+				newsort.BackgroundTransparency = call and 0 or 1
+				label.TextTransparency = call and 0 or 0.85
+			end,
+			ShowPopup = function() end,
+			Window = newsort
+		}
+
+		newsort.MouseButton1Click:Connect(function()
+			api:SetVisible(true)
+			sortfunc = name:lower()
+			local configs = configapi.Configs
+			table.sort(configs, sortfuncs[sortfunc])
+
+			Refresh()
+
+			for _, v in configs do
+				print(v.metadata.username)
+				addConfig(v.metadata.config_name, v.metadata.discord_username, v.metadata)
+			end
+		end)
+
+		table.insert(configapi.Sorts, api)
+
+		return api
+	end
+
+	addSorting('newest', nil, {
+		Size = UDim2.new(0, 70, 1, 0),
+		On = true
+	})
+
+	addSorting('oldest', nil, {
+		Size = UDim2.new(0, 70, 1, 0),
+		On = false
+	})
+
+	TextButton.MouseButton1Click:Connect(function()
+		local lol = configapi[info.Text]
+		if lol then
+			local awesome = `{lol.config_name} (@{lol.discord_username})`
+			local file = lol.content
+			table.insert(mainapi.Profiles, {Name = awesome, Bind = {}})
+			mainapi:Save(awesome)
+			writefile('tumbavape/profiles/'..awesome..mainapi.Place..'.txt', file)
+			mainapi:Load(true, awesome)
+			mainapi:CreateNotification('Tumba Vape', `Downloaded "{info.Text}" by {lol.discord_username}`, 5, 'info')
+		else
+			mainapi:CreateNotification('Tumba Vape', `Failed to fetch config ({info.Text})`, 10, 'warning')
+		end
+	end)
+
+	publishb.MouseButton1Click:Connect(function()
+		configapi.ShowPopup(false)
+		local omgreal = SelectedConfig
+		SelectedConfig = 'default'
+
+		if confignbox.Text == '' then
+			mainapi:CreateNotification('Tumba Vape', 'No config name provided', 5, 'info')
+			return
+		end
+
+		mainapi:CreateNotification('Tumba Vape', `Publishing`, 5, 'info')
+
+		local success, res = pcall(function()
+			return httpService:JSONDecode(httpService:JSONDecode(request({
+				Url = 'https://api.tumbavape.dev/configs/set',
 				Method = 'POST',
 				Headers = {
 					['Content-Type'] = 'application/json'
 				},
 				Body = httpService:JSONEncode({
-					content = '',
-					embeds = {{
-						title = title or "Vape",
-						description = removeTags(text or "None"),
-						color = tonumber(color:ToHex(), 16),
-						timestamp = os.date('%Y-%m-%dT%X.000Z'),
-						fields = {}
-					}},
-					components = {}
+					key = shared.tumbadata.Key or 'niggerkey',
+					config_name = confignbox.Text,
+					config = readfile('tumbavape/profiles/'..self.Profile..self.Place..'.txt'),
+					description = configdbox.Text
 				})
-			})
+			}).Body).response)
+		end)
+
+		if success and res then
+			mainapi:CreateNotification('Tumba Vape', `Published "{omgreal}" config`, 15, 'info')
+			task.wait(1)
+			mainapi:CreateNotification('Tumba Vape', 'Refreshing configs in 2s', 2, 'info')
+			task.wait(2)
+			local suc, configs = pcall(function()
+				return httpService:JSONDecode(httpService:JSONDecode(request({
+					Url = 'https://api.tumbavape.dev/configs/get',
+					Method = 'POST'
+				}).Body).response).configs
+			end)
+
+			if not suc then
+				configs = {}
+			end
+
+			table.sort(configs, sortfuncs[sortfunc])
+
+			Refresh()
+
+			for _, v in configs do
+				addConfig(v.metadata.config_name, v.metadata.discord_username, v.metadata)
+			end
+		else
+			mainapi:CreateNotification('Tumba Vape', `Failed to publish config`, 15, 'info')
 		end
-		return
+	end)
+
+	ImageLabel.MouseButton1Click:Connect(function()
+		mainapi:CreateNotification('Tumba Vape', `Deleting "{info.Text}" config`, 10, 'info')
+
+		local lol = configapi[info.Text]
+
+		if lol then
+			local res = httpService:JSONDecode(httpService:JSONDecode(request({
+				Url = 'https://api.tumbavape.dev/configs/delete',
+				Method = 'POST',
+				Headers = {
+					['Content-Type'] = 'application/json'
+				},
+				Body = httpService:JSONEncode({
+					key = shared.tumbadata.Key,
+					config_name = info.Text
+				})
+			}).Body).response)
+
+			if res.success then
+				mainapi:CreateNotification('Tumba Vape', `Deleted ({info.Text}) config from public profiles`, 10, 'info')
+			else
+				mainapi:CreateNotification('Tumba Vape', `Failed to delete config ({info.Text})`, 10, 'warning')
+			end
+		else
+			mainapi:CreateNotification('Tumba Vape', `Failed to fetch config ({info.Text})`, 10, 'warning')
+		end
+	end)
+
+	configcancel.MouseButton1Click:Connect(function()
+		configapi.ShowPopup(false)
+	end)
+
+	configapi.ShowPopup = function(call)
+		uploadconfirmationn.Visible = call
+		configdatas.Visible = call
 	end
+
+	configapi.ShowPopup(false)
+
+	profilemaker.MouseButton1Click:Connect(function()
+		local suc, configs = pcall(function()
+			return httpService:JSONDecode(httpService:JSONDecode(request({
+				Url = 'https://api.tumbavape.dev/configs/get',
+				Method = 'POST'
+			}).Body).response).configs
+		end)
+
+		if not suc then
+			configs = {}
+		end
+
+		table.sort(configs, sortfuncs[sortfunc])
+
+		Refresh()
+
+		for _, v in configs do
+			addConfig(v.metadata.config_name, v.metadata.discord_username, v.metadata)
+		end
+		configapi.ShowPopup(true)
+	end)
+
+	local fr = false
+	window:GetPropertyChangedSignal('Visible'):Connect(function()
+		self:UpdateGUI(self.GUIColor.Hue, self.GUIColor.Sat, self.GUIColor.Value)
+		if window.Visible and not fr then
+			fr = true
+			for i = 1, 4 do
+				Refresh()
+
+				local suc, res = pcall(function()
+					return httpService:JSONDecode(httpService:JSONDecode(request({
+						Url = 'https://api.tumbavape.dev/configs/get',
+						Method = 'POST'
+					}).Body).response).configs
+				end)
+
+				if suc and res then
+					configapi.Configs = res
+					for _, v in res do
+						task.spawn(addConfig, v.metadata.config_name, v.metadata.discord_username, v.metadata)
+					end
+					break
+				else
+					task.wait(1)
+				end
+			end
+			fr = false
+		end
+		--visibleCheck()
+	end)
+	gridlayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(function()
+		if self.ThreadFix then
+			setthreadidentity(8)
+		end
+		children.CanvasSize = UDim2.fromOffset(0, gridlayout.AbsoluteContentSize.Y / scale.Scale)
+	end)
+
+	self.PublicConfigs = configapi
+
+	return configapi
+end
+
+function mainapi:CreateNotification(title, text, duration, type)
+	if not self.Notifications.Enabled or getgenv().closet then return end
 	task.delay(0, function()
 		if self.ThreadFix then
 			setthreadidentity(8)
@@ -5551,7 +7551,9 @@ function mainapi:CreateNotification(title, text, duration, type)
 		progress.Position = UDim2.new(0, 3, 1, -4)
 		progress.ZIndex = 5
 		progress.BackgroundColor3 =
-			color
+			type == 'alert' and Color3.fromRGB(250, 50, 56)
+			or type == 'warning' and Color3.fromRGB(236, 129, 43)
+			or Color3.fromRGB(220, 220, 220)
 		progress.BorderSizePixel = 0
 		progress.Parent = notification
 		if tween.Tween then
@@ -5576,7 +7578,7 @@ function mainapi:CreateNotification(title, text, duration, type)
 end
 
 local guipane
-function mainapi:Load(skipgui, profile)
+function mainapi:Load(skipgui, profile, profiledata)
 	if not skipgui then
 		self.GUIColor:SetValue(nil, nil, nil, 4)
 	end
@@ -5587,8 +7589,7 @@ function mainapi:Load(skipgui, profile)
 		guidata = loadJson('tumbavape/profiles/'..game.GameId..'.gui.txt')
 		if not guidata then
 			guidata = {Categories = {}}
-			self:CreateNotification('Vape', 'Failed to load GUI settings, Try rejoining ur game', 10, 'alert')
-			delfile('tumbavape/profiles/'..game.GameId..'.gui.txt')
+			self:CreateNotification('Tumba Vape', 'Failed to load GUI settings.', 10, 'alert')
 			savecheck = false
 		end
 
@@ -5632,63 +7633,69 @@ function mainapi:Load(skipgui, profile)
 	end
 
 	if isfile('tumbavape/profiles/'..self.Profile..self.Place..'.txt') then
-		local savedata = loadJson('tumbavape/profiles/'..self.Profile..self.Place..'.txt')
+		local savedata = profiledata or loadJson('tumbavape/profiles/'..self.Profile..self.Place..'.txt')
 		if not savedata then
 			savedata = {Categories = {}, Modules = {}, Legit = {}}
-			self:CreateNotification('Vape', 'Failed to load '..self.Profile..' profile.', 10, 'alert')
+			self:CreateNotification('Tumba Vape', 'Failed to load '..self.Profile..' profile.', 10, 'alert')
 			savecheck = false
 		end
 
-		for i, v in savedata.Categories do
-			local object = self.Categories[i]
-			if not object then continue end
-			if object.Options and v.Options then
-				self:LoadOptions(object, v.Options)
-			end
-			if v.Pinned ~= object.Pinned then
-				object:Pin()
-			end
-			if v.Expanded ~= nil and v.Expanded ~= object.Expanded then
-				object:Expand()
-			end
-			if object.Button and (v.Enabled or false) ~= object.Button.Enabled then
-				object.Button:Toggle()
-			end
-			if v.List and (#object.List > 0 or #v.List > 0) then
-				object.List = v.List or {}
-				object.ListEnabled = v.ListEnabled or {}
-				object:ChangeValue()
-			end
-			object.Object.Position = UDim2.fromOffset(v.Position.X, v.Position.Y)
-		end
-
-		for i, v in savedata.Modules do
-			local object = self.Modules[i]
-			if not object then continue end
-			if object.Options and v.Options then
-				self:LoadOptions(object, v.Options)
-			end
-			if v.Enabled ~= object.Enabled then
-				if skipgui then
-					if self.ToggleNotifications.Enabled then self:CreateNotification('Module Toggled', i.."<font color='#FFFFFF'> has been </font>"..(v.Enabled and "<font color='#5AFF5A'>Enabled</font>" or "<font color='#FF5A5A'>Disabled</font>").."<font color='#FFFFFF'>!</font>", 0.75) end
+		if savedata.Categories then
+			for i, v in savedata.Categories do
+				local object = self.Categories[i]
+				if not object then continue end
+				if object.Options and v.Options then
+					self:LoadOptions(object, v.Options)
 				end
-				object:Toggle(true)
+				if v.Pinned ~= object.Pinned then
+					object:Pin()
+				end
+				if v.Expanded ~= nil and v.Expanded ~= object.Expanded then
+					object:Expand()
+				end
+				if object.Button and (v.Enabled or false) ~= object.Button.Enabled then
+					object.Button:Toggle()
+				end
+				if v.List and (#object.List > 0 or #v.List > 0) then
+					object.List = v.List or {}
+					object.ListEnabled = v.ListEnabled or {}
+					object:ChangeValue()
+				end
+				object.Object.Position = UDim2.fromOffset(v.Position.X, v.Position.Y)
 			end
-			object:SetBind(v.Bind)
-			object.Object.Bind.Visible = #v.Bind > 0
 		end
 
-		for i, v in savedata.Legit do
-			local object = self.Legit.Modules[i]
-			if not object then continue end
-			if object.Options and v.Options then
-				self:LoadOptions(object, v.Options)
+		if savedata.Modules then
+			for i, v in savedata.Modules do
+				local object = self.Modules[i]
+				if not object then continue end
+				if object.Options and v.Options then
+					self:LoadOptions(object, v.Options)
+				end
+				if v.Enabled ~= object.Enabled then
+					if skipgui then
+						if self.ToggleNotifications.Enabled then self:CreateNotification('Module Toggled', i.."<font color='#FFFFFF'> has been </font>"..(v.Enabled and "<font color='#5AFF5A'>Enabled</font>" or "<font color='#FF5A5A'>Disabled</font>").."<font color='#FFFFFF'>!</font>", 0.75) end
+					end
+					object:Toggle(true)
+				end
+				object:SetBind(v.Bind)
+				object.Object.Bind.Visible = #v.Bind > 0
 			end
-			if object.Enabled ~= v.Enabled then
-				object:Toggle()
-			end
-			if v.Position and object.Children then
-				object.Children.Position = UDim2.fromOffset(v.Position.X, v.Position.Y)
+		end
+
+		if savedata.Legit then
+			for i, v in savedata.Legit do
+				local object = self.Legit.Modules[i]
+				if not object then continue end
+				if object.Options and v.Options then
+					self:LoadOptions(object, v.Options)
+				end
+				if object.Enabled ~= v.Enabled then
+					object:Toggle()
+				end
+				if v.Position and object.Children then
+					object.Children.Position = UDim2.fromOffset(v.Position.X, v.Position.Y)
+				end
 			end
 		end
 
@@ -5704,31 +7711,33 @@ function mainapi:Load(skipgui, profile)
 	self.Loaded = savecheck
 	self.Categories.Main.Options.Bind:SetBind(self.Keybind)
 
-	if not inputService.KeyboardEnabled or shared.VapeDeveloper then
+	if shared.Tumba VapeDeveloper or (inputService.TouchEnabled or not inputService.KeyboardEnabled) and #self.Keybind == 1 and self.Keybind[1] == 'RightShift' then
+		local app = lplr.PlayerGui:FindFirstChild('TopBarAppGui')
 		local hide = isfile('tumbavape/profiles/hide.txt') and readfile('tumbavape/profiles/hide.txt') or nil
 		if hide ~= nil then
 			hide = hide == 'true' and true or false
 		end
 		local button = Instance.new('TextButton')
-		button.LayoutOrder = -1
 		button.Size = UDim2.fromOffset(32, 32)
-		button.Position = UDim2.new(1, -90, 0, 4)
+		button.LayoutOrder = -1
+		button.Parent = app and app:FindFirstChild('TopBarApp') or gui
+		button.Position = UDim2.new(1, -45, 0, 4)
 		button.BackgroundColor3 = Color3.new()
 		button.BackgroundTransparency = hide and 1 or 0.35
 		button.Text = ''
-		button.Parent = game.GameId == 2619619496 and cloneref(game:GetService('Players')).LocalPlayer.PlayerGui.TopBarAppGui.TopBarApp or gui
+		if button.Parent ~= gui then
+			self:Clean(function() button:Destroy(); end)
+		end
 		local image = Instance.new('ImageLabel')
-		image.AnchorPoint = Vector2.new(0.5, 0.5)
-		image.Size = UDim2.fromOffset(22, 22)
-		image.Position = UDim2.fromScale(0.5, 0.5)
+		image.Size = UDim2.fromOffset(26, 26)
+		image.Position = UDim2.fromOffset(3, 3)
 		image.BackgroundTransparency = 1
-		image.Image = getcustomasset('tumbavape/assets/new/vape.png')
 		image.ImageTransparency = hide and 1 or 0
+		image.Image = getcustomasset('tumbavape/assets/new/mascot.png')
 		image.Parent = button
 		local buttoncorner = Instance.new('UICorner')
 		buttoncorner.Parent = button
-		self.VapeButton = button
-		mainapi:Clean(button)
+		self.Tumba VapeButton = button
 		button.MouseButton1Click:Connect(function()
 			if self.ThreadFix then
 				setthreadidentity(8)
@@ -5877,9 +7886,9 @@ function mainapi:Uninject()
 	mainapi.gui:Destroy()
 	table.clear(mainapi.Libraries)
 	loopClean(mainapi)
-	shared.vape = nil
-	shared.vapereload = nil
-	shared.VapeIndependent = nil
+	shared.tumbahub = nil
+	shared.tumbahubreload = nil
+	shared.Tumba VapeIndependent = nil
 end
 
 gui = Instance.new('ScreenGui')
@@ -5887,11 +7896,10 @@ gui.Name = randomString()
 gui.DisplayOrder = 9999999
 gui.ZIndexBehavior = Enum.ZIndexBehavior.Global
 gui.IgnoreGuiInset = true
-gui.OnTopOfCoreBlur = true
 if false then
 	gui.Parent = cloneref(game:GetService('CoreGui'))--(gethui and gethui()) or cloneref(game:GetService('CoreGui'))
 else
-	gui.Parent = cloneref(game:GetService('Players')).LocalPlayer.PlayerGui
+	gui.Parent = lplr.PlayerGui
 	gui.ResetOnSpawn = false
 end
 mainapi.gui = gui
@@ -5908,10 +7916,10 @@ clickgui.Visible = false
 clickgui.Parent = scaledgui
 local scarcitybanner = Instance.new('TextLabel')
 scarcitybanner.Size = UDim2.fromScale(1, 0.02)
-scarcitybanner.Position = UDim2.fromScale(0, 0.97)
+scarcitybanner.Position = UDim2.fromScale(0, 0.96)
 scarcitybanner.BackgroundTransparency = 1
-scarcitybanner.Text = 'Thank you for choosing tumbavape! join discord.gg/tumbavape or click the discord button to join.'
-scarcitybanner.TextScaled = true
+scarcitybanner.Text = 'We have a new new new discord server! Join discord.gg/tumbavape.'
+scarcitybanner.TextSize = 22
 scarcitybanner.TextColor3 = Color3.new(1, 1, 1)
 scarcitybanner.TextStrokeTransparency = 0.5
 scarcitybanner.FontFace = uipallet.Font
@@ -5933,7 +7941,7 @@ notifications.Parent = scaledgui
 tooltip = Instance.new('TextLabel')
 tooltip.Name = 'Tooltip'
 tooltip.Position = UDim2.fromScale(-1, -1)
-tooltip.ZIndex = 5
+tooltip.ZIndex = 200
 tooltip.BackgroundColor3 = color.Dark(uipallet.Main, 0.02)
 tooltip.Visible = false
 tooltip.Text = ''
@@ -5958,6 +7966,24 @@ scale.Scale = math.max(gui.AbsoluteSize.X / 1920, 0.6)
 scale.Parent = scaledgui
 mainapi.guiscale = scale
 scaledgui.Size = UDim2.fromScale(1 / scale.Scale, 1 / scale.Scale)
+
+task.spawn(function()
+	local loadingText = Instance.new('TextLabel')
+	loadingText.Size = UDim2.fromScale(1, 0.05)
+	loadingText.Position = UDim2.fromScale(0, 0.7)
+	loadingText.BackgroundTransparency = 1
+	loadingText.Text = 'Script is still loading, Please wait for this to finish first!'
+	loadingText.TextScaled = true
+	loadingText.TextColor3 = Color3.new(1, 1, 1)
+	loadingText.TextStrokeTransparency = 0.5
+	loadingText.FontFace = uipallet.Font
+	loadingText.Parent = clickgui
+
+	repeat
+		task.wait()
+	until mainapi.Loaded
+	loadingText.Text = 'Thank you for choosing Tumba Vape!\nScript is fully loaded'
+end)
 
 mainapi:Clean(gui:GetPropertyChangedSignal('AbsoluteSize'):Connect(function()
 	if mainapi.Scale.Enabled then
@@ -6040,8 +8066,18 @@ if game.GameId == 2619619496 then
 		Icon = getcustomasset('tumbavape/assets/new/friendstab.png'),
 		Size = UDim2.fromOffset(15, 15)
 	})
-end
 
+	mainapi:CreateCategory({
+		Name = 'Legit',
+		Icon = getcustomasset('tumbavape/assets/new/legittab.png'),
+		Size = UDim2.fromOffset(15, 15),
+		Function = function()
+			clickgui.Visible = false
+			mainapi.Legit.Window.Visible = true
+			mainapi.Legit.Window.Position = UDim2.new(0.5, -350, 0.5, -194)
+		end
+	})
+end
 mainapi.Categories.Main:CreateDivider('misc')
 
 --[[
@@ -6106,13 +8142,43 @@ mainapi:Clean(friends.ColorUpdate)
 --[[
 	Profiles
 ]]
-mainapi:CreateCategoryList({
+local Profiles = mainapi:CreateCategoryList({
 	Name = 'Profiles',
 	Icon = getcustomasset('tumbavape/assets/new/profilesicon.png'),
 	Size = UDim2.fromOffset(17, 10),
 	Position = UDim2.fromOffset(12, 16),
 	Placeholder = 'Type name',
 	Profiles = true
+})
+Profiles:CreateButton({
+	Name = 'Sync to "default" profile',
+	Function = function()
+		mainapi:Save('default')
+		local newval = nil
+		for i, v in mainapi.Profiles do
+			if v.Name == mainapi.Profile then
+				newval = v
+				break
+			end
+		end
+		newval.Name = 'default'
+		mainapi:Load(true, 'default', newval)
+	end
+})
+Profiles:CreateButton({
+	Name = 'Reset current profile',
+	Function = function()
+		mainapi.Save = function() end
+		if isfile('tumbavape/profiles/'..mainapi.Profile..mainapi.Place..'.txt') and delfile then
+			delfile('tumbavape/profiles/'..mainapi.Profile..mainapi.Place..'.txt')
+		end
+		shared.tumbahubreload = true
+		if shared.Tumba VapeDeveloper then
+			loadstring(readfile('tumbavape/init.lua'), 'init')(shared.tumbadata)
+		else
+			loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))(shared.tumbadata)
+		end
+	end
 })
 
 --[[
@@ -6132,6 +8198,7 @@ targets.Update = Instance.new('BindableEvent')
 mainapi:Clean(targets.Update)
 
 mainapi:CreateLegit()
+mainapi:CreateProfileGUI()
 mainapi:CreateSearch()
 mainapi.Categories.Main:CreateOverlayBar()
 mainapi.Categories.Main:CreateSettingsDivider()
@@ -6145,40 +8212,45 @@ mainapi.MultiKeybind = general:CreateToggle({
 	Name = 'Enable Multi-Keybinding',
 	Tooltip = 'Allows multiple keys to be bound to a module (eg. G + H)'
 })
+mainapi.AutoTeleport = general:CreateToggle({
+	Name = 'Auto Execute',
+	Default = true,
+	Tooltip = 'Automatically re-executes the script on teleport\n(might not work on some executors)'
+})
 general:CreateButton({
 	Name = 'Reset current profile',
 	Function = function()
-	mainapi.Save = function() end
+		mainapi.Save = function() end
 		if isfile('tumbavape/profiles/'..mainapi.Profile..mainapi.Place..'.txt') and delfile then
 			delfile('tumbavape/profiles/'..mainapi.Profile..mainapi.Place..'.txt')
 		end
-		shared.vapereload = true
-		if shared.VapeDeveloper then
-			loadstring(readfile('tumbavape/loader.lua'), 'loader')()
+		shared.tumbahubreload = true
+		if shared.Tumba VapeDeveloper then
+			loadstring(readfile('tumbavape/init.lua'), 'init')(shared.tumbadata)
 		else
-			loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/loader.lua', true))()
+			loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))(shared.tumbadata)
 		end
 	end,
-	Tooltip = 'This will set your profile to the default settings of Vape'
+	Tooltip = 'This will set your profile to the default settings of Tumba Vape'
 })
 general:CreateButton({
 	Name = 'Self destruct',
 	Function = function()
 		mainapi:Uninject()
 	end,
-	Tooltip = 'Removes vape from the current game'
+	Tooltip = 'Removes tumbahub from the current game'
 })
 general:CreateButton({
 	Name = 'Reinject',
 	Function = function()
-		shared.vapereload = true
-		if shared.VapeDeveloper then
-			loadstring(readfile('tumbavape/loader.lua'), 'loader')()
+		shared.tumbahubreload = true
+		if shared.Tumba VapeDeveloper then
+			loadstring(readfile('tumbavape/init.lua'), 'init')(shared.tumbadata)
 		else
-			loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/loader.lua', true))()
+			loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))(shared.tumbadata)
 		end
 	end,
-	Tooltip = 'Reloads vape for debugging purposes'
+	Tooltip = 'Reloads tumbahub for debugging purposes'
 })
 
 --[[
@@ -6224,15 +8296,6 @@ guipane:CreateToggle({
 	Name = 'GUI bind indicator',
 	Default = true,
 	Tooltip = "Displays a message indicating your GUI upon injecting.\nI.E. 'Press RSHIFT to open GUI'"
-})
-guipane:CreateToggle({
-	Name = 'No module spacing',
-	Tooltip = 'Removes module\'s text spacing',
-	Function = function(callback)
-		for _, v in mainapi.Modules do
-			v.Object.Text = '            '..(callback and v.Name:gsub(' ', '') or v.Name)
-		end
-	end
 })
 guipane:CreateToggle({
 	Name = 'Show tooltips',
@@ -6288,15 +8351,15 @@ guipane:CreateDropdown({
 	Function = function(val, mouse)
 		if mouse then
 			writefile('tumbavape/profiles/gui.txt', val)
-			shared.vapereload = true
-			if shared.VapeDeveloper then
-				loadstring(readfile('tumbavape/loader.lua'), 'loader')()
+			shared.tumbahubreload = true
+			if shared.Tumba VapeDeveloper then
+				loadstring(readfile('tumbavape/init.lua'), 'init')()
 			else
-				loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/loader.lua', true))()
+				loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))()
 			end
 		end
 	end,
-	Tooltip = 'new - The newest vape theme to since v4.05\nold - The vape theme pre v4.05\nrise - Rise 6.0'
+	Tooltip = 'new - The newest tumbahub theme to since v4.05\nold - The tumbahub theme pre v4.05\nrise - Rise 6.0'
 })
 mainapi.RainbowMode = guipane:CreateDropdown({
 	Name = 'Rainbow Mode',
@@ -6340,8 +8403,10 @@ guipane:CreateButton({
 			WorldCategory = 6,
 			InventoryCategory = 7,
 			MinigamesCategory = 8,
-			FriendsCategory = 9,
-			ProfilesCategory = 10
+			KitsCategory = 9,
+			LegitCategory = 10,
+			FriendsCategoryList = 11,
+			ProfilesCategoryList = 12
 		}
 		local categories = {}
 		for _, v in mainapi.Categories do
@@ -6355,8 +8420,9 @@ guipane:CreateButton({
 
 		local ind = 0
 		for _, v in categories do
+			local prio = priority[v.Object.Name]
 			if v.Object.Visible then
-				v.Object.Position = UDim2.fromOffset(6 + (ind % 8 * 230), 60 + (ind > 7 and 360 or 0))
+				v.Object.Position = UDim2.fromOffset((prio and prio > 8 and 235 or 6) + (ind % 8 * 230), 60 + (ind > 7 and 620 or 0))
 				ind += 1
 			end
 		end
@@ -6367,6 +8433,43 @@ guipane:CreateButton({
 --[[
 	Notification Settings
 ]]
+
+local langpane = mainapi.Categories.Main:CreateSettingsPane({Name = 'Language'})
+local languagedrop = langpane:CreateDropdown({
+	Name = 'Language',
+	List = {'English', 'Українська', 'Русский'},
+	Default = shared.TumbaLanguage,
+	Function = function(val)
+		if val ~= shared.TumbaLanguage then
+			writefile('tumbavape/profiles/language.txt', val)
+			shared.TumbaLanguage = val
+			shared.tumbahubreload = true
+			task.spawn(function()
+				task.wait(0.25)
+				if shared.Tumba VapeDeveloper then
+					loadstring(readfile('tumbavape/init.lua'), 'init')(shared.tumbadata)
+				else
+					loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))(shared.tumbadata)
+				end
+			end)
+		end
+	end
+})
+
+langpane:CreateButton({
+	Name = 'Restart Script',
+	Function = function()
+		shared.tumbahubreload = true
+		task.spawn(function()
+			task.wait(0.25)
+			if shared.Tumba VapeDeveloper then
+				loadstring(readfile('tumbavape/init.lua'), 'init')(shared.tumbadata)
+			else
+				loadstring(game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/init.lua', true))(shared.tumbadata)
+			end
+		end)
+	end
+})
 
 local notifpane = mainapi.Categories.Main:CreateSettingsPane({Name = 'Notifications'})
 mainapi.Notifications = notifpane:CreateToggle({
@@ -6438,8 +8541,8 @@ textguicolor = textgui:CreateColorSlider({
 	Darker = true,
 	Visible = false
 })
-local VapeTextScale = Instance.new('UIScale')
-VapeTextScale.Parent = textgui.Children
+local Tumba VapeTextScale = Instance.new('UIScale')
+Tumba VapeTextScale.Parent = textgui.Children
 local textguiscale = textgui:CreateSlider({
 	Name = 'Scale',
 	Min = 0,
@@ -6447,10 +8550,12 @@ local textguiscale = textgui:CreateSlider({
 	Decimal = 10,
 	Default = 1,
 	Function = function(val)
-		VapeTextScale.Scale = val
+		Tumba VapeTextScale.Scale = val
 		mainapi:UpdateTextGUI()
 	end
 })
+
+
 local textguishadow = textgui:CreateToggle({
 	Name = 'Shadow',
 	Tooltip = 'Renders shadowed text.',
@@ -6484,7 +8589,7 @@ local textguianimations = textgui:CreateToggle({
 })
 local textguiwatermark = textgui:CreateToggle({
 	Name = 'Watermark',
-	Tooltip = 'Renders a vape watermark',
+	Tooltip = 'Renders a tumbahub watermark',
 	Function = function()
 		mainapi:UpdateTextGUI()
 	end
@@ -6603,17 +8708,26 @@ textguicolorcustom = textgui:CreateColorSlider({
 	Text GUI Objects
 ]]
 
-local VapeLabels = {}
-local VapeLogo = Instance.new('ImageLabel')
-VapeLogo.Name = 'Logo'
-VapeLogo.Size = UDim2.fromOffset(80, 21)
-VapeLogo.Position = UDim2.new(1, -142, 0, 3)
-VapeLogo.BackgroundTransparency = 1
-VapeLogo.BorderSizePixel = 0
-VapeLogo.Visible = false
-VapeLogo.BackgroundColor3 = Color3.new()
-VapeLogo.Image = getcustomasset('tumbavape/assets/new/textvape.png')
-VapeLogo.Parent = textgui.Children
+local Tumba VapeLabels = {}
+local Tumba VapeLogo = Instance.new('TextLabel')
+Tumba VapeLogo.Name = 'Logo'
+Tumba VapeLogo.Size = UDim2.fromOffset(160, 34)
+Tumba VapeLogo.Position = UDim2.new(1, -222, 0, 3)
+Tumba VapeLogo.BackgroundTransparency = 1
+Tumba VapeLogo.BorderSizePixel = 0
+Tumba VapeLogo.Visible = false
+Tumba VapeLogo.Text = "TUMBA"
+Tumba VapeLogo.TextSize = 32
+Tumba VapeLogo.Font = Enum.Font.Arcade
+Tumba VapeLogo.TextColor3 = Color3.new(1, 1, 1)
+Tumba VapeLogo.TextXAlignment = Enum.TextXAlignment.Right
+Tumba VapeLogo.Parent = textgui.Children
+local watermarkGradient = Instance.new('UIGradient')
+watermarkGradient.Color = ColorSequence.new({
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 170, 255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(170, 85, 255))
+})
+watermarkGradient.Parent = Tumba VapeLogo
 
 local lastside = textgui.Children.AbsolutePosition.X > (gui.AbsoluteSize.X / 2)
 mainapi:Clean(textgui.Children:GetPropertyChangedSignal('AbsolutePosition'):Connect(function()
@@ -6627,73 +8741,66 @@ mainapi:Clean(textgui.Children:GetPropertyChangedSignal('AbsolutePosition'):Conn
 	end
 end))
 
-local VapeLogoV4 = Instance.new('ImageLabel')
-VapeLogoV4.Name = 'Logo2'
-VapeLogoV4.Size = UDim2.fromOffset(33, 18)
-VapeLogoV4.Position = UDim2.new(1, 1, 0, 1)
-VapeLogoV4.BackgroundColor3 = Color3.new()
-VapeLogoV4.BackgroundTransparency = 1
-VapeLogoV4.BorderSizePixel = 0
-VapeLogoV4.Image = getcustomasset('tumbavape/assets/new/textv4.png')
-VapeLogoV4.Parent = VapeLogo
-local VapeLogoShadow = VapeLogo:Clone()
-VapeLogoShadow.Position = UDim2.fromOffset(1, 1)
-VapeLogoShadow.ZIndex = 0
-VapeLogoShadow.Visible = true
-VapeLogoShadow.ImageColor3 = Color3.new()
-VapeLogoShadow.ImageTransparency = 0.65
-VapeLogoShadow.Parent = VapeLogo
-VapeLogoShadow.Logo2.ZIndex = 0
-VapeLogoShadow.Logo2.ImageColor3 = Color3.new()
-VapeLogoShadow.Logo2.ImageTransparency = 0.65
-local VapeLogoGradient = Instance.new('UIGradient')
-VapeLogoGradient.Rotation = 90
-VapeLogoGradient.Parent = VapeLogo
-local VapeLogoGradient2 = Instance.new('UIGradient')
-VapeLogoGradient2.Rotation = 90
-VapeLogoGradient2.Parent = VapeLogoV4
-local VapeLabelCustom = Instance.new('TextLabel')
-VapeLabelCustom.Position = UDim2.fromOffset(5, 2)
-VapeLabelCustom.BackgroundTransparency = 1
-VapeLabelCustom.BorderSizePixel = 0
-VapeLabelCustom.Visible = false
-VapeLabelCustom.Text = ''
-VapeLabelCustom.TextSize = 25
-VapeLabelCustom.FontFace = textguifontcustom.Value
-VapeLabelCustom.RichText = true
-local VapeLabelCustomShadow = VapeLabelCustom:Clone()
-VapeLabelCustom:GetPropertyChangedSignal('Position'):Connect(function()
-	VapeLabelCustomShadow.Position = UDim2.new(
-		VapeLabelCustom.Position.X.Scale,
-		VapeLabelCustom.Position.X.Offset + 1,
+local Tumba VapeLogoV4 = Instance.new('ImageLabel')
+Tumba VapeLogoV4.Name = 'Logo2'
+Tumba VapeLogoV4.Visible = false
+Tumba VapeLogoV4.Parent = Tumba VapeLogo
+local Tumba VapeLogoShadow = Tumba VapeLogo:Clone()
+Tumba VapeLogoShadow.Position = UDim2.fromOffset(2, 2)
+Tumba VapeLogoShadow.ZIndex = 0
+Tumba VapeLogoShadow.Visible = true
+Tumba VapeLogoShadow.TextColor3 = Color3.new()
+Tumba VapeLogoShadow.TextTransparency = 0.65
+Tumba VapeLogoShadow.Parent = Tumba VapeLogo
+Tumba VapeLogoShadow.Logo2.ZIndex = 0
+local Tumba VapeLogoGradient = Instance.new('UIGradient')
+Tumba VapeLogoGradient.Rotation = 90
+Tumba VapeLogoGradient.Parent = Tumba VapeLogo
+local Tumba VapeLogoGradient2 = Instance.new('UIGradient')
+Tumba VapeLogoGradient2.Rotation = 90
+Tumba VapeLogoGradient2.Parent = Tumba VapeLogoV4
+local Tumba VapeLabelCustom = Instance.new('TextLabel')
+Tumba VapeLabelCustom.Position = UDim2.fromOffset(5, 2)
+Tumba VapeLabelCustom.BackgroundTransparency = 1
+Tumba VapeLabelCustom.BorderSizePixel = 0
+Tumba VapeLabelCustom.Visible = false
+Tumba VapeLabelCustom.Text = ''
+Tumba VapeLabelCustom.TextSize = 25
+Tumba VapeLabelCustom.FontFace = textguifontcustom.Value
+Tumba VapeLabelCustom.RichText = true
+local Tumba VapeLabelCustomShadow = Tumba VapeLabelCustom:Clone()
+Tumba VapeLabelCustom:GetPropertyChangedSignal('Position'):Connect(function()
+	Tumba VapeLabelCustomShadow.Position = UDim2.new(
+		Tumba VapeLabelCustom.Position.X.Scale,
+		Tumba VapeLabelCustom.Position.X.Offset + 1,
 		0,
-		VapeLabelCustom.Position.Y.Offset + 1
+		Tumba VapeLabelCustom.Position.Y.Offset + 1
 	)
 end)
-VapeLabelCustom:GetPropertyChangedSignal('FontFace'):Connect(function()
-	VapeLabelCustomShadow.FontFace = VapeLabelCustom.FontFace
+Tumba VapeLabelCustom:GetPropertyChangedSignal('FontFace'):Connect(function()
+	Tumba VapeLabelCustomShadow.FontFace = Tumba VapeLabelCustom.FontFace
 end)
-VapeLabelCustom:GetPropertyChangedSignal('Text'):Connect(function()
-	VapeLabelCustomShadow.Text = removeTags(VapeLabelCustom.Text)
+Tumba VapeLabelCustom:GetPropertyChangedSignal('Text'):Connect(function()
+	Tumba VapeLabelCustomShadow.Text = removeTags(Tumba VapeLabelCustom.Text)
 end)
-VapeLabelCustom:GetPropertyChangedSignal('Size'):Connect(function()
-	VapeLabelCustomShadow.Size = VapeLabelCustom.Size
+Tumba VapeLabelCustom:GetPropertyChangedSignal('Size'):Connect(function()
+	Tumba VapeLabelCustomShadow.Size = Tumba VapeLabelCustom.Size
 end)
-VapeLabelCustomShadow.TextColor3 = Color3.new()
-VapeLabelCustomShadow.TextTransparency = 0.65
-VapeLabelCustomShadow.Parent = textgui.Children
-VapeLabelCustom.Parent = textgui.Children
-local VapeLabelHolder = Instance.new('Frame')
-VapeLabelHolder.Name = 'Holder'
-VapeLabelHolder.Size = UDim2.fromScale(1, 1)
-VapeLabelHolder.Position = UDim2.fromOffset(5, 37)
-VapeLabelHolder.BackgroundTransparency = 1
-VapeLabelHolder.Parent = textgui.Children
-local VapeLabelSorter = Instance.new('UIListLayout')
-VapeLabelSorter.HorizontalAlignment = Enum.HorizontalAlignment.Right
-VapeLabelSorter.VerticalAlignment = Enum.VerticalAlignment.Top
-VapeLabelSorter.SortOrder = Enum.SortOrder.LayoutOrder
-VapeLabelSorter.Parent = VapeLabelHolder
+Tumba VapeLabelCustomShadow.TextColor3 = Color3.new()
+Tumba VapeLabelCustomShadow.TextTransparency = 0.65
+Tumba VapeLabelCustomShadow.Parent = textgui.Children
+Tumba VapeLabelCustom.Parent = textgui.Children
+local Tumba VapeLabelHolder = Instance.new('Frame')
+Tumba VapeLabelHolder.Name = 'Holder'
+Tumba VapeLabelHolder.Size = UDim2.fromScale(1, 1)
+Tumba VapeLabelHolder.Position = UDim2.fromOffset(5, 37)
+Tumba VapeLabelHolder.BackgroundTransparency = 1
+Tumba VapeLabelHolder.Parent = textgui.Children
+local Tumba VapeLabelSorter = Instance.new('UIListLayout')
+Tumba VapeLabelSorter.HorizontalAlignment = Enum.HorizontalAlignment.Right
+Tumba VapeLabelSorter.VerticalAlignment = Enum.VerticalAlignment.Top
+Tumba VapeLabelSorter.SortOrder = Enum.SortOrder.LayoutOrder
+Tumba VapeLabelSorter.Parent = Tumba VapeLabelHolder
 
 --[[
 	Target Info
@@ -6948,34 +9055,324 @@ targetinfo = {
 }
 mainapi.Libraries.targetinfo = targetinfo
 
+--[[
+	Player Inventory
+]]
+
+local playerinventoryobj = mainapi:CreateOverlay({
+	Name = 'Player Inventory',
+	Icon = getcustomasset('tumbavape/assets/new/inventoryicon.png'),
+	Size = UDim2.fromOffset(14, 14),
+	Position = UDim2.fromOffset(12, 120),
+	CategorySize = 260,
+	Function = function(callback)
+		-- Connect logic here or call a mainapi/event function
+	end
+})
+
+local playerinventorybkg = Instance.new('Frame')
+playerinventorybkg.Size = UDim2.fromOffset(260, 260)
+playerinventorybkg.BackgroundColor3 = color.Dark(uipallet.Main, 0.1)
+playerinventorybkg.BackgroundTransparency = 0.5
+playerinventorybkg.Parent = playerinventoryobj.Children
+local playerinventoryblurobj = addBlur(playerinventorybkg)
+playerinventoryblurobj.Visible = false
+addCorner(playerinventorybkg)
+
+local playerinventoryb = Instance.new('UIStroke')
+playerinventoryb.Color = Color3.fromRGB(255, 0, 0)
+playerinventoryb.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+playerinventoryb.Thickness = 1
+playerinventoryb.Enabled = false
+playerinventoryb.Parent = playerinventorybkg
+
+-- Selector Header (Left, Right arrows, Player Name Label)
+local selectorframe = Instance.new('Frame')
+selectorframe.Size = UDim2.new(1, 0, 0, 35)
+selectorframe.Position = UDim2.fromOffset(0, 5)
+selectorframe.BackgroundTransparency = 1
+selectorframe.Parent = playerinventorybkg
+
+local selectorname = Instance.new('TextLabel')
+selectorname.Size = UDim2.new(1, -60, 1, 0)
+selectorname.Position = UDim2.fromOffset(30, 0)
+selectorname.BackgroundTransparency = 1
+selectorname.Text = 'Select Player'
+selectorname.TextColor3 = uipallet.Text
+selectorname.TextSize = 13
+selectorname.FontFace = uipallet.Font
+selectorname.TextXAlignment = Enum.TextXAlignment.Center
+selectorname.TextTruncate = Enum.TextTruncate.AtEnd
+selectorname.Parent = selectorframe
+
+local selectbtnleft = Instance.new('TextButton')
+selectbtnleft.Size = UDim2.fromOffset(24, 24)
+selectbtnleft.Position = UDim2.fromOffset(5, 5)
+selectbtnleft.BackgroundTransparency = 1
+selectbtnleft.Text = '<'
+selectbtnleft.TextColor3 = color.Light(uipallet.Text, 0.4)
+selectbtnleft.TextSize = 14
+selectbtnleft.FontFace = uipallet.Font
+selectbtnleft.Parent = selectorframe
+
+local selectbtnright = selectbtnleft:Clone()
+selectbtnright.Position = UDim2.new(1, -29, 0, 5)
+selectbtnright.Text = '>'
+selectbtnright.Parent = selectorframe
+
+local selectorsep = Instance.new('Frame')
+selectorsep.Size = UDim2.new(1, -20, 0, 1)
+selectorsep.Position = UDim2.fromOffset(10, 42)
+selectorsep.BackgroundColor3 = color.Light(uipallet.Main, 0.04)
+selectorsep.BorderSizePixel = 0
+selectorsep.Parent = playerinventorybkg
+
+-- Armor & Hand Row
+local equipmentframe = Instance.new('Frame')
+equipmentframe.Size = UDim2.new(1, 0, 0, 45)
+equipmentframe.Position = UDim2.fromOffset(0, 45)
+equipmentframe.BackgroundTransparency = 1
+equipmentframe.Parent = playerinventorybkg
+
+-- Helper for Slot creation
+local function createSlot(size, pos, parent)
+	local slot = Instance.new('Frame')
+	slot.Size = size
+	slot.Position = pos
+	slot.BackgroundColor3 = color.Dark(uipallet.Main, 0.02)
+	slot.Parent = parent
+	addCorner(slot, UDim.new(0, 4))
+	
+	local stroke = Instance.new('UIStroke')
+	stroke.Color = color.Light(uipallet.Main, 0.034)
+	stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	stroke.Parent = slot
+
+	local img = Instance.new('ImageLabel')
+	img.Size = UDim2.new(1, -6, 1, -6)
+	img.Position = UDim2.fromOffset(3, 3)
+	img.BackgroundTransparency = 1
+	img.Image = ''
+	img.Parent = slot
+
+	local amt = Instance.new('TextLabel')
+	amt.Size = UDim2.new(1, -4, 0, 12)
+	amt.Position = UDim2.new(0, 0, 1, -12)
+	amt.BackgroundTransparency = 1
+	amt.Text = ''
+	amt.TextColor3 = uipallet.Text
+	amt.TextSize = 10
+	amt.FontFace = uipallet.Font
+	amt.TextXAlignment = Enum.TextXAlignment.Right
+	amt.Parent = slot
+
+	return slot, img, amt
+end
+
+local handSlot, handImg = createSlot(UDim2.fromOffset(36, 36), UDim2.fromOffset(10, 5), equipmentframe)
+
+local armors = {}
+local armorTypes = {'helmet', 'chestplate', 'leggings', 'boots'}
+for i = 1, 4 do
+	local slot, img = createSlot(UDim2.fromOffset(30, 30), UDim2.fromOffset(60 + (i-1)*38, 8), equipmentframe)
+	armors[armorTypes[i]] = img
+end
+
+local equipparsep = Instance.new('Frame')
+equipparsep.Size = UDim2.new(1, -20, 0, 1)
+equipparsep.Position = UDim2.fromOffset(10, 92)
+equipparsep.BackgroundColor3 = color.Light(uipallet.Main, 0.04)
+equipparsep.BorderSizePixel = 0
+equipparsep.Parent = playerinventorybkg
+
+-- Inventory Items Grid
+local gridscroller = Instance.new('ScrollingFrame')
+gridscroller.Size = UDim2.new(1, -20, 0, 150)
+gridscroller.Position = UDim2.fromOffset(10, 97)
+gridscroller.BackgroundTransparency = 1
+gridscroller.BorderSizePixel = 0
+gridscroller.ScrollBarThickness = 2
+gridscroller.ScrollBarImageTransparency = 0.75
+gridscroller.Parent = playerinventorybkg
+
+local gridlayout = Instance.new('UIGridLayout')
+gridlayout.CellSize = UDim2.fromOffset(34, 34)
+gridlayout.CellPadding = UDim2.fromOffset(6, 6)
+gridlayout.SortOrder = Enum.SortOrder.LayoutOrder
+gridlayout.Parent = gridscroller
+
+gridlayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(function()
+	gridscroller.CanvasSize = UDim2.fromOffset(0, gridlayout.AbsoluteContentSize.Y)
+end)
+
+-- Overlay options (Color, Border, etc.)
+local playerinventorycolor = playerinventoryobj:CreateToggle({
+	Name = 'Match GUI color',
+	Function = function(callback)
+		if not callback then
+			playerinventorybkg.BackgroundColor3 = color.Dark(uipallet.Main, 0.1)
+		end
+	end,
+	Default = true
+})
+local playerinventorycolortoggle = playerinventoryobj:CreateColorSlider({
+	Name = 'Player Color',
+	Function = function(hue, sat, val)
+		if playerinventorycolor.Enabled then
+			playerinventorybkg.BackgroundColor3 = Color3.fromHSV(hue, sat, val)
+		end
+	end,
+	Darker = true,
+	Visible = false
+})
+playerinventoryobj:CreateToggle({
+	Name = 'Border',
+	Function = function(callback)
+		playerinventoryb.Enabled = callback
+	end
+})
+local playerinventorybordercolor = playerinventoryobj:CreateColorSlider({
+	Name = 'Border Color',
+	Function = function(hue, sat, val, opacity)
+		playerinventoryb.Color = Color3.fromHSV(hue, sat, val)
+		playerinventoryb.Transparency = 1 - opacity
+	end,
+	Darker = true,
+	Visible = false
+})
+
+local playerinventory = {
+	Object = playerinventorybkg,
+	Players = {},
+	CurrentTargetIndex = 1,
+	CurrentTargetPlayer = nil,
+	
+	UpdatePlayers = function(self)
+		local plrs = {}
+		local playersService = game:GetService('Players')
+		local lplr = playersService.LocalPlayer
+		for _, v in playersService:GetPlayers() do
+			if v ~= lplr then
+				table.insert(plrs, v)
+			end
+		end
+		self.Players = plrs
+		if self.CurrentTargetIndex > #plrs then
+			self.CurrentTargetIndex = math.max(1, #plrs)
+		end
+		self.CurrentTargetPlayer = plrs[self.CurrentTargetIndex]
+		if self.CurrentTargetPlayer then
+			selectorname.Text = self.CurrentTargetPlayer.DisplayName or self.CurrentTargetPlayer.Name
+		else
+			selectorname.Text = 'No opponents'
+		end
+	end,
+
+	ClearGrid = function(self)
+		for _, v in gridscroller:GetChildren() do
+			if v:IsA('Frame') then
+				v:Destroy()
+			end
+		end
+	end,
+
+	UpdateInventory = function(self, invData)
+		self:ClearGrid()
+		if not invData then return end
+		
+		-- Update Hand
+		if invData.handItem and invData.handItem ~= '' then
+			handImg.Image = invData.handItemIcon or ''
+			handImg.Visible = true
+		else
+			handImg.Visible = false
+		end
+		
+		-- Update Armor
+		for _, armorType in {'helmet', 'chestplate', 'leggings', 'boots'} do
+			local imgLabel = armors[armorType]
+			local icon = invData.armor and invData.armor[armorType]
+			if icon and icon ~= '' then
+				imgLabel.Image = icon
+				imgLabel.Visible = true
+			else
+				imgLabel.Visible = false
+			end
+		end
+
+		-- Populate Grid
+		if invData.items then
+			for _, item in invData.items do
+				local slot, img, amt = createSlot(UDim2.fromOffset(34, 34), UDim2.fromScale(0, 0), gridscroller)
+				img.Image = item.icon or ''
+				if item.amount and item.amount > 1 then
+					amt.Text = tostring(item.amount)
+				else
+					amt.Text = ''
+				end
+			end
+		end
+	end
+}
+
+selectbtnleft.MouseButton1Click:Connect(function()
+	playerinventory:UpdatePlayers()
+	if #playerinventory.Players > 0 then
+		playerinventory.CurrentTargetIndex = playerinventory.CurrentTargetIndex - 1
+		if playerinventory.CurrentTargetIndex < 1 then
+			playerinventory.CurrentTargetIndex = #playerinventory.Players
+		end
+		playerinventory.CurrentTargetPlayer = playerinventory.Players[playerinventory.CurrentTargetIndex]
+		if playerinventory.CurrentTargetPlayer then
+			selectorname.Text = playerinventory.CurrentTargetPlayer.DisplayName or playerinventory.CurrentTargetPlayer.Name
+		end
+	end
+end)
+
+selectbtnright.MouseButton1Click:Connect(function()
+	playerinventory:UpdatePlayers()
+	if #playerinventory.Players > 0 then
+		playerinventory.CurrentTargetIndex = playerinventory.CurrentTargetIndex + 1
+		if playerinventory.CurrentTargetIndex > #playerinventory.Players then
+			playerinventory.CurrentTargetIndex = 1
+		end
+		playerinventory.CurrentTargetPlayer = playerinventory.Players[playerinventory.CurrentTargetIndex]
+		if playerinventory.CurrentTargetPlayer then
+			selectorname.Text = playerinventory.CurrentTargetPlayer.DisplayName or playerinventory.CurrentTargetPlayer.Name
+		end
+	end
+end)
+
+mainapi.Libraries.playerinventory = playerinventory
+
 function mainapi:UpdateTextGUI(afterload)
 	if not afterload and not mainapi.Loaded then return end
 	if textgui.Button.Enabled then
 		local right = textgui.Children.AbsolutePosition.X > (gui.AbsoluteSize.X / 2)
-		VapeLogo.Visible = textguiwatermark.Enabled
-		VapeLogo.Position = right and UDim2.new(1 / VapeTextScale.Scale, -113, 0, 6) or UDim2.fromOffset(0, 6)
-		VapeLogoShadow.Visible = textguishadow.Enabled
-		VapeLabelCustom.Text = textguibox.Value
-		VapeLabelCustom.FontFace = textguifontcustom.Value
-		VapeLabelCustom.Visible = VapeLabelCustom.Text ~= '' and textguitext.Enabled
-		VapeLabelCustomShadow.Visible = VapeLabelCustom.Visible and textguishadow.Enabled
-		VapeLabelSorter.HorizontalAlignment = right and Enum.HorizontalAlignment.Right or Enum.HorizontalAlignment.Left
-		VapeLabelHolder.Size = UDim2.fromScale(1 / VapeTextScale.Scale, 1)
-		VapeLabelHolder.Position = UDim2.fromOffset(right and 3 or 0, 11 + (VapeLogo.Visible and VapeLogo.Size.Y.Offset or 0) + (VapeLabelCustom.Visible and 28 or 0) + (textguibackground.Enabled and 3 or 0))
-		if VapeLabelCustom.Visible then
-			local size = getfontsize(removeTags(VapeLabelCustom.Text), VapeLabelCustom.TextSize, VapeLabelCustom.FontFace)
-			VapeLabelCustom.Size = UDim2.fromOffset(size.X, size.Y)
-			VapeLabelCustom.Position = UDim2.new(right and 1 / VapeTextScale.Scale or 0, right and -size.X or 0, 0, (VapeLogo.Visible and 32 or 8))
+		Tumba VapeLogo.Visible = textguiwatermark.Enabled
+		Tumba VapeLogo.Position = right and UDim2.new(1 / Tumba VapeTextScale.Scale, -113, 0, 6) or UDim2.fromOffset(0, 6)
+		Tumba VapeLogoShadow.Visible = textguishadow.Enabled
+		Tumba VapeLabelCustom.Text = textguibox.Value
+		Tumba VapeLabelCustom.FontFace = textguifontcustom.Value
+		Tumba VapeLabelCustom.Visible = Tumba VapeLabelCustom.Text ~= '' and textguitext.Enabled
+		Tumba VapeLabelCustomShadow.Visible = Tumba VapeLabelCustom.Visible and textguishadow.Enabled
+		Tumba VapeLabelSorter.HorizontalAlignment = right and Enum.HorizontalAlignment.Right or Enum.HorizontalAlignment.Left
+		Tumba VapeLabelHolder.Size = UDim2.fromScale(1 / Tumba VapeTextScale.Scale, 1)
+		Tumba VapeLabelHolder.Position = UDim2.fromOffset(right and 3 or 0, 11 + (Tumba VapeLogo.Visible and Tumba VapeLogo.Size.Y.Offset or 0) + (Tumba VapeLabelCustom.Visible and 28 or 0) + (textguibackground.Enabled and 3 or 0))
+		if Tumba VapeLabelCustom.Visible then
+			local size = getfontsize(removeTags(Tumba VapeLabelCustom.Text), Tumba VapeLabelCustom.TextSize, Tumba VapeLabelCustom.FontFace)
+			Tumba VapeLabelCustom.Size = UDim2.fromOffset(size.X, size.Y)
+			Tumba VapeLabelCustom.Position = UDim2.new(right and 1 / Tumba VapeTextScale.Scale or 0, right and -size.X or 0, 0, (Tumba VapeLogo.Visible and 32 or 8))
 		end
 
 		local found = {}
-		for _, v in VapeLabels do
+		for _, v in Tumba VapeLabels do
 			if v.Enabled then
 				table.insert(found, v.Object.Name)
 			end
 			v.Object:Destroy()
 		end
-		table.clear(VapeLabels)
+		table.clear(Tumba VapeLabels)
 
 		local info = TweenInfo.new(0.3, Enum.EasingStyle.Exponential)
 		for i, v in mainapi.Modules do
@@ -6987,7 +9384,7 @@ function mainapi:UpdateTextGUI(afterload)
 				holder.Size = UDim2.fromOffset()
 				holder.BackgroundTransparency = 1
 				holder.ClipsDescendants = true
-				holder.Parent = VapeLabelHolder
+				holder.Parent = Tumba VapeLabelHolder
 				local holderbackground
 				local holdercolorline
 				if textguibackground.Enabled then
@@ -7018,7 +9415,7 @@ function mainapi:UpdateTextGUI(afterload)
 				holdertext.Position = UDim2.fromOffset(right and 3 or 6, 2)
 				holdertext.BackgroundTransparency = 1
 				holdertext.BorderSizePixel = 0
-				holdertext.Text = ({i:gsub(' ', '')})[1]..(v.ExtraText and " <font color='#A8A8A8'>"..v.ExtraText()..'</font>' or '')
+				holdertext.Text = string.upper(i)..(v.ExtraText and " <font color='#A8A8A8'>"..string.upper(v.ExtraText())..'</font>' or '')
 				holdertext.TextSize = 15
 				holdertext.FontFace = textguifont.Value
 				holdertext.RichText = true
@@ -7049,7 +9446,7 @@ function mainapi:UpdateTextGUI(afterload)
 				else
 					holder.Size = v.Enabled and holdersize or UDim2.fromOffset()
 				end
-				table.insert(VapeLabels, {
+				table.insert(Tumba VapeLabels, {
 					Object = holder,
 					Text = holdertext,
 					Background = holderbackground,
@@ -7060,16 +9457,16 @@ function mainapi:UpdateTextGUI(afterload)
 		end
 
 		if textguisort.Value == 'Alphabetical' then
-			table.sort(VapeLabels, function(a, b)
+			table.sort(Tumba VapeLabels, function(a, b)
 				return a.Text.Text < b.Text.Text
 			end)
 		else
-			table.sort(VapeLabels, function(a, b)
+			table.sort(Tumba VapeLabels, function(a, b)
 				return a.Text.Size.X.Offset > b.Text.Size.X.Offset
 			end)
 		end
 
-		for i, v in VapeLabels do
+		for i, v in Tumba VapeLabels do
 			if v.Color then
 				v.Color.Parent.Line.Visible = i ~= 1
 			end
@@ -7084,19 +9481,19 @@ function mainapi:UpdateGUI(hue, sat, val, default)
 	if mainapi.Loaded == nil then return end
 	if not default and mainapi.GUIColor.Rainbow then return end
 	if textgui.Button.Enabled then
-		VapeLogoGradient.Color = ColorSequence.new({
+		Tumba VapeLogoGradient.Color = ColorSequence.new({
 			ColorSequenceKeypoint.new(0, Color3.fromHSV(hue, sat, val)),
 			ColorSequenceKeypoint.new(1, textguigradient.Enabled and Color3.fromHSV(mainapi:Color((hue - 0.075) % 1)) or Color3.fromHSV(hue, sat, val))
 		})
-		VapeLogoGradient2.Color = textguigradient.Enabled and textguigradientv4.Enabled and VapeLogoGradient.Color or ColorSequence.new({
+		Tumba VapeLogoGradient2.Color = textguigradient.Enabled and textguigradientv4.Enabled and Tumba VapeLogoGradient.Color or ColorSequence.new({
 			ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)),
 			ColorSequenceKeypoint.new(1, Color3.new(1, 1, 1))
 		})
-		VapeLabelCustom.TextColor3 = textguicolorcustomtoggle.Enabled and Color3.fromHSV(textguicolorcustom.Hue, textguicolorcustom.Sat, textguicolorcustom.Value) or VapeLogoGradient.Color.Keypoints[2].Value
+		Tumba VapeLabelCustom.TextColor3 = textguicolorcustomtoggle.Enabled and Color3.fromHSV(textguicolorcustom.Hue, textguicolorcustom.Sat, textguicolorcustom.Value) or Tumba VapeLogoGradient.Color.Keypoints[2].Value
 
 		local customcolor = textguicolordrop.Value == 'Custom color' and Color3.fromHSV(textguicolor.Hue, textguicolor.Sat, textguicolor.Value) or nil
-		for i, v in VapeLabels do
-			v.Text.TextColor3 = customcolor or (mainapi.GUIColor.Rainbow and Color3.fromHSV(mainapi:Color((hue - ((textguigradient and i + 2 or i) * 0.025)) % 1)) or VapeLogoGradient.Color.Keypoints[2].Value)
+		for i, v in Tumba VapeLabels do
+			v.Text.TextColor3 = customcolor or (mainapi.GUIColor.Rainbow and Color3.fromHSV(mainapi:Color((hue - ((textguigradient and i + 2 or i) * 0.025)) % 1)) or Tumba VapeLogoGradient.Color.Keypoints[2].Value)
 			if v.Color then
 				v.Color.BackgroundColor3 = v.Text.TextColor3
 			end
@@ -7110,8 +9507,11 @@ function mainapi:UpdateGUI(hue, sat, val, default)
 	local rainbow = mainapi.GUIColor.Rainbow and mainapi.RainbowMode.Value ~= 'Retro'
 
 	for i, v in mainapi.Categories do
+		if v.AccentLine then
+			v.AccentLine.BackgroundColor3 = Color3.fromHSV(hue, sat, val)
+		end
 		if i == 'Main' then
-			v.Object.VapeLogo.V4Logo.ImageColor3 = Color3.fromHSV(hue, sat, val)
+			v.Object.Tumba VapeLogo.V4Logo.ImageColor3 = Color3.fromHSV(hue, sat, val)
 			for _, button in v.Buttons do
 				if button.Enabled then
 					button.Object.TextColor3 = rainbow and Color3.fromHSV(mainapi:Color((hue - (button.Index * 0.025)) % 1)) or Color3.fromHSV(hue, sat, val)
@@ -7159,16 +9559,16 @@ function mainapi:UpdateGUI(hue, sat, val, default)
 			button.Object.Dots.Dots.ImageColor3 = button.Object.TextColor3
 		end
 
-		for _, option in button.Options do
-			if option.Color then
-				option:Color(hue, sat, val, rainbow)
-			end
-		end
-
 		for _, v in button.Tags do
 			v.BackgroundColor3 = rainbow and Color3.fromHSV(mainapi:Color((hue - (button.Index * 0.025)) % 1)) or button.Enabled and Color3.new(1, 1, 1) or Color3.fromHSV(hue, sat, val)
 			v.BackgroundTransparency = (rainbow or not button.Enabled) and 0 or 0.85
 			v:FindFirstChild('Text').TextColor3 = mainapi.GUIColor.Rainbow and Color3.new(0.19, 0.19, 0.19) or mainapi:TextColor(hue, sat, val)
+		end
+
+		for _, option in button.Options do
+			if option.Color then
+				option:Color(hue, sat, val, rainbow)
+			end
 		end
 	end
 
@@ -7181,6 +9581,12 @@ function mainapi:UpdateGUI(hue, sat, val, default)
 
 	if mainapi.Legit.Icon then
 		mainapi.Legit.Icon.ImageColor3 = Color3.fromHSV(hue, sat, val)
+	end
+
+	if mainapi.PublicConfigs.Window then
+		for _, v in mainapi.PublicConfigs.Backgrounds do
+			v.BackgroundColor3 = Color3.fromHSV(hue, sat, val)
+		end
 	end
 
 	if mainapi.Legit.Window.Visible then
@@ -7209,7 +9615,7 @@ mainapi:Clean(notifications.ChildRemoved:Connect(function()
 	end
 end))
 
-mainapi:Clean(inputService.InputBegan:Connect(function(inputObj)
+mainapi:Clean(inputService.InputBegan:Connect(function(inputObj, p)
 	if not inputService:GetFocusedTextBox() and inputObj.KeyCode ~= Enum.KeyCode.Unknown then
 		table.insert(mainapi.HeldKeybinds, inputObj.KeyCode.Name)
 		if mainapi.Binding then return end
@@ -7266,5 +9672,4 @@ mainapi:Clean(inputService.InputEnded:Connect(function(inputObj)
 		table.remove(mainapi.HeldKeybinds, ind)
 	end
 end))
-
 return mainapi

@@ -8,6 +8,6 @@ end
 
 cloneref(game:GetService('StarterGui')):SetCore('SendNotification', {
     Title = 'Tumba Vape',
-    Text = 'Successfully reinstalled Tumba Vape, Please rejoin the game to take effect',
+    Text = 'Successfully reinstalled Tumba Vape, Please rejoin ur game to take effect',
     Duration = 20
 })

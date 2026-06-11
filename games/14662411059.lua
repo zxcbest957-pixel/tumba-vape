@@ -28,16 +28,16 @@ local function downloadFile(path, func)
 	return (func or readfile)(path)
 end
 
-tumbahub.Place = 8768229691
+tumbahub.Place = 11630038968
 if isfile('tumbavape/games/'..tumbahub.Place..'.lua') then
-	loadstring(readfile('tumbavape/games/'..tumbahub.Place..'.lua'), 'skywars')()
+	loadstring(readfile('tumbavape/games/'..tumbahub.Place..'.lua'), 'bridge duel')()
 else
 	if not shared.Tumba VapeDeveloper then
-		local suc, res = pcall(function() 
-			return game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/games/'..tumbahub.Place..'.lua', true) 
+		local suc, res = pcall(function() return 
+			game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/games/'..tumbahub.Place..'.lua', true) 
 		end)
 		if suc and res ~= '404: Not Found' then
-			loadstring(downloadFile('tumbavape/games/'..tumbahub.Place..'.lua'), 'skywars')()
+			loadstring(downloadFile('tumbavape/games/'..tumbahub.Place..'.lua'), 'bridge duel')()
 		end
 	end
 end

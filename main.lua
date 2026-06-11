@@ -1,13 +1,181 @@
-local license = ... or {}
-license.Key = script_key or license.Key or nil
-repeat task.wait() until game:IsLoaded()
-if shared.vape then shared.vape:Uninject() end
+pcall(function()
+	local originalHttpGet
+	pcall(function()
+		originalHttpGet = game.HttpGet
+	end)
 
-local vape
+	local function customHttpGet(url)
+		local req = request or (http and http.request)
+		if req then
+			local success, res = pcall(function()
+				return req({
+					Url = url,
+					Method = "GET"
+				})
+			end)
+			if success and res and res.Body then
+				return res.Body
+			end
+		end
+		if originalHttpGet then
+			local success, res = pcall(function()
+				return originalHttpGet(game, url, true)
+			end)
+			if success then
+				return res
+			end
+		end
+		error("HttpGet failed for URL: " .. tostring(url))
+	end
+
+	local hooked = false
+	if hookmetamethod then
+		pcall(function()
+			local old; old = hookmetamethod(game, "__index", function(self, key)
+				if key == "HttpGet" or key == "HttpGetAsync" then
+					return function(self, url, ...)
+						return customHttpGet(url)
+					end
+				end
+				return old(self, key)
+			end)
+			hooked = true
+		end)
+	end
+
+	if not hooked and getrawmetatable then
+		pcall(function()
+			local mt = getrawmetatable(game)
+			local old = mt.__index
+			setreadonly(mt, false)
+			mt.__index = function(self, key)
+				if key == "HttpGet" or key == "HttpGetAsync" then
+					return function(self, url, ...)
+						return customHttpGet(url)
+					end
+				end
+				return old(self, key)
+			end
+			setreadonly(mt, true)
+			hooked = true
+		end)
+	end
+
+	if not hooked then
+		local realGame = game
+		local gameProxy = setmetatable({}, {
+			__index = function(self, key)
+				if key == "HttpGet" or key == "HttpGetAsync" then
+					return function(self, url, ...)
+						return customHttpGet(url)
+					end
+				end
+				local val = realGame[key]
+				if typeof(val) == "function" then
+					return function(self, ...)
+						return val(realGame, ...)
+					end
+				end
+				return val
+			end,
+			__newindex = function(self, key, value)
+				realGame[key] = value
+			end,
+			__tostring = function()
+				return tostring(realGame)
+			end
+		})
+		getgenv().game = gameProxy
+	end
+end)
+
+pcall(function()
+	local original_os_time = os.time
+	local original_os_date = os.date
+	local timeOffset = 0
+	local source = "None"
+	
+	-- Try Workspace:GetServerTimeNow()
+	local ws = game:GetService("Workspace") or workspace
+	local success, result = pcall(function()
+		return ws and ws.GetServerTimeNow and ws:GetServerTimeNow()
+	end)
+	if success and result and typeof(result) == "number" and result > 1000000000 then
+		timeOffset = math.floor(result) - original_os_time()
+		source = "Workspace"
+	else
+		-- Fallback to HttpGet from a public time API
+		for _, urlInfo in ipairs({
+			{url = "http://worldtimeapi.org/api/timezone/Etc/UTC", pattern = '"unixtime":%s*(%d+)', divisor = 1},
+			{url = "https://worldtimeapi.org/api/timezone/Etc/UTC", pattern = '"unixtime":%s*(%d+)', divisor = 1},
+			{url = "http://date.jsontest.com/", pattern = '"milliseconds_since_epoch":%s*(%d+)', divisor = 1000}
+		}) do
+			local httpSuccess, response = pcall(function()
+				return game:HttpGet(urlInfo.url, true)
+			end)
+			if httpSuccess and response then
+				local match = response:match(urlInfo.pattern)
+				if match then
+					local t = tonumber(match)
+					if t then
+						t = math.floor(t / urlInfo.divisor)
+						if t > 1000000000 then
+							timeOffset = t - original_os_time()
+							source = "WebAPI (" .. urlInfo.url:match("://([^/]+)") .. ")"
+							break
+						end
+					end
+				end
+			end
+		end
+	end
+	
+	-- Apply hooks if offset is calculated
+	if source ~= "None" then
+		print("[TumbaTimeSync] Synchronized clock using " .. source .. ". Offset: " .. timeOffset .. " seconds.")
+		
+		local function getSyncedTime()
+			return original_os_time() + timeOffset
+		end
+		
+		os.time = getSyncedTime
+		os.date = function(format, time)
+			return original_os_date(format, time or getSyncedTime())
+		end
+		
+		local env = (getgenv and getgenv()) or _G
+		
+		-- Hook tick()
+		local original_tick = tick
+		env.tick = function()
+			return original_tick() + timeOffset
+		end
+		
+		-- Hook DateTime.now
+		if DateTime then
+			local original_datetime_now = DateTime.now
+			local DateTime_mock = {}
+			for k, v in DateTime do
+				DateTime_mock[k] = v
+			end
+			DateTime_mock.now = function()
+				return DateTime.fromUnixTimestamp(getSyncedTime())
+			end
+			env.DateTime = DateTime_mock
+		end
+	else
+		warn("[TumbaTimeSync] Failed to synchronize clock from any source.")
+	end
+end)
+repeat task.wait() until game:IsLoaded()
+if shared.tumbahub then shared.tumbahub:Uninject() end
+
+local tumbahub
+local old_loadstring = loadstring
 local loadstring = function(...)
-	local res, err = loadstring(...)
-	if err and vape then
-		vape:CreateNotification('Vape', 'Failed to load : '..err, 30, 'alert')
+	local res, err = old_loadstring(...)
+	if err and tumbahub then
+		tumbahub:CreateNotification('Tumba Vape', 'Failed to load : '..err, 30, 'alert')
 	end
 	return res
 end
@@ -21,151 +189,326 @@ end
 local cloneref = cloneref or function(obj)
 	return obj
 end
-local playersService = cloneref(game:GetService('Players'))
+local inputService = cloneref(game:GetService('UserInputService'))
 local httpService = cloneref(game:GetService('HttpService'))
+local playersService = cloneref(game:GetService('Players'))
+local tweenService = cloneref(game:GetService('TweenService'))
 
-local redirect = function()
-	local body = httpService:JSONEncode({
-		nonce = httpService:GenerateGUID(false),
-		args = {
-			invite = {code = 'tumbavape'},
-			code = 'tumbavape'
-		},
-		cmd = 'INVITE_BROWSER'
-	})
+-- ========================================================
+-- PREMIUM SCRIPT LOADER GUI
+-- ========================================================
+local ScreenGui = Instance.new('ScreenGui')
+ScreenGui.Name = 'Tumba VapeLoader'
+ScreenGui.Parent = gethui and gethui() or cloneref(game:GetService('CoreGui'))
 
-	for i = 1, 2 do
-		task.spawn(function()
-			request({
-				Method = 'POST',
-				Url = 'http://127.0.0.1:6463/rpc?v=1',
-				Headers = {
-					['Content-Type'] = 'application/json',
-					Origin = 'https://discord.com'
-				},
-				Body = body
-			})
-		end)
-	end
+local MainFrame = Instance.new('Frame')
+MainFrame.Name = 'MainFrame'
+MainFrame.Size = UDim2.new(0, 360, 0, 40)
+MainFrame.Position = UDim2.new(0.5, -180, 0, 15)
+MainFrame.BackgroundColor3 = Color3.fromRGB(10, 10, 12)
+MainFrame.BackgroundTransparency = 0.25
+MainFrame.BorderSizePixel = 0
+MainFrame.ClipsDescendants = true
+MainFrame.Parent = ScreenGui
+
+local UICorner = Instance.new('UICorner')
+UICorner.CornerRadius = UDim.new(0, 6)
+UICorner.Parent = MainFrame
+
+local UIStroke = Instance.new('UIStroke')
+UIStroke.Color = Color3.fromRGB(60, 60, 65)
+UIStroke.Thickness = 1
+UIStroke.Parent = MainFrame
+
+local Status = Instance.new('TextLabel')
+Status.Size = UDim2.new(1, -60, 1, -4)
+Status.Position = UDim2.new(0, 12, 0, 0)
+Status.BackgroundTransparency = 1
+Status.TextColor3 = Color3.fromRGB(240, 240, 240)
+Status.Font = Enum.Font.GothamBold
+Status.TextSize = 13
+Status.TextXAlignment = Enum.TextXAlignment.Left
+Status.Text = 'Tumba Vape V6 | Connecting...'
+Status.Parent = MainFrame
+
+local Percentage = Instance.new('TextLabel')
+Percentage.Size = UDim2.new(0, 40, 1, -4)
+Percentage.Position = UDim2.new(1, -48, 0, 0)
+Percentage.BackgroundTransparency = 1
+Percentage.TextColor3 = Color3.fromRGB(240, 240, 240)
+Percentage.Font = Enum.Font.GothamBold
+Percentage.TextSize = 13
+Percentage.TextXAlignment = Enum.TextXAlignment.Right
+Percentage.Text = '0%'
+Percentage.Parent = MainFrame
+
+local BarContainer = Instance.new('Frame')
+BarContainer.Size = UDim2.new(1, -20, 0, 2)
+BarContainer.Position = UDim2.new(0, 10, 1, -4)
+BarContainer.BackgroundColor3 = Color3.fromRGB(60, 60, 65)
+BarContainer.BorderSizePixel = 0
+BarContainer.Parent = MainFrame
+
+local ProgressBar = Instance.new('Frame')
+ProgressBar.Size = UDim2.new(0, 0, 1, 0)
+ProgressBar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ProgressBar.BorderSizePixel = 0
+ProgressBar.Parent = BarContainer
+
+local function updateProgress(percent, statusText)
+	Status.Text = 'Tumba Vape V6 | ' .. statusText
+	Percentage.Text = tostring(math.round(percent)) .. '%'
+	tweenService:Create(ProgressBar, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = UDim2.new(percent / 100, 0, 1, 0)
+	}):Play()
+	task.wait(0.2)
+end
+
+local function fadeOutLoader()
+	updateProgress(100, 'Loaded successfully!')
+	task.wait(0.3)
+	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+	tweenService:Create(MainFrame, tweenInfo, {Position = UDim2.new(0.5, -180, 0, -50), BackgroundTransparency = 1}):Play()
+	tweenService:Create(Status, tweenInfo, {TextTransparency = 1}):Play()
+	tweenService:Create(Percentage, tweenInfo, {TextTransparency = 1}):Play()
+	tweenService:Create(BarContainer, tweenInfo, {BackgroundTransparency = 1}):Play()
+	tweenService:Create(ProgressBar, tweenInfo, {BackgroundTransparency = 1}):Play()
+	tweenService:Create(UIStroke, tweenInfo, {Transparency = 1}):Play()
+	task.wait(0.4)
+	ScreenGui:Destroy()
+end
+
+updateProgress(10, 'Initializing auth token...')
+
+if shared.maintumba then
+	shared.maintumba = nil
+	task.spawn(function()
+		local body = httpService:JSONEncode({
+			nonce = httpService:GenerateGUID(false),
+			args = {
+				invite = {code = 'Jd4R5nzpHt'},
+				code = 'Jd4R5nzpHt'
+			},
+			cmd = 'INVITE_BROWSER'
+		})
+
+		for i = 1, 2 do
+			task.spawn(function()
+				request({
+					Method = 'POST',
+					Url = 'http://127.0.0.1:6463/rpc?v=1',
+					Headers = {
+						['Content-Type'] = 'application/json',
+						Origin = 'https://discord.com'
+					},
+					Body = body
+				})
+			end)
+		end
+	end)
+	playersService:Kick('Your script is outdated, Get new one at discord.gg/tumbavape')
+	return
 end
 
 local function downloadFile(path, func)
 	if not isfile(path) then
-		warn(path)
 		local suc, res = pcall(function()
-			return game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/'..select(1, path:gsub('tumbavape/', '')), true)
+			local commit = isfile('tumbavape/profiles/commit.txt') and readfile('tumbavape/profiles/commit.txt') or 'main'
+			return game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..commit..'/'..select(1, path:gsub('tumbavape/', '')), true)
 		end)
 		if not suc or res == '404: Not Found' then
-			task.spawn(error, res)
+			error(res)
 		end
-		if suc then
-			if path:find('.lua') then
-				res = '--This watermark is used to delete the file if its cached, remove it to make the file persist after vape updates.\n'..res
-			end
-			writefile(path, res)
+		if path:find('.lua') then
+			res = '--This watermark is used to delete the file if its cached, remove it to make the file persist after tumbahub updates.\n'..res
 		end
+		writefile(path, res)
 	end
 	return (func or readfile)(path)
 end
 
 local function finishLoading()
-	vape.Init = nil
-	vape:Load()
+	tumbahub.Init = nil
+	tumbahub:Load()
+	fadeOutLoader()
+
 	task.spawn(function()
 		repeat
-			vape:Save()
+			tumbahub:Save()
 			task.wait(10)
-		until not vape.Loaded
+		until not tumbahub.Loaded
 	end)
 
 	local teleportedServers
-	vape:Clean(playersService.LocalPlayer.OnTeleport:Connect(function(state)
-		if (not teleportedServers) and (not shared.VapeIndependent) then
+	tumbahub:Clean(playersService.LocalPlayer.OnTeleport:Connect(function()
+		if (not teleportedServers) and (not shared.Tumba VapeIndependent) and tumbahub.AutoTeleport.Enabled then
 			teleportedServers = true
+			local data = shared.tumbadata or {Key = nil}
 			local teleportScript = [[
-				if shared.VapeDeveloper then
-					loadstring(readfile('tumbavape/main.lua'), 'main')(_scriptconfig)
+				if shared.Tumba VapeDeveloper then
+					shared.tumbadata = {Key = '???'}
+					print('yo', shared.tumbadata.Key)
+					loadstring(readfile('tumbavape/init.lua'), 'init')()
 				else
-					loadstring(game:HttpGet('https://api.tumbavape.dev/script?key=_key'), 'init')(_scriptconfig)
+					loadstring(game:HttpGet('https://api.tumbavape.dev/script?key=???'), 'init')()
 				end
 			]]
-			local teleportConfig = httpService:JSONEncode(license)
-			teleportConfig = teleportConfig:gsub('":true', "=true"):gsub('{"', '{')
-			teleportConfig = teleportConfig:gsub(',"', ','):gsub('":', '=')
-			teleportConfig = teleportConfig:gsub('%[', '{'):gsub('%]', '}')
-			teleportScript = teleportScript:gsub('_key', tostring(license.Key or '_key'))
-			teleportScript = teleportScript:gsub('_scriptconfig', teleportConfig)
-			if shared.VapeDeveloper then
-				teleportScript = 'shared.VapeDeveloper = true\n'..teleportScript
+			teleportScript = teleportScript:gsub('???', tostring(data.Key or 'none'))
+			if shared.Tumba VapeDeveloper then
+				teleportScript = 'shared.Tumba VapeDeveloper = true\n'..teleportScript
 			end
-			if shared.VapeCustomProfile then
-				teleportScript = 'shared.VapeCustomProfile = "'..shared.VapeCustomProfile..'"\n'..teleportScript
+			if shared.Tumba VapeCustomProfile then
+				teleportScript = 'shared.Tumba VapeCustomProfile = "'..shared.Tumba VapeCustomProfile..'"\n'..teleportScript
 			end
+			tumbahub:Save()
 			queue_on_teleport(teleportScript)
 		end
 	end))
 
-	if not shared.vapereload then
-		if not vape.Categories then return end
-		if vape.Categories.Main.Options['GUI bind indicator'].Enabled then
-			if getgenv().tumbarole == 'HWID MISMATCH' then
-				vape:CreateNotification('Tumba Vape', 'HWID MISMATCH, Go to the script panel to reset hwid', 25, 'alert')
-				getgenv().tumbarole = ''
-				task.wait(0.1)
+	if not tumbahub.Categories then return end
+
+	-- ── Auto-open Tumba Vape Discord server on every launch ──
+	task.spawn(function()
+		local INVITE_CODE = 'Jd4R5nzpHt'
+
+		-- Method 1: Discord Desktop RPC (opens the app directly)
+		local ok = pcall(function()
+			local body = httpService:JSONEncode({
+				nonce = httpService:GenerateGUID(false),
+				args = {
+					invite = {code = INVITE_CODE},
+					code = INVITE_CODE
+				},
+				cmd = 'INVITE_BROWSER'
+			})
+			-- Try both common Discord RPC ports
+			for _, port in {6463, 6464, 6465, 6466} do
+				task.spawn(function()
+					pcall(function()
+						request({
+							Method = 'POST',
+							Url = 'http://127.0.0.1:' .. port .. '/rpc?v=1',
+							Headers = {
+								['Content-Type'] = 'application/json',
+								Origin = 'https://discord.com'
+							},
+							Body = body
+						})
+					end)
+				end)
 			end
-			if vape.Place ~= 6872274481 and not license.Closet then
-				task.spawn(redirect)
-			end
-			vape:CreateNotification('Finished Loading', (getgenv().tumbaname and `Authenticated as {getgenv().tumbaname} with {getgenv().tumbarole}, ` or '').. (vape.VapeButton and 'Press the button in the top right' or 'Press '..table.concat(vape.Keybind, ' + '):upper())..' to open GUI', 5)
-			task.delay(1, function()
-				if shared.updated then
-					vape:CreateNotification('Tumba Vape', `Script has updated from {shared.updated} to {readfile('tumbavape/profiles/commit.txt')}`, 10, 'info')
-				end
+		end)
+
+		-- Method 2: setclipboard fallback — copies invite link to clipboard
+		-- so user can paste it into Discord even if RPC didn't work
+		if setclipboard then
+			pcall(function()
+				setclipboard('discord.gg/' .. INVITE_CODE)
 			end)
 		end
+	end)
+	if tumbahub.Categories.Main.Options['GUI bind indicator'].Enabled then
+		if getgenv().tumbarole == 'HWID mismatch' then
+			tumbahub:CreateNotification('Tumba Vape', 'HWID mismatch, Please go to our server And press reset hwid on script panel', 60, 'alert')
+			task.wait(0.5)
+		else
+			tumbahub:CreateNotification('Tumba Vape', 'Authenticated as '.. (getgenv().tumbaname or 'Guest').. ' with ('.. (getgenv().tumbarole or 'Free').. ')', 4, 'info')
+			task.wait(4)
+		end
+		tumbahub:CreateNotification('Finished Loading', not inputService.KeyboardEnabled and tumbahub.Tumba VapeButton and 'Press the button in the top right to open GUI' or 'Press '..table.concat(tumbahub.Keybind, ' + '):upper()..' to open GUI', 5)
 	end
 end
 
 if not isfile('tumbavape/profiles/gui.txt') then
 	writefile('tumbavape/profiles/gui.txt', 'new')
 end
-local gui = 'new'--readfile('tumbavape/profiles/gui.txt')
+local gui = readfile('tumbavape/profiles/gui.txt')
+if gui ~= 'new' and gui ~= 'old' and gui ~= 'rise' then
+	gui = 'new'
+end
+
+if not isfile('tumbavape/profiles/language.txt') then
+	writefile('tumbavape/profiles/language.txt', 'English')
+end
+local langRaw = readfile('tumbavape/profiles/language.txt') or "English"
+shared.TumbaLanguage = langRaw:gsub("\n", ""):gsub("\r", ""):gsub("^%s*(.-)%s*$", "%1")
 
 if not isfolder('tumbavape/assets/'..gui) then
 	makefolder('tumbavape/assets/'..gui)
 end
-if not isfile('tumbavape/profiles/commit.txt') then
-	writefile('tumbavape/profiles/commit.txt', 'main')
+
+updateProgress(35, 'Loading Core GUI components...')
+do
+	local _pre = getgenv()._tumbaPrecompiled
+	local chunk = _pre and _pre['gui']
+	if not chunk then
+		chunk = loadstring(downloadFile('tumbavape/guis/'..gui..'.lua'), 'gui')
+	end
+	tumbahub = chunk()
 end
+shared.tumbahub = tumbahub
+shared.vape = tumbahub
+_G.tumbahub = tumbahub
+getgenv().vape = tumbahub
 
-getgenv().used_init = true
-vape = loadstring(downloadFile('tumbavape/guis/'..gui..'.lua'), 'gui')(license)
-_G.vape = vape
-shared.vape = vape
+getgenv().canDebug = not table.find({'Xeno', 'Solara'}, ({identifyexecutor()})[1]) and debug.getconstant and debug.getproto and true or false
+if not shared.Tumba VapeIndependent then
+	updateProgress(65, 'Loading Universal Module definitions...')
+	do
+		local _pre = getgenv()._tumbaPrecompiled
+		local chunk = _pre and _pre['universal']
+		if not chunk then
+			chunk = loadstring(downloadFile('tumbavape/games/universal.lua'), 'universal')
+		end
+		if chunk then chunk() end
+	end
 
-if shared.maincat then
-	redirect()
-	playersService.LocalPlayer:Kick('Your script is outdated, Get new one at discord.gg/tumbavape')
-	return
-end
-
-if not shared.VapeIndependent then
-	loadstring(downloadFile('tumbavape/games/universal.lua'), 'universal')(license)
-	if isfile('tumbavape/games/'..game.PlaceId..'.lua') then
-		loadstring(readfile('tumbavape/games/'..game.PlaceId..'.lua'), tostring(game.PlaceId))(license)
-	else
-		if not shared.VapeDeveloper then
-			local suc, res = pcall(function()
-				return game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/games/'..game.PlaceId..'.lua', true)
-			end)
-			if suc and res ~= '404: Not Found' then
-				loadstring(downloadFile('tumbavape/games/'..game.PlaceId..'.lua'), tostring(game.PlaceId))(license)
+	local found = false
+	local callback = shared.Tumba VapeDeveloper and readfile or downloadFile
+	
+	updateProgress(90, 'Injecting BedWars specific game scripts...')
+	for i, v in httpService:JSONDecode(callback('tumbavape/profiles/supported.json')) do
+		if found then break; end
+		if game.GameId == v.gameid then
+			for i2, v2 in v do
+				if typeof(v2) == 'table' and table.find(v2.Ids, game.PlaceId) then
+					found = true
+					tumbahub.Place = v2.Place
+					if not isfolder('tumbavape/games/'.. i) then
+						makefolder('tumbavape/games/'.. i)
+					end
+					
+					do
+						local _pre = getgenv()._tumbaPrecompiled
+						local chunk1 = _pre and _pre['bedwars_main']
+						local chunk2 = _pre and _pre['bedwars_premium']
+						if not chunk1 then
+							chunk1 = loadstring(callback('tumbavape/games/'.. i.. '/'.. i2.. '.luau'), tostring(game.PlaceId))
+						end
+						if not chunk2 then
+							chunk2 = loadstring(callback('tumbavape/games/'.. i.. '/premium.luau'), 'paid '.. tostring(game.PlaceId))
+						end
+						if chunk1 then chunk1(...) end
+						if chunk2 then chunk2(...) end
+					end
+					break
+				end
 			end
 		end
 	end
-	loadstring(downloadFile('tumbavape/libraries/premium.lua'), 'premium')(license)
+
+	if not found then
+		local suc, res = pcall(function()
+			local commit = isfile('tumbavape/profiles/commit.txt') and readfile('tumbavape/profiles/commit.txt') or 'main'
+			return not shared.Tumba VapeDeveloper and game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..commit..'/games/'..game.PlaceId..'.lua', true) or '404: Not Found'
+		end)
+		if suc and res ~= '404: Not Found' then
+			loadstring(downloadFile('tumbavape/games/'..game.PlaceId..'.lua'), tostring(game.PlaceId))(...)
+		end
+	end
+	
 	finishLoading()
 else
-	vape.Init = finishLoading
-	return vape
+	tumbahub.Init = finishLoading
+	return tumbahub
 end
