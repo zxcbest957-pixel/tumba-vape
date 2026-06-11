@@ -283,6 +283,12 @@ for _, folder in {'tumbavape', 'tumbavape/games', 'tumbavape/profiles', 'tumbava
 	end
 end
 
+-- Ensure commit.txt exists to prevent file does not exist crash in guis/new.lua/old.lua/etc.
+if not isfile('tumbavape/profiles/commit.txt') then
+	writefile('tumbavape/profiles/commit.txt', 'main')
+end
+
+
 -- Force wipe cache once to migrate to the new robust BlockSelector version
 local forceWipeFile = 'tumbavape/profiles/forcewipe_v3.txt'
 if not isfile(forceWipeFile) then
