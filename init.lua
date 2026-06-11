@@ -1,4 +1,21 @@
 --!nocheck
+-- Polyfill pcall and xpcall to handle non-callable values gracefully (avoiding Potassium/Luau crash on pcall(nil))
+local old_pcall = pcall
+getgenv().pcall = function(f, ...)
+	if typeof(f) ~= "function" and typeof(f) ~= "table" and typeof(f) ~= "userdata" then
+		return false, "attempt to call a " .. typeof(f) .. " value"
+	end
+	return old_pcall(f, ...)
+end
+
+local old_xpcall = xpcall
+getgenv().xpcall = function(f, err, ...)
+	if typeof(f) ~= "function" and typeof(f) ~= "table" and typeof(f) ~= "userdata" then
+		return false, "attempt to call a " .. typeof(f) .. " value"
+	end
+	return old_xpcall(f, err, ...)
+end
+
 pcall(function()
 	local originalHttpGet
 	pcall(function()
