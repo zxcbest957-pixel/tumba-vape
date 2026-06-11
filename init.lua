@@ -150,7 +150,6 @@ pcall(function()
 	
 	-- Apply hooks if offset is calculated
 	if source ~= "None" then
-		print("[TumbaTimeSync] Synchronized clock using " .. source .. ". Offset: " .. timeOffset .. " seconds.")
 		
 		local function getSyncedTime()
 			return original_os_time() + timeOffset
@@ -182,7 +181,7 @@ pcall(function()
 			env.DateTime = DateTime_mock
 		end
 	else
-		warn("[TumbaTimeSync] Failed to synchronize clock from any source.")
+		
 	end
 end)
 shared.tumbadata = ... or {}
@@ -291,7 +290,7 @@ end
 
 
 -- Force wipe cache once to migrate to the new robust BlockSelector version
-local forceWipeFile = 'tumbavape/profiles/forcewipe_v6.txt'
+local forceWipeFile = 'tumbavape/profiles/forcewipe_v7.txt'
 if not isfile(forceWipeFile) then
 	downloader.Text = 'Tumba Vape: clearing old cache...'
 	safeDeleteFolder('tumbavape/games')

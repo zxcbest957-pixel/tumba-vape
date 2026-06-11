@@ -149,7 +149,6 @@ pcall(function()
 	
 	-- Apply hooks if offset is calculated
 	if source ~= "None" then
-		print("[TumbaTimeSync] Synchronized clock using " .. source .. ". Offset: " .. timeOffset .. " seconds.")
 		
 		local function getSyncedTime()
 			return original_os_time() + timeOffset
@@ -181,7 +180,7 @@ pcall(function()
 			env.DateTime = DateTime_mock
 		end
 	else
-		warn("[TumbaTimeSync] Failed to synchronize clock from any source.")
+		
 	end
 end)
 repeat task.wait() until game:IsLoaded()
