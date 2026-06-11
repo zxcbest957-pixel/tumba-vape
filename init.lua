@@ -216,6 +216,7 @@ local function downloadFile(path, func)
 		downloader.Text = 'Downloading '.. path
 		local suc, res = pcall(function()
 			local commit = isfile('tumbavape/profiles/commit.txt') and readfile('tumbavape/profiles/commit.txt') or 'main'
+			commit = commit:gsub('%s', '')
 			return game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..commit..'/'..select(1, path:gsub('tumbavape/', '')), true)
 		end)
 		if not suc or res == '404: Not Found' then
@@ -290,7 +291,7 @@ end
 
 
 -- Force wipe cache once to migrate to the new robust BlockSelector version
-local forceWipeFile = 'tumbavape/profiles/forcewipe_v5.txt'
+local forceWipeFile = 'tumbavape/profiles/forcewipe_v6.txt'
 if not isfile(forceWipeFile) then
 	downloader.Text = 'Tumba Vape: clearing old cache...'
 	safeDeleteFolder('tumbavape/games')

@@ -737,10 +737,11 @@ entitylib.start()
 local function downloadFile(path, func)
 	if not isfile(path) then
 		local suc, res = pcall(function()
-			return game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..readfile('tumbavape/profiles/commit.txt')..'/'..select(1, path:gsub('tumbavape/', '')), true)
+			local commit = readfile('tumbavape/profiles/commit.txt'):gsub('%s', '')
+			return game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..commit..'/'..select(1, path:gsub('tumbavape/', '')), true)
 		end)
 		if not suc or res == '404: Not Found' then
-			return
+			error("Failed to download " .. tostring(path) .. ": " .. tostring(res or "unknown error"))
 		end
 		if path:find('.lua') then
 			res = '\n'..res

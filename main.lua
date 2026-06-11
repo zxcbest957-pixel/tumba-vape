@@ -331,6 +331,7 @@ local function downloadFile(path, func)
 	if not isfile(path) then
 		local suc, res = pcall(function()
 			local commit = isfile('tumbavape/profiles/commit.txt') and readfile('tumbavape/profiles/commit.txt') or 'main'
+			commit = commit:gsub('%s', '')
 			return game:HttpGet('https://raw.githubusercontent.com/zxcbest957-pixel/tumba-vape/'..commit..'/'..select(1, path:gsub('tumbavape/', '')), true)
 		end)
 		if not suc or res == '404: Not Found' then
