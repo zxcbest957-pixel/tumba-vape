@@ -497,7 +497,7 @@ if not shared.TumbaVapeIndependent then
 					
 					do
 						local _pre = getgenv()._tumbaPrecompiled
-						local chunk1 = _pre and _pre['bedwars_main']
+						local chunk1 = _pre and _pre[i..'_'..i2]
 						local chunk2 = _pre and _pre['bedwars_premium']
 						if not chunk1 then
 							chunk1 = loadstring(callback('tumbavape/games/'.. i.. '/'.. i2.. '.luau'), tostring(game.PlaceId))

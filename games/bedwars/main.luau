@@ -1218,8 +1218,8 @@ run(function()
 	end
 	getgenv().remotes = remotes
 
-	OldBreak = bedwars.BlockController.isBlockBreakable
-    OldHit = bedwars.BlockBreaker.hitBlock
+	OldBreak = bedwars.BlockController and bedwars.BlockController.isBlockBreakable or nil
+    OldHit = bedwars.BlockBreaker and bedwars.BlockBreaker.hitBlock or nil
 
 	Client.Get = function(self, remoteName)
 		local call = OldGet(self, remoteName)
@@ -1264,30 +1264,34 @@ run(function()
 		return call
 	end
 
-    bedwars.BlockBreaker.hitBlock = function(...)
-        store.lastHit = tick()
-        return OldHit(...)
-    end
-
-	bedwars.BlockController.isBlockBreakable = function(self, breakTable, plr)
-		local obj = bedwars.BlockController:getStore():getBlockAt(breakTable.blockPosition)
-
-		if obj and obj.Name == 'bed' then
-			local suc, res = pcall(function()
-                for _, plr in playersService:GetPlayers() do
-                    if obj:GetAttribute('Team'..(plr:GetAttribute('Team') or 0)..'NoBreak') and not select(2, whitelist:get(plr)) then
-                        return false
-                    end
-                end
-                return nil
-            end)
-
-            if suc and res == false then
-                return false
-            end
+	if bedwars.BlockBreaker then
+		bedwars.BlockBreaker.hitBlock = function(...)
+			store.lastHit = tick()
+			return OldHit and OldHit(...)
 		end
+	end
 
-		return OldBreak(self, breakTable, plr)
+	if bedwars.BlockController then
+		bedwars.BlockController.isBlockBreakable = function(self, breakTable, plr)
+			local obj = bedwars.BlockController:getStore():getBlockAt(breakTable.blockPosition)
+
+			if obj and obj.Name == 'bed' then
+				local suc, res = pcall(function()
+					for _, plr in playersService:GetPlayers() do
+						if obj:GetAttribute('Team'..(plr:GetAttribute('Team') or 0)..'NoBreak') and not select(2, whitelist:get(plr)) then
+							return false
+						end
+					end
+					return nil
+				end)
+
+				if suc and res == false then
+					return false
+				end
+			end
+
+			return OldBreak and OldBreak(self, breakTable, plr)
+		end
 	end
 
 	local cache, blockhealthbar = {}, {blockHealth = -1, breakingBlockPosition = Vector3.zero}
@@ -1753,8 +1757,12 @@ run(function()
 
 	tumbahub:Clean(function()
 		Client.Get = OldGet
-        bedwars.BlockBreaker.hitBlock = OldHit
-		bedwars.BlockController.isBlockBreakable = OldBreak
+		if bedwars.BlockBreaker then
+			bedwars.BlockBreaker.hitBlock = OldHit
+		end
+		if bedwars.BlockController then
+			bedwars.BlockController.isBlockBreakable = OldBreak
+		end
 		store.blockPlacer:disable()
 		for _, v in tumbahubEvents do
 			v:Destroy()
