@@ -198,7 +198,7 @@ local tweenService = cloneref(game:GetService('TweenService'))
 -- PREMIUM SCRIPT LOADER GUI
 -- ========================================================
 local ScreenGui = Instance.new('ScreenGui')
-ScreenGui.Name = 'Tumba VapeLoader'
+ScreenGui.Name = 'TumbaVapeLoader'
 ScreenGui.Parent = gethui and gethui() or cloneref(game:GetService('CoreGui'))
 
 local MainFrame = Instance.new('Frame')

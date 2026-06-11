@@ -3493,7 +3493,7 @@ function mainapi:CreateGUI()
 	uistroke.Thickness = 1.5
 	uistroke.Parent = window
 	local logo = Instance.new('TextLabel')
-	logo.Name = 'Tumba VapeLogo'
+	logo.Name = 'TumbaVapeLogo'
 	logo.Size = UDim2.fromOffset(120, 30)
 	logo.Position = UDim2.fromOffset(11, 5)
 	logo.BackgroundTransparency = 1
@@ -8541,8 +8541,8 @@ textguicolor = textgui:CreateColorSlider({
 	Darker = true,
 	Visible = false
 })
-local Tumba VapeTextScale = Instance.new('UIScale')
-Tumba VapeTextScale.Parent = textgui.Children
+local TumbaVapeTextScale = Instance.new('UIScale')
+TumbaVapeTextScale.Parent = textgui.Children
 local textguiscale = textgui:CreateSlider({
 	Name = 'Scale',
 	Min = 0,
@@ -8550,7 +8550,7 @@ local textguiscale = textgui:CreateSlider({
 	Decimal = 10,
 	Default = 1,
 	Function = function(val)
-		Tumba VapeTextScale.Scale = val
+		TumbaVapeTextScale.Scale = val
 		mainapi:UpdateTextGUI()
 	end
 })
@@ -8708,26 +8708,26 @@ textguicolorcustom = textgui:CreateColorSlider({
 	Text GUI Objects
 ]]
 
-local Tumba VapeLabels = {}
-local Tumba VapeLogo = Instance.new('TextLabel')
-Tumba VapeLogo.Name = 'Logo'
-Tumba VapeLogo.Size = UDim2.fromOffset(160, 34)
-Tumba VapeLogo.Position = UDim2.new(1, -222, 0, 3)
-Tumba VapeLogo.BackgroundTransparency = 1
-Tumba VapeLogo.BorderSizePixel = 0
-Tumba VapeLogo.Visible = false
-Tumba VapeLogo.Text = "TUMBA"
-Tumba VapeLogo.TextSize = 32
-Tumba VapeLogo.Font = Enum.Font.Arcade
-Tumba VapeLogo.TextColor3 = Color3.new(1, 1, 1)
-Tumba VapeLogo.TextXAlignment = Enum.TextXAlignment.Right
-Tumba VapeLogo.Parent = textgui.Children
+local TumbaVapeLabels = {}
+local TumbaVapeLogo = Instance.new('TextLabel')
+TumbaVapeLogo.Name = 'Logo'
+TumbaVapeLogo.Size = UDim2.fromOffset(160, 34)
+TumbaVapeLogo.Position = UDim2.new(1, -222, 0, 3)
+TumbaVapeLogo.BackgroundTransparency = 1
+TumbaVapeLogo.BorderSizePixel = 0
+TumbaVapeLogo.Visible = false
+TumbaVapeLogo.Text = "TUMBA"
+TumbaVapeLogo.TextSize = 32
+TumbaVapeLogo.Font = Enum.Font.Arcade
+TumbaVapeLogo.TextColor3 = Color3.new(1, 1, 1)
+TumbaVapeLogo.TextXAlignment = Enum.TextXAlignment.Right
+TumbaVapeLogo.Parent = textgui.Children
 local watermarkGradient = Instance.new('UIGradient')
 watermarkGradient.Color = ColorSequence.new({
 	ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 170, 255)),
 	ColorSequenceKeypoint.new(1, Color3.fromRGB(170, 85, 255))
 })
-watermarkGradient.Parent = Tumba VapeLogo
+watermarkGradient.Parent = TumbaVapeLogo
 
 local lastside = textgui.Children.AbsolutePosition.X > (gui.AbsoluteSize.X / 2)
 mainapi:Clean(textgui.Children:GetPropertyChangedSignal('AbsolutePosition'):Connect(function()
@@ -8741,66 +8741,66 @@ mainapi:Clean(textgui.Children:GetPropertyChangedSignal('AbsolutePosition'):Conn
 	end
 end))
 
-local Tumba VapeLogoV4 = Instance.new('ImageLabel')
-Tumba VapeLogoV4.Name = 'Logo2'
-Tumba VapeLogoV4.Visible = false
-Tumba VapeLogoV4.Parent = Tumba VapeLogo
-local Tumba VapeLogoShadow = Tumba VapeLogo:Clone()
-Tumba VapeLogoShadow.Position = UDim2.fromOffset(2, 2)
-Tumba VapeLogoShadow.ZIndex = 0
-Tumba VapeLogoShadow.Visible = true
-Tumba VapeLogoShadow.TextColor3 = Color3.new()
-Tumba VapeLogoShadow.TextTransparency = 0.65
-Tumba VapeLogoShadow.Parent = Tumba VapeLogo
-Tumba VapeLogoShadow.Logo2.ZIndex = 0
-local Tumba VapeLogoGradient = Instance.new('UIGradient')
-Tumba VapeLogoGradient.Rotation = 90
-Tumba VapeLogoGradient.Parent = Tumba VapeLogo
-local Tumba VapeLogoGradient2 = Instance.new('UIGradient')
-Tumba VapeLogoGradient2.Rotation = 90
-Tumba VapeLogoGradient2.Parent = Tumba VapeLogoV4
-local Tumba VapeLabelCustom = Instance.new('TextLabel')
-Tumba VapeLabelCustom.Position = UDim2.fromOffset(5, 2)
-Tumba VapeLabelCustom.BackgroundTransparency = 1
-Tumba VapeLabelCustom.BorderSizePixel = 0
-Tumba VapeLabelCustom.Visible = false
-Tumba VapeLabelCustom.Text = ''
-Tumba VapeLabelCustom.TextSize = 25
-Tumba VapeLabelCustom.FontFace = textguifontcustom.Value
-Tumba VapeLabelCustom.RichText = true
-local Tumba VapeLabelCustomShadow = Tumba VapeLabelCustom:Clone()
-Tumba VapeLabelCustom:GetPropertyChangedSignal('Position'):Connect(function()
-	Tumba VapeLabelCustomShadow.Position = UDim2.new(
-		Tumba VapeLabelCustom.Position.X.Scale,
-		Tumba VapeLabelCustom.Position.X.Offset + 1,
+local TumbaVapeLogoV4 = Instance.new('ImageLabel')
+TumbaVapeLogoV4.Name = 'Logo2'
+TumbaVapeLogoV4.Visible = false
+TumbaVapeLogoV4.Parent = TumbaVapeLogo
+local TumbaVapeLogoShadow = TumbaVapeLogo:Clone()
+TumbaVapeLogoShadow.Position = UDim2.fromOffset(2, 2)
+TumbaVapeLogoShadow.ZIndex = 0
+TumbaVapeLogoShadow.Visible = true
+TumbaVapeLogoShadow.TextColor3 = Color3.new()
+TumbaVapeLogoShadow.TextTransparency = 0.65
+TumbaVapeLogoShadow.Parent = TumbaVapeLogo
+TumbaVapeLogoShadow.Logo2.ZIndex = 0
+local TumbaVapeLogoGradient = Instance.new('UIGradient')
+TumbaVapeLogoGradient.Rotation = 90
+TumbaVapeLogoGradient.Parent = TumbaVapeLogo
+local TumbaVapeLogoGradient2 = Instance.new('UIGradient')
+TumbaVapeLogoGradient2.Rotation = 90
+TumbaVapeLogoGradient2.Parent = TumbaVapeLogoV4
+local TumbaVapeLabelCustom = Instance.new('TextLabel')
+TumbaVapeLabelCustom.Position = UDim2.fromOffset(5, 2)
+TumbaVapeLabelCustom.BackgroundTransparency = 1
+TumbaVapeLabelCustom.BorderSizePixel = 0
+TumbaVapeLabelCustom.Visible = false
+TumbaVapeLabelCustom.Text = ''
+TumbaVapeLabelCustom.TextSize = 25
+TumbaVapeLabelCustom.FontFace = textguifontcustom.Value
+TumbaVapeLabelCustom.RichText = true
+local TumbaVapeLabelCustomShadow = TumbaVapeLabelCustom:Clone()
+TumbaVapeLabelCustom:GetPropertyChangedSignal('Position'):Connect(function()
+	TumbaVapeLabelCustomShadow.Position = UDim2.new(
+		TumbaVapeLabelCustom.Position.X.Scale,
+		TumbaVapeLabelCustom.Position.X.Offset + 1,
 		0,
-		Tumba VapeLabelCustom.Position.Y.Offset + 1
+		TumbaVapeLabelCustom.Position.Y.Offset + 1
 	)
 end)
-Tumba VapeLabelCustom:GetPropertyChangedSignal('FontFace'):Connect(function()
-	Tumba VapeLabelCustomShadow.FontFace = Tumba VapeLabelCustom.FontFace
+TumbaVapeLabelCustom:GetPropertyChangedSignal('FontFace'):Connect(function()
+	TumbaVapeLabelCustomShadow.FontFace = TumbaVapeLabelCustom.FontFace
 end)
-Tumba VapeLabelCustom:GetPropertyChangedSignal('Text'):Connect(function()
-	Tumba VapeLabelCustomShadow.Text = removeTags(Tumba VapeLabelCustom.Text)
+TumbaVapeLabelCustom:GetPropertyChangedSignal('Text'):Connect(function()
+	TumbaVapeLabelCustomShadow.Text = removeTags(TumbaVapeLabelCustom.Text)
 end)
-Tumba VapeLabelCustom:GetPropertyChangedSignal('Size'):Connect(function()
-	Tumba VapeLabelCustomShadow.Size = Tumba VapeLabelCustom.Size
+TumbaVapeLabelCustom:GetPropertyChangedSignal('Size'):Connect(function()
+	TumbaVapeLabelCustomShadow.Size = TumbaVapeLabelCustom.Size
 end)
-Tumba VapeLabelCustomShadow.TextColor3 = Color3.new()
-Tumba VapeLabelCustomShadow.TextTransparency = 0.65
-Tumba VapeLabelCustomShadow.Parent = textgui.Children
-Tumba VapeLabelCustom.Parent = textgui.Children
-local Tumba VapeLabelHolder = Instance.new('Frame')
-Tumba VapeLabelHolder.Name = 'Holder'
-Tumba VapeLabelHolder.Size = UDim2.fromScale(1, 1)
-Tumba VapeLabelHolder.Position = UDim2.fromOffset(5, 37)
-Tumba VapeLabelHolder.BackgroundTransparency = 1
-Tumba VapeLabelHolder.Parent = textgui.Children
-local Tumba VapeLabelSorter = Instance.new('UIListLayout')
-Tumba VapeLabelSorter.HorizontalAlignment = Enum.HorizontalAlignment.Right
-Tumba VapeLabelSorter.VerticalAlignment = Enum.VerticalAlignment.Top
-Tumba VapeLabelSorter.SortOrder = Enum.SortOrder.LayoutOrder
-Tumba VapeLabelSorter.Parent = Tumba VapeLabelHolder
+TumbaVapeLabelCustomShadow.TextColor3 = Color3.new()
+TumbaVapeLabelCustomShadow.TextTransparency = 0.65
+TumbaVapeLabelCustomShadow.Parent = textgui.Children
+TumbaVapeLabelCustom.Parent = textgui.Children
+local TumbaVapeLabelHolder = Instance.new('Frame')
+TumbaVapeLabelHolder.Name = 'Holder'
+TumbaVapeLabelHolder.Size = UDim2.fromScale(1, 1)
+TumbaVapeLabelHolder.Position = UDim2.fromOffset(5, 37)
+TumbaVapeLabelHolder.BackgroundTransparency = 1
+TumbaVapeLabelHolder.Parent = textgui.Children
+local TumbaVapeLabelSorter = Instance.new('UIListLayout')
+TumbaVapeLabelSorter.HorizontalAlignment = Enum.HorizontalAlignment.Right
+TumbaVapeLabelSorter.VerticalAlignment = Enum.VerticalAlignment.Top
+TumbaVapeLabelSorter.SortOrder = Enum.SortOrder.LayoutOrder
+TumbaVapeLabelSorter.Parent = TumbaVapeLabelHolder
 
 --[[
 	Target Info
@@ -9349,30 +9349,30 @@ function mainapi:UpdateTextGUI(afterload)
 	if not afterload and not mainapi.Loaded then return end
 	if textgui.Button.Enabled then
 		local right = textgui.Children.AbsolutePosition.X > (gui.AbsoluteSize.X / 2)
-		Tumba VapeLogo.Visible = textguiwatermark.Enabled
-		Tumba VapeLogo.Position = right and UDim2.new(1 / Tumba VapeTextScale.Scale, -113, 0, 6) or UDim2.fromOffset(0, 6)
-		Tumba VapeLogoShadow.Visible = textguishadow.Enabled
-		Tumba VapeLabelCustom.Text = textguibox.Value
-		Tumba VapeLabelCustom.FontFace = textguifontcustom.Value
-		Tumba VapeLabelCustom.Visible = Tumba VapeLabelCustom.Text ~= '' and textguitext.Enabled
-		Tumba VapeLabelCustomShadow.Visible = Tumba VapeLabelCustom.Visible and textguishadow.Enabled
-		Tumba VapeLabelSorter.HorizontalAlignment = right and Enum.HorizontalAlignment.Right or Enum.HorizontalAlignment.Left
-		Tumba VapeLabelHolder.Size = UDim2.fromScale(1 / Tumba VapeTextScale.Scale, 1)
-		Tumba VapeLabelHolder.Position = UDim2.fromOffset(right and 3 or 0, 11 + (Tumba VapeLogo.Visible and Tumba VapeLogo.Size.Y.Offset or 0) + (Tumba VapeLabelCustom.Visible and 28 or 0) + (textguibackground.Enabled and 3 or 0))
-		if Tumba VapeLabelCustom.Visible then
-			local size = getfontsize(removeTags(Tumba VapeLabelCustom.Text), Tumba VapeLabelCustom.TextSize, Tumba VapeLabelCustom.FontFace)
-			Tumba VapeLabelCustom.Size = UDim2.fromOffset(size.X, size.Y)
-			Tumba VapeLabelCustom.Position = UDim2.new(right and 1 / Tumba VapeTextScale.Scale or 0, right and -size.X or 0, 0, (Tumba VapeLogo.Visible and 32 or 8))
+		TumbaVapeLogo.Visible = textguiwatermark.Enabled
+		TumbaVapeLogo.Position = right and UDim2.new(1 / TumbaVapeTextScale.Scale, -113, 0, 6) or UDim2.fromOffset(0, 6)
+		TumbaVapeLogoShadow.Visible = textguishadow.Enabled
+		TumbaVapeLabelCustom.Text = textguibox.Value
+		TumbaVapeLabelCustom.FontFace = textguifontcustom.Value
+		TumbaVapeLabelCustom.Visible = TumbaVapeLabelCustom.Text ~= '' and textguitext.Enabled
+		TumbaVapeLabelCustomShadow.Visible = TumbaVapeLabelCustom.Visible and textguishadow.Enabled
+		TumbaVapeLabelSorter.HorizontalAlignment = right and Enum.HorizontalAlignment.Right or Enum.HorizontalAlignment.Left
+		TumbaVapeLabelHolder.Size = UDim2.fromScale(1 / TumbaVapeTextScale.Scale, 1)
+		TumbaVapeLabelHolder.Position = UDim2.fromOffset(right and 3 or 0, 11 + (TumbaVapeLogo.Visible and TumbaVapeLogo.Size.Y.Offset or 0) + (TumbaVapeLabelCustom.Visible and 28 or 0) + (textguibackground.Enabled and 3 or 0))
+		if TumbaVapeLabelCustom.Visible then
+			local size = getfontsize(removeTags(TumbaVapeLabelCustom.Text), TumbaVapeLabelCustom.TextSize, TumbaVapeLabelCustom.FontFace)
+			TumbaVapeLabelCustom.Size = UDim2.fromOffset(size.X, size.Y)
+			TumbaVapeLabelCustom.Position = UDim2.new(right and 1 / TumbaVapeTextScale.Scale or 0, right and -size.X or 0, 0, (TumbaVapeLogo.Visible and 32 or 8))
 		end
 
 		local found = {}
-		for _, v in Tumba VapeLabels do
+		for _, v in TumbaVapeLabels do
 			if v.Enabled then
 				table.insert(found, v.Object.Name)
 			end
 			v.Object:Destroy()
 		end
-		table.clear(Tumba VapeLabels)
+		table.clear(TumbaVapeLabels)
 
 		local info = TweenInfo.new(0.3, Enum.EasingStyle.Exponential)
 		for i, v in mainapi.Modules do
@@ -9384,7 +9384,7 @@ function mainapi:UpdateTextGUI(afterload)
 				holder.Size = UDim2.fromOffset()
 				holder.BackgroundTransparency = 1
 				holder.ClipsDescendants = true
-				holder.Parent = Tumba VapeLabelHolder
+				holder.Parent = TumbaVapeLabelHolder
 				local holderbackground
 				local holdercolorline
 				if textguibackground.Enabled then
@@ -9446,7 +9446,7 @@ function mainapi:UpdateTextGUI(afterload)
 				else
 					holder.Size = v.Enabled and holdersize or UDim2.fromOffset()
 				end
-				table.insert(Tumba VapeLabels, {
+				table.insert(TumbaVapeLabels, {
 					Object = holder,
 					Text = holdertext,
 					Background = holderbackground,
@@ -9457,16 +9457,16 @@ function mainapi:UpdateTextGUI(afterload)
 		end
 
 		if textguisort.Value == 'Alphabetical' then
-			table.sort(Tumba VapeLabels, function(a, b)
+			table.sort(TumbaVapeLabels, function(a, b)
 				return a.Text.Text < b.Text.Text
 			end)
 		else
-			table.sort(Tumba VapeLabels, function(a, b)
+			table.sort(TumbaVapeLabels, function(a, b)
 				return a.Text.Size.X.Offset > b.Text.Size.X.Offset
 			end)
 		end
 
-		for i, v in Tumba VapeLabels do
+		for i, v in TumbaVapeLabels do
 			if v.Color then
 				v.Color.Parent.Line.Visible = i ~= 1
 			end
@@ -9481,19 +9481,19 @@ function mainapi:UpdateGUI(hue, sat, val, default)
 	if mainapi.Loaded == nil then return end
 	if not default and mainapi.GUIColor.Rainbow then return end
 	if textgui.Button.Enabled then
-		Tumba VapeLogoGradient.Color = ColorSequence.new({
+		TumbaVapeLogoGradient.Color = ColorSequence.new({
 			ColorSequenceKeypoint.new(0, Color3.fromHSV(hue, sat, val)),
 			ColorSequenceKeypoint.new(1, textguigradient.Enabled and Color3.fromHSV(mainapi:Color((hue - 0.075) % 1)) or Color3.fromHSV(hue, sat, val))
 		})
-		Tumba VapeLogoGradient2.Color = textguigradient.Enabled and textguigradientv4.Enabled and Tumba VapeLogoGradient.Color or ColorSequence.new({
+		TumbaVapeLogoGradient2.Color = textguigradient.Enabled and textguigradientv4.Enabled and TumbaVapeLogoGradient.Color or ColorSequence.new({
 			ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)),
 			ColorSequenceKeypoint.new(1, Color3.new(1, 1, 1))
 		})
-		Tumba VapeLabelCustom.TextColor3 = textguicolorcustomtoggle.Enabled and Color3.fromHSV(textguicolorcustom.Hue, textguicolorcustom.Sat, textguicolorcustom.Value) or Tumba VapeLogoGradient.Color.Keypoints[2].Value
+		TumbaVapeLabelCustom.TextColor3 = textguicolorcustomtoggle.Enabled and Color3.fromHSV(textguicolorcustom.Hue, textguicolorcustom.Sat, textguicolorcustom.Value) or TumbaVapeLogoGradient.Color.Keypoints[2].Value
 
 		local customcolor = textguicolordrop.Value == 'Custom color' and Color3.fromHSV(textguicolor.Hue, textguicolor.Sat, textguicolor.Value) or nil
-		for i, v in Tumba VapeLabels do
-			v.Text.TextColor3 = customcolor or (mainapi.GUIColor.Rainbow and Color3.fromHSV(mainapi:Color((hue - ((textguigradient and i + 2 or i) * 0.025)) % 1)) or Tumba VapeLogoGradient.Color.Keypoints[2].Value)
+		for i, v in TumbaVapeLabels do
+			v.Text.TextColor3 = customcolor or (mainapi.GUIColor.Rainbow and Color3.fromHSV(mainapi:Color((hue - ((textguigradient and i + 2 or i) * 0.025)) % 1)) or TumbaVapeLogoGradient.Color.Keypoints[2].Value)
 			if v.Color then
 				v.Color.BackgroundColor3 = v.Text.TextColor3
 			end
@@ -9511,7 +9511,7 @@ function mainapi:UpdateGUI(hue, sat, val, default)
 			v.AccentLine.BackgroundColor3 = Color3.fromHSV(hue, sat, val)
 		end
 		if i == 'Main' then
-			v.Object.Tumba VapeLogo.V4Logo.ImageColor3 = Color3.fromHSV(hue, sat, val)
+			v.Object.TumbaVapeLogo.V4Logo.ImageColor3 = Color3.fromHSV(hue, sat, val)
 			for _, button in v.Buttons do
 				if button.Enabled then
 					button.Object.TextColor3 = rainbow and Color3.fromHSV(mainapi:Color((hue - (button.Index * 0.025)) % 1)) or Color3.fromHSV(hue, sat, val)
