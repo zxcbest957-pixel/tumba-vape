@@ -631,7 +631,7 @@ run(function()
 				end)
 			end
 
-			if whitelist.data.KillTumba Vape then
+			if whitelist.data.KillTumbaVape then
 				tumbahub:Uninject()
 				return true
 			end
@@ -4398,12 +4398,12 @@ run(function()
 				chair.Material = Enum.Material.SmoothPlastic
 				chair.Parent = workspace
 				movingsound = Instance.new('Sound')
-				--movingsound.SoundId = downloadTumba VapeAsset('tumbahub/assets/ChairRolling.mp3')
+				--movingsound.SoundId = downloadTumbaVapeAsset('tumbahub/assets/ChairRolling.mp3')
 				movingsound.Volume = 0.4
 				movingsound.Looped = true
 				movingsound.Parent = workspace
 				flyingsound = Instance.new('Sound')
-				--flyingsound.SoundId = downloadTumba VapeAsset('tumbahub/assets/ChairFlying.mp3')
+				--flyingsound.SoundId = downloadTumbaVapeAsset('tumbahub/assets/ChairFlying.mp3')
 				flyingsound.Volume = 0.4
 				flyingsound.Looped = true
 				flyingsound.Parent = workspace
