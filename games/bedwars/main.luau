@@ -827,8 +827,8 @@ run(function()
         BedwarsKitMeta = require(replicatedStorage.TS.games.bedwars.kit['bedwars-kit-meta']).BedwarsKitMeta,
 		StatusEffectMeta = require(replicatedStorage.TS['status-effect']['status-effect-meta']).StatusEffectMeta,
         BedwarsKitSkin = canDebug and debug.getupvalue(require(replicatedStorage.TS.games.bedwars['kit-skin']['bedwars-kit-skin-meta']).getKitSkinMetadata, 1) or {},
-        BlockBreakController = Knit.Controllers.BlockBreakController,
-        BlockBreaker = Knit.Controllers.BlockBreakController and Knit.Controllers.BlockBreakController.blockBreaker or nil,
+        BlockBreakController = Knit.Controllers and Knit.Controllers.BlockBreakController or nil,
+        BlockBreaker = Knit.Controllers and Knit.Controllers.BlockBreakController and Knit.Controllers.BlockBreakController.blockBreaker or nil,
         BlockController = require(replicatedStorage['rbxts_include']['node_modules']['@easy-games']['block-engine'].out).BlockEngine,
         BlockEngine = require(lplr.PlayerScripts.TS.lib['block-engine']['client-block-engine']).ClientBlockEngine,
         BlockPlacer = (function()
@@ -857,7 +857,7 @@ run(function()
             if success and res then return res end
             return { getMouseInfo = function() end }
         end)(),
-        BowConstantsTable = canDebug and Knit.Controllers.ProjectileController and debug.getupvalue(Knit.Controllers.ProjectileController.enableBeam, 8) or {RelX = 0, RelY = 0, RelZ = 0},
+        BowConstantsTable = canDebug and Knit.Controllers and Knit.Controllers.ProjectileController and debug.getupvalue(Knit.Controllers.ProjectileController.enableBeam, 8) or {RelX = 0, RelY = 0, RelZ = 0},
         SharedConstants = canDebug and require(replicatedStorage.TS['shared-constants']).CpsConstants or {},
         ClickHold = require(replicatedStorage['rbxts_include']['node_modules']['@easy-games']['game-core'].out.client.ui.lib.util['click-hold']).ClickHold,
         Client = Client,
@@ -865,7 +865,7 @@ run(function()
         GamePlayer = require(replicatedStorage.TS.player['game-player']),
         ClientDamageBlock = require(replicatedStorage['rbxts_include']['node_modules']['@easy-games']['block-engine'].out.shared.remotes).BlockEngineRemotes.Client,
         CombatConstant = require(replicatedStorage.TS.combat['combat-constant']).CombatConstant,
-        DamageIndicator = Knit.Controllers.DamageIndicatorController and Knit.Controllers.DamageIndicatorController.spawnDamageIndicator or nil,
+        DamageIndicator = Knit.Controllers and Knit.Controllers.DamageIndicatorController and Knit.Controllers.DamageIndicatorController.spawnDamageIndicator or nil,
         DefaultKillEffect = require(lplr.PlayerScripts.TS.controllers.global.locker['kill-effect'].effects['default-kill-effect']),
         EmoteType = require(replicatedStorage.TS.locker.emote['emote-type']).EmoteType,
         RankMeta = require(replicatedStorage.TS.rank['rank-meta']).RankMeta,
@@ -1043,7 +1043,7 @@ run(function()
         Knit = Knit,
         KnockbackUtil = require(replicatedStorage.TS.damage['knockback-util']).KnockbackUtil,
         MageKitUtil = require(replicatedStorage.TS.games.bedwars.kit.kits.mage['mage-kit-util']).MageKitUtil,
-        NametagController = Knit.Controllers.NametagController,
+        NametagController = Knit.Controllers and Knit.Controllers.NametagController or nil,
         PartyController = (function()
 			local success, res = pcall(function()
 				return Flamework.resolveDependency('@easy-games/lobby:client/controllers/party-controller@PartyController')
@@ -1152,37 +1152,45 @@ run(function()
 		return success and result or function() end
 	end
 
+	local function safe(func)
+		if not canDebug then
+			return function() end
+		end
+		local success, result = pcall(func)
+		return success and result or function() end
+	end
+
 	local remoteNames = {
-		AfkStatus = canDebug and getproto(Knit.Controllers.AfkController.KnitStart, 1) or function() end,
-		AttackEntity = canDebug and Knit.Controllers.SwordController.sendServerRequest or function() end,
-		BeePickup = canDebug and Knit.Controllers.BeeNetController.trigger or function() end,
-		CannonAim = canDebug and getproto(Knit.Controllers.CannonController.startAiming, 5) or function() end,
-		CannonLaunch = canDebug and Knit.Controllers.CannonHandController.launchSelf or function() end,
-		ConsumeBattery = canDebug and getproto(Knit.Controllers.BatteryController.onKitLocalActivated, 1) or function() end,
-		ConsumeItem = canDebug and getproto(Knit.Controllers.ConsumeController.onEnable, 1) or function() end,
-		ConsumeSoul = canDebug and Knit.Controllers.GrimReaperController.consumeSoul or function() end,
-		ConsumeTreeOrb = canDebug and getproto(Knit.Controllers.EldertreeController.createTreeOrbInteraction, 1) or function() end,
-		DepositPinata = canDebug and getproto(getproto(Knit.Controllers.PiggyBankController.KnitStart, 2), 5) or function() end,
-		DragonBreath = canDebug and getproto(Knit.Controllers.VoidDragonController.onKitLocalActivated, 5) or function() end,
-		DragonEndFly = canDebug and getproto(Knit.Controllers.VoidDragonController.flapWings, 1) or function() end,
-		DragonFly = canDebug and Knit.Controllers.VoidDragonController.flapWings or function() end,
-		DropItem = canDebug and Knit.Controllers.ItemDropController.dropItemInHand or function() end,
-		EquipItem = canDebug and getproto(require(replicatedStorage.TS.entity.entities['inventory-entity']).InventoryEntity.equipItem, 4) or function() end,
-		FireProjectile = canDebug and debug.getupvalue(Knit.Controllers.ProjectileController.launchProjectileWithValues, 2) or function() end,
-		GroundHit = canDebug and Knit.Controllers.FallDamageController.KnitStart or function() end,
-		GuitarHeal = canDebug and Knit.Controllers.GuitarController.performHeal or function() end,
-		HannahKill = canDebug and getproto(Knit.Controllers.HannahController.registerExecuteInteractions, 1) or function() end,
-		HarvestCrop = canDebug and getproto(getproto(Knit.Controllers.CropController.KnitStart, 4), 1) or function() end,
-		KaliyahPunch = canDebug and getproto(Knit.Controllers.DragonSlayerController.onKitLocalActivated, 1) or function() end,
-		MageSelect = canDebug and getproto(Knit.Controllers.MageController.registerTomeInteraction, 1) or function() end,
-		MinerDig = canDebug and getproto(Knit.Controllers.MinerController.setupMinerPrompts, 1) or function() end,
-		PickupItem = canDebug and Knit.Controllers.ItemDropController.checkForPickup or function() end,
-		PickupMetal = canDebug and getproto(Knit.Controllers.HiddenMetalController.onKitLocalActivated, 4) or function() end,
-		ReportPlayer = canDebug and require(lplr.PlayerScripts.TS.controllers.global.report['report-controller']).default.reportPlayer or function() end,
-		ResetCharacter = canDebug and getproto(Knit.Controllers.ResetController.createBindable, 1) or function() end,
-		SpawnRaven = canDebug and getproto(Knit.Controllers.RavenController.KnitStart, 1) or function() end,
-		SummonerClawAttack = canDebug and Knit.Controllers.SummonerClawHandController.attack or function() end,
-		WarlockTarget = canDebug and getproto(Knit.Controllers.WarlockStaffController.KnitStart, 2) or function() end
+		AfkStatus = safe(function() return getproto(Knit.Controllers.AfkController.KnitStart, 1) end),
+		AttackEntity = safe(function() return Knit.Controllers.SwordController.sendServerRequest end),
+		BeePickup = safe(function() return Knit.Controllers.BeeNetController.trigger end),
+		CannonAim = safe(function() return getproto(Knit.Controllers.CannonController.startAiming, 5) end),
+		CannonLaunch = safe(function() return Knit.Controllers.CannonHandController.launchSelf end),
+		ConsumeBattery = safe(function() return getproto(Knit.Controllers.BatteryController.onKitLocalActivated, 1) end),
+		ConsumeItem = safe(function() return getproto(Knit.Controllers.ConsumeController.onEnable, 1) end),
+		ConsumeSoul = safe(function() return Knit.Controllers.GrimReaperController.consumeSoul end),
+		ConsumeTreeOrb = safe(function() return getproto(Knit.Controllers.EldertreeController.createTreeOrbInteraction, 1) end),
+		DepositPinata = safe(function() return getproto(getproto(Knit.Controllers.PiggyBankController.KnitStart, 2), 5) end),
+		DragonBreath = safe(function() return getproto(Knit.Controllers.VoidDragonController.onKitLocalActivated, 5) end),
+		DragonEndFly = safe(function() return getproto(Knit.Controllers.VoidDragonController.flapWings, 1) end),
+		DragonFly = safe(function() return Knit.Controllers.VoidDragonController.flapWings end),
+		DropItem = safe(function() return Knit.Controllers.ItemDropController.dropItemInHand end),
+		EquipItem = safe(function() return getproto(require(replicatedStorage.TS.entity.entities['inventory-entity']).InventoryEntity.equipItem, 4) end),
+		FireProjectile = safe(function() return debug.getupvalue(Knit.Controllers.ProjectileController.launchProjectileWithValues, 2) end),
+		GroundHit = safe(function() return Knit.Controllers.FallDamageController.KnitStart end),
+		GuitarHeal = safe(function() return Knit.Controllers.GuitarController.performHeal end),
+		HannahKill = safe(function() return getproto(Knit.Controllers.HannahController.registerExecuteInteractions, 1) end),
+		HarvestCrop = safe(function() return getproto(getproto(Knit.Controllers.CropController.KnitStart, 4), 1) end),
+		KaliyahPunch = safe(function() return getproto(Knit.Controllers.DragonSlayerController.onKitLocalActivated, 1) end),
+		MageSelect = safe(function() return getproto(Knit.Controllers.MageController.registerTomeInteraction, 1) end),
+		MinerDig = safe(function() return getproto(Knit.Controllers.MinerController.setupMinerPrompts, 1) end),
+		PickupItem = safe(function() return Knit.Controllers.ItemDropController.checkForPickup end),
+		PickupMetal = safe(function() return getproto(Knit.Controllers.HiddenMetalController.onKitLocalActivated, 4) end),
+		ReportPlayer = safe(function() return require(lplr.PlayerScripts.TS.controllers.global.report['report-controller']).default.reportPlayer end),
+		ResetCharacter = safe(function() return getproto(Knit.Controllers.ResetController.createBindable, 1) end),
+		SpawnRaven = safe(function() return getproto(Knit.Controllers.RavenController.KnitStart, 1) end),
+		SummonerClawAttack = safe(function() return Knit.Controllers.SummonerClawHandController.attack end),
+		WarlockTarget = safe(function() return getproto(Knit.Controllers.WarlockStaffController.KnitStart, 2) end)
 	}
 
 	local function dumpRemote(tab)

@@ -36,7 +36,7 @@ if canDebug then
             Store = require(lplr.PlayerScripts.TS.ui.store).ClientStore
         }, {
             __index = function(self, ind)
-                rawset(self, ind, Knit.Controllers[ind])
+                rawset(self, ind, Knit.Controllers and Knit.Controllers[ind] or nil)
                 return rawget(self, ind)
             end
         })
